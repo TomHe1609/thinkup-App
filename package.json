@@ -1,9 +1,9 @@
 {
   "name": "thinkup-app",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "scripts": {
-    "test": "node --test tests/content.test.cjs tests/study-core.test.cjs tests/appearance.test.cjs",
+    "test": "node --test tests/content.test.cjs tests/study-core.test.cjs tests/appearance.test.cjs tests/support.test.cjs",
     "test:browser": "node tests/run-browser.cjs"
   },
   "devDependencies": {

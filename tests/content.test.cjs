@@ -73,7 +73,7 @@ test('Learning text is cached with the app and the previous progress storage is 
   assert.ok(html.includes("const LEGACY_STORE='skillyr_learn_m02_preview_v1'"));
   const sw=fs.readFileSync(path.join(root,'sw.js'),'utf8');
   assert.ok(sw.includes("const PREFIX='skillyr-m02-test::'"));
-  assert.ok(sw.includes('thinkup-release-v18'));
+  assert.ok(sw.includes('thinkup-learning-support-v19'));
   assert.ok(sw.includes("'./data-m01-m09.json'"));
   assert.equal(crypto.createHash('sha256').update(JSON.stringify(data.lessons.map(l=>l.questions))).digest('hex'),crypto.createHash('sha256').update(JSON.stringify(baseline.lessons.map(l=>l.questions))).digest('hex'));
 });

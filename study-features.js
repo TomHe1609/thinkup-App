@@ -114,7 +114,7 @@ const Study=(()=>{
   progress.reviewCards[id]=StudyCore.rate(progress.reviewCards[id],rating,now());touchDay();save();render(false);
  }
  function captureReading(){
-  if(restoring||current.page!=='lesson'||byId('learningDialog').open)return;
+  if(restoring||current.page!=='lesson'||document.querySelector('.learning-dialog[open]'))return;
   const y=Math.max(0,Math.round(window.scrollY)),article=byId('content').querySelector('.learning-text');if(article?.getAttribute('aria-label')!=='Lerntext zu Lektion '+current.lesson)return;
   const at=now();progress.reading[current.lesson]={y,at};progress.lastRead={id:current.lesson,at};save();
  }
@@ -142,7 +142,7 @@ const Study=(()=>{
  function updateSearch(){searchLimit=30;const target=byId('studySearchResults');if(target)target.innerHTML=searchResults()}
  function openCard(id){const c=card(id);if(!c)return;beforeNavigate();current.module=c.module;progress.activeModule=c.module;setPage('cards');current.flashIndex=moduleCards().findIndex(item=>item.id===id);current.flashRevealed=false;save();render()}
  function startDaily(){
-  beforeNavigate();
+  beforeNavigate();LearningSupport.resetHints();
   const completedToday=progress.daily?.day===day()&&progress.daily.index===progress.daily.plan.length;
   if(completedToday&&dueCount()>0){
    const due=CARD_CATALOG.filter(c=>progress.reviewCards[c.id]?.due<=now()).sort((a,b)=>progress.reviewCards[a.id].due-progress.reviewCards[b.id].due).slice(0,10);
