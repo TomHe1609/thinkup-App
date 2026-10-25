@@ -11,10 +11,10 @@ const THEME='skillyr_learn_theme_v1';
 const results=path.resolve(process.env.TEST_OUTPUT_DIR || path.join(root,'test-results'));
 fs.mkdirSync(results,{recursive:true});
 const blank=()=>({activeModule:2,xp:0,done:{},correct:{},wrong:{},attempts:0,practices:{},days:[],reviewCards:{},coachReviews:{},favorites:{},reading:{},lastRead:null,daily:null,examHistory:[]});
-const allowed=new Set(['index.html','study-features.js','sw.js','manifest.webmanifest','data-m02.json','data-m01-m05.json','data-m01-m09.json','icon-192.png','icon-512.png']);
-const mime={'.html':'text/html; charset=utf-8','.js':'application/javascript','.json':'application/json','.webmanifest':'application/manifest+json','.png':'image/png'};
+const allowed=new Set(['index.html','appearance.css','study-features.js','sw.js','manifest.webmanifest','data-m02.json','data-m01-m05.json','data-m01-m09.json','icon-192.png','icon-512.png']);
+const mime={'.css':'text/css; charset=utf-8','.html':'text/html; charset=utf-8','.js':'application/javascript','.json':'application/json','.webmanifest':'application/manifest+json','.png':'image/png'};
 let servePreviousVersion=false;
-const previousAssets=Object.fromEntries([...allowed].filter(name=>name!=='study-features.js').map(name=>[name,require('node:child_process').execFileSync('git',['show',`3f6f266:${name}`],{cwd:root,maxBuffer:5000000})]));
+const previousAssets=Object.fromEntries([...allowed].filter(name=>name!=='appearance.css').map(name=>[name,require('node:child_process').execFileSync('git',['show',`f2e56bf:${name}`],{cwd:root,maxBuffer:5000000})]));
 const server=http.createServer((req,res)=>{
   const name=new URL(req.url,'http://localhost').pathname.slice(1)||'index.html';
   if(!allowed.has(name)){res.writeHead(404);res.end();return;}
@@ -214,17 +214,17 @@ async function mixedQuiz(p,id){
     await lookupAndReturn(r,'2.8');
     await reviewContext.close();
 
-    // Upgrade an already installed v15 service worker without resetting progress or unrelated caches.
+    // Upgrade an already installed v16 service worker without resetting progress or unrelated caches.
     servePreviousVersion=true;
     const upgradeContext=await context();const old=await seed(upgradeContext,url,initial);
     await old.evaluate(async()=>{await navigator.serviceWorker.ready;await caches.open('unrelated-app-test-cache');});
     await old.reload();await old.waitForFunction(()=>!!navigator.serviceWorker.controller);
     await old.locator('.node[data-lesson="2.9"]').click();
-    assert.equal(await old.locator('.study-lesson-tools').count(),0);
+    assert.equal(await old.locator('[name="appTheme"]').count(),4);
     assert.equal(await old.locator('#startLessonQuiz').count(),1);
     servePreviousVersion=false;
     await old.evaluate(async()=>{const r=await navigator.serviceWorker.getRegistration();await r.update();});
-    await old.waitForFunction(async()=>{const keys=await caches.keys();return keys.includes('skillyr-m02-test::m01-m09-study-tools-v16')&&!keys.includes('skillyr-m02-test::m01-m09-guided-lessons-v15');});
+    await old.waitForFunction(async()=>{const keys=await caches.keys();return keys.includes('skillyr-m02-test::m01-m09-light-palettes-v17')&&!keys.includes('skillyr-m02-test::m01-m09-study-tools-v16');});
     await old.reload();await old.locator('.node[data-lesson="2.9"]').click();
     assert.equal(await old.locator('#startLessonQuiz').count(),1);
     for(const key of ['xp','done','correct','wrong','attempts'])assert.deepEqual((await stored(old))[key],initial[key]);
@@ -233,7 +233,7 @@ async function mixedQuiz(p,id){
     await old.locator('.node[data-lesson="2.9"]').click();
     assert.match(await old.locator('.learning-text').innerText(),/Dritte Normalform/);
     await upgradeContext.close();
-    console.log('PASS: existing v15 offline installation upgrades to v16, retaining progress and unrelated caches.');
+    console.log('PASS: existing v16 offline installation upgrades to v17, retaining progress and unrelated caches.');
     assert.deepEqual(errors,[],'browser script errors');
     console.log('PASS: error-training lookup uses the current question lesson; no browser script errors.');
   }finally{await browser?.close();await new Promise(resolve=>server.close(resolve));}

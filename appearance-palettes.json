@@ -1,0 +1,34 @@
+{
+  "themes": [
+    {
+      "id": "violet",
+      "dark": {"name":"Lila","description":"Die bisherige Farbwelt","bg":"#15172b","panel":"#241f37","accent":"#b595df","action":"#8060ad","actionText":"#ffffff","h":266,"s":0.35,"sh":237,"ss":0.34,"lf":1},
+      "light": {"name":"Lavendel","description":"Hell mit violetten Akzenten","bg":"#f6f3fb","panel":"#ffffff","soft":"#eee9f5","accent":"#69419b","action":"#69419b","actionText":"#ffffff","ink":"#292135","muted":"#5c526b","line":"#c5bdce","control":"#92839f","h":266}
+    },
+    {
+      "id": "petrol",
+      "dark": {"name":"Petrol & Mint","description":"Ruhig und frisch","bg":"#112126","panel":"#1b3035","accent":"#83d6c2","action":"#83d6c2","actionText":"#102b24","h":165,"s":0.51,"sh":192,"ss":0.36,"lf":0.98},
+      "light": {"name":"Mint","description":"Hell mit frischen Petroltönen","bg":"#eef8f5","panel":"#ffffff","soft":"#e2f1eb","accent":"#176b5e","action":"#176b5e","actionText":"#ffffff","ink":"#17322c","muted":"#485f58","line":"#b7ccc4","control":"#78968b","h":165}
+    },
+    {
+      "id": "blue",
+      "dark": {"name":"Nachtblau & Hellblau","description":"Klar und sachlich","bg":"#121e30","panel":"#1d2d44","accent":"#91bdf4","action":"#91bdf4","actionText":"#14273e","h":213,"s":0.68,"sh":217,"ss":0.45,"lf":1.02},
+      "light": {"name":"Himmelblau","description":"Helle Flächen mit klaren Blautönen","bg":"#f0f6fd","panel":"#ffffff","soft":"#e4eefb","accent":"#245a9c","action":"#245a9c","actionText":"#ffffff","ink":"#172b44","muted":"#526078","line":"#bdcddd","control":"#8095ad","h":213}
+    },
+    {
+      "id": "apricot",
+      "dark": {"name":"Graphit & Apricot","description":"Warm und weich","bg":"#1e1e20","panel":"#2b292b","accent":"#edb287","action":"#edb287","actionText":"#352318","h":27,"s":0.64,"sh":285,"ss":0.035,"lf":1.06},
+      "light": {"name":"Apricot","description":"Warme Cremetöne mit Apricot","bg":"#fff5ed","panel":"#ffffff","soft":"#f8e9dc","accent":"#995322","action":"#995322","actionText":"#ffffff","ink":"#36281e","muted":"#6d5847","line":"#d9c4b2","control":"#b08c70","h":27}
+    },
+    {
+      "id": "forest",
+      "dark": {"name":"Waldgrün & Salbei","description":"Sanfte Grüntöne auf dunklem Grund","bg":"#141f1a","panel":"#20312a","accent":"#9dccad","action":"#9dccad","actionText":"#182d20","h":140,"s":0.35,"sh":150,"ss":0.22,"lf":1},
+      "light": {"name":"Salbei","description":"Heller Naturton mit grünen Akzenten","bg":"#f2f7ed","panel":"#ffffff","soft":"#e7efde","accent":"#3f6828","action":"#3f6828","actionText":"#ffffff","ink":"#25321d","muted":"#52634a","line":"#c1ceb7","control":"#8c9e7e","h":98}
+    },
+    {
+      "id": "rose",
+      "dark": {"name":"Bordeaux & Rosé","description":"Dunkle Beerentöne mit Rosé","bg":"#25171f","panel":"#382431","accent":"#e5a0b9","action":"#e5a0b9","actionText":"#40202d","h":338,"s":0.55,"sh":326,"ss":0.28,"lf":1},
+      "light": {"name":"Rosé","description":"Helle Rosétöne mit Beerenakzenten","bg":"#fcf1f4","panel":"#ffffff","soft":"#f5e2e9","accent":"#9a3c60","action":"#9a3c60","actionText":"#ffffff","ink":"#3b2430","muted":"#705565","line":"#d8beca","control":"#b0889b","h":338}
+    }
+  ]
+}

@@ -2,7 +2,7 @@
   "name": "skillyr-test-learning",
   "private": true,
   "scripts": {
-    "test": "node --test tests/content.test.cjs tests/study-core.test.cjs",
+    "test": "node --test tests/content.test.cjs tests/study-core.test.cjs tests/appearance.test.cjs",
     "test:browser": "node tests/run-browser.cjs"
   },
   "devDependencies": {
