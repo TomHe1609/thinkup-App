@@ -10,15 +10,16 @@ const LEGACY='skillyr_learn_m02_preview_v1';
 const THEME='skillyr_learn_theme_v1';
 const results=path.resolve(process.env.TEST_OUTPUT_DIR || path.join(root,'test-results'));
 fs.mkdirSync(results,{recursive:true});
-const blank=()=>({activeModule:2,xp:0,done:{},correct:{},wrong:{},attempts:0,practices:{},days:[],reviewCards:{},coachReviews:{}});
-const allowed=new Set(['index.html','sw.js','manifest.webmanifest','data-m02.json','data-m01-m05.json','data-m01-m09.json','icon-192.png','icon-512.png']);
+const blank=()=>({activeModule:2,xp:0,done:{},correct:{},wrong:{},attempts:0,practices:{},days:[],reviewCards:{},coachReviews:{},favorites:{},reading:{},lastRead:null,daily:null,examHistory:[]});
+const allowed=new Set(['index.html','study-features.js','sw.js','manifest.webmanifest','data-m02.json','data-m01-m05.json','data-m01-m09.json','icon-192.png','icon-512.png']);
 const mime={'.html':'text/html; charset=utf-8','.js':'application/javascript','.json':'application/json','.webmanifest':'application/manifest+json','.png':'image/png'};
 let servePreviousVersion=false;
-const previousAssets=Object.fromEntries([...allowed].map(name=>[name,require('node:child_process').execFileSync('git',['show',`1bf67b1:${name}`],{cwd:root,maxBuffer:5000000})]));
+const previousAssets=Object.fromEntries([...allowed].filter(name=>name!=='study-features.js').map(name=>[name,require('node:child_process').execFileSync('git',['show',`3f6f266:${name}`],{cwd:root,maxBuffer:5000000})]));
 const server=http.createServer((req,res)=>{
   const name=new URL(req.url,'http://localhost').pathname.slice(1)||'index.html';
   if(!allowed.has(name)){res.writeHead(404);res.end();return;}
   res.writeHead(200,{'Content-Type':mime[path.extname(name)],'Cache-Control':'no-cache'});
+  if(servePreviousVersion&&!previousAssets[name]){res.end();return;}
   res.end(servePreviousVersion?previousAssets[name]:fs.readFileSync(path.join(root,name)));
 });
 let browser;
@@ -103,7 +104,7 @@ async function mixedQuiz(p,id){
         assert.match(await p.locator('.learning-example').innerText(),/Jetzt wenden wir es an/);
         assert(await p.locator('#startLessonQuiz').evaluate(el=>el.compareDocumentPosition(document.querySelector('.learning-text'))&Node.DOCUMENT_POSITION_PRECEDING));
         await p.locator('.learning-check summary').click();
-        assert.deepEqual(await stored(p),before,'reading must not award XP or completion');
+        const after=await stored(p);for(const key of ['xp','done','correct','wrong','attempts'])assert.deepEqual(after[key],before[key],'reading must not award XP or completion');
         await noOverflow(p);
         await p.locator('#startLessonQuiz').click();
         assert.equal(await p.locator('.quiz-question').count(),1);
@@ -146,7 +147,7 @@ async function mixedQuiz(p,id){
     assert.equal(await q.locator('.node[data-lesson="2.9"]').isEnabled(),true);
     assert.equal(await q.locator('.node[data-lesson="2.10"]').isDisabled(),true);
     await q.locator('.node[data-lesson="2.9"]').click();
-    assert.deepEqual(await stored(q),initial);
+    for(const key of ['xp','done','correct','wrong','attempts'])assert.deepEqual((await stored(q))[key],initial[key]);
     await q.screenshot({path:path.join(results,'m02-2-9-learning-320.png'),fullPage:true});
     await q.locator('#startLessonQuiz').click();
     await lookupAndReturn(q,'2.9');
@@ -159,7 +160,7 @@ async function mixedQuiz(p,id){
     await q.locator('.quiz-result-secondary').click();
     assert.equal(await q.locator('.node[data-lesson="2.10"]').isEnabled(),true);
     assert.equal(await q.locator('.node[data-lesson="2.11"]').isDisabled(),true);
-    await q.reload();assert.deepEqual(await stored(q),completed);
+    await q.reload();for(const key of ['xp','done','correct','wrong','attempts','practices'])assert.deepEqual((await stored(q))[key],completed[key]);
     await q.locator('.node[data-lesson="2.9"]').click();
     await q.locator('#startLessonQuiz').click();
     await q.locator('#readLesson').click();
@@ -174,12 +175,13 @@ async function mixedQuiz(p,id){
     const download=q.waitForEvent('download');await q.locator('#exportProgress').click();
     const backup=path.join(results,'progress-backup.json');await (await download).saveAs(backup);
     const exported=JSON.parse(fs.readFileSync(backup,'utf8'));
-    assert.equal(exported.app,'skillyr-learn-m01-m09');assert.equal(exported.schemaVersion,3);assert.deepEqual(exported.progress,completed);
+    assert.equal(exported.app,'skillyr-learn-m01-m09');assert.equal(exported.schemaVersion,4);for(const key of ['xp','done','correct','wrong','attempts','practices'])assert.deepEqual(exported.progress[key],completed[key]);
     await q.locator('.reset-settings>summary').click();q.once('dialog',d=>d.accept());await q.locator('#resetProgress').click();
     assert.equal((await stored(q)).xp,0);
     await q.locator('.data-settings>summary').click();q.once('dialog',d=>d.accept());await q.locator('#importProgress').setInputFiles(backup);
     await q.waitForFunction(({KEY,xp})=>JSON.parse(localStorage.getItem(KEY)).xp===xp,{KEY,xp:completed.xp});
-    assert.deepEqual(await stored(q),completed);
+    for(const key of ['xp','done','correct','wrong','attempts','practices'])assert.deepEqual((await stored(q))[key],completed[key]);
+    assert.deepEqual(await stored(q),exported.progress);
     assert.equal(await q.evaluate(k=>localStorage.getItem(k),THEME),'petrol');
     console.log('PASS: export, reset and import preserve the previous schema, progress and separate theme preference.');
 
@@ -190,7 +192,7 @@ async function mixedQuiz(p,id){
     await q.locator('[data-module="2"]').click();await q.locator('.node[data-lesson="2.9"]').click();
     assert.match(await q.locator('.learning-text').innerText(),/Dritte Normalform/);
     await q.locator('#startLessonQuiz').click();await lookupAndReturn(q,'2.9');
-    assert.deepEqual(await stored(q),completed);
+    for(const key of ['xp','done','correct','wrong','attempts','practices'])assert.deepEqual((await stored(q))[key],completed[key]);
     await mobile.setOffline(false);await mobile.close();
     console.log('PASS: offline reload, learning text and quiz reference.');
 
@@ -212,26 +214,26 @@ async function mixedQuiz(p,id){
     await lookupAndReturn(r,'2.8');
     await reviewContext.close();
 
-    // Upgrade an already installed v14 service worker without resetting progress or unrelated caches.
+    // Upgrade an already installed v15 service worker without resetting progress or unrelated caches.
     servePreviousVersion=true;
     const upgradeContext=await context();const old=await seed(upgradeContext,url,initial);
     await old.evaluate(async()=>{await navigator.serviceWorker.ready;await caches.open('unrelated-app-test-cache');});
     await old.reload();await old.waitForFunction(()=>!!navigator.serviceWorker.controller);
     await old.locator('.node[data-lesson="2.9"]').click();
-    assert.equal(await old.locator('.learning-tutorial').count(),0);
+    assert.equal(await old.locator('.study-lesson-tools').count(),0);
     assert.equal(await old.locator('#startLessonQuiz').count(),1);
     servePreviousVersion=false;
     await old.evaluate(async()=>{const r=await navigator.serviceWorker.getRegistration();await r.update();});
-    await old.waitForFunction(async()=>{const keys=await caches.keys();return keys.includes('skillyr-m02-test::m01-m09-guided-lessons-v15')&&!keys.includes('skillyr-m02-test::m01-m09-learning-texts-v14');});
+    await old.waitForFunction(async()=>{const keys=await caches.keys();return keys.includes('skillyr-m02-test::m01-m09-study-tools-v16')&&!keys.includes('skillyr-m02-test::m01-m09-guided-lessons-v15');});
     await old.reload();await old.locator('.node[data-lesson="2.9"]').click();
     assert.equal(await old.locator('#startLessonQuiz').count(),1);
-    assert.deepEqual(await stored(old),initial);
+    for(const key of ['xp','done','correct','wrong','attempts'])assert.deepEqual((await stored(old))[key],initial[key]);
     assert(await old.evaluate(async()=>(await caches.keys()).includes('unrelated-app-test-cache')));
     await upgradeContext.setOffline(true);await old.reload();
     await old.locator('.node[data-lesson="2.9"]').click();
     assert.match(await old.locator('.learning-text').innerText(),/Dritte Normalform/);
     await upgradeContext.close();
-    console.log('PASS: existing v14 offline installation upgrades to v15, retaining progress and unrelated caches.');
+    console.log('PASS: existing v15 offline installation upgrades to v16, retaining progress and unrelated caches.');
     assert.deepEqual(errors,[],'browser script errors');
     console.log('PASS: error-training lookup uses the current question lesson; no browser script errors.');
   }finally{await browser?.close();await new Promise(resolve=>server.close(resolve));}

@@ -12,6 +12,7 @@ const baseline = JSON.parse(require('node:child_process').execFileSync('git',['s
 
 test('All application scripts parse and embedded content matches the public JSON',()=>{
   for(const script of scripts) new vm.Script(script);
+  new vm.Script(fs.readFileSync(path.join(root,'study-features.js'),'utf8'));
   const match=html.match(/const DATA = (.*);\r?\nconst ICON_PATHS/);
   assert.ok(match);
   assert.deepEqual(JSON.parse(match[1]),data);
@@ -72,7 +73,17 @@ test('Learning text is cached with the app and the previous progress storage is 
   assert.ok(html.includes("const LEGACY_STORE='skillyr_learn_m02_preview_v1'"));
   const sw=fs.readFileSync(path.join(root,'sw.js'),'utf8');
   assert.ok(sw.includes("const PREFIX='skillyr-m02-test::'"));
-  assert.ok(sw.includes('guided-lessons-v15'));
+  assert.ok(sw.includes('study-tools-v16'));
   assert.ok(sw.includes("'./data-m01-m09.json'"));
   assert.equal(crypto.createHash('sha256').update(JSON.stringify(data.lessons.map(l=>l.questions))).digest('hex'),crypto.createHash('sha256').update(JSON.stringify(baseline.lessons.map(l=>l.questions))).digest('hex'));
+});
+test('The basic design keeps every original style block, header and bottom navigation',()=>{
+  const before=require('node:child_process').execFileSync('git',['show','3f6f266:index.html'],{cwd:root,encoding:'utf8',maxBuffer:5000000}).replace(/\r\n/g,'\n');
+  const current=html.replace(/\r\n/g,'\n');
+  const styles=text=>[...text.matchAll(/<style[^>]*>([\s\S]*?)<\/style>/g)].map(m=>m[1].trim());
+  const oldStyles=styles(before),newStyles=styles(current);
+  assert.equal(newStyles.length,oldStyles.length);
+  for(let i=0;i<oldStyles.length;i++)assert.ok(newStyles[i].includes(oldStyles[i]),'Original design block '+i+' changed');
+  assert.equal(current.match(/<header>[\s\S]*?<\/header>/)[0],before.match(/<header>[\s\S]*?<\/header>/)[0]);
+  assert.equal(current.match(/<nav class="bottomnav"[\s\S]*?<\/nav>/)[0],before.match(/<nav class="bottomnav"[\s\S]*?<\/nav>/)[0]);
 });

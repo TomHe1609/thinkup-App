@@ -2,8 +2,8 @@
   "name": "skillyr-test-learning",
   "private": true,
   "scripts": {
-    "test": "node --test tests/content.test.cjs",
-    "test:browser": "node tests/learning-flow.cjs"
+    "test": "node --test tests/content.test.cjs tests/study-core.test.cjs",
+    "test:browser": "node tests/run-browser.cjs"
   },
   "devDependencies": {
     "playwright": "1.62.1"
