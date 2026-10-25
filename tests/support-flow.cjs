@@ -2,8 +2,8 @@ const fs=require('node:fs'),path=require('node:path'),http=require('node:http'),
 const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
 const root=path.join(__dirname,'..'),D=require('../data-m01-m09.json'),aids=require('../learning-support-data.js'),themes=require('../appearance-palettes.json').themes;
 const KEY='skillyr_learn_m01_m05_preview_v1',out=path.join(root,'test-results');fs.mkdirSync(out,{recursive:true});
-const files=new Set(['index.html','appearance.css','learning-support.css','learning-support-data.js','learning-support.js','study-features.js','sw.js','manifest.webmanifest','data-m02.json','data-m01-m05.json','data-m01-m09.json','icon-192.png','icon-512.png']);
-const previous=Object.fromEntries([...files].filter(name=>!name.startsWith('learning-support')).map(name=>[name,execFileSync('git',['show',`b744aba:${name}`],{cwd:root,maxBuffer:5000000})]));
+const files=new Set(['index.html','appearance.css','glossary-examples.js','learning-support.css','learning-support-data.js','learning-support.js','study-features.js','sw.js','manifest.webmanifest','data-m02.json','data-m01-m05.json','data-m01-m09.json','icon-192.png','icon-512.png']);
+const previous=Object.fromEntries([...files].filter(name=>name!=='glossary-examples.js').map(name=>[name,execFileSync('git',['show',`4facbb1:${name}`],{cwd:root,maxBuffer:5000000})]));
 let oldVersion=false;
 const server=http.createServer((req,res)=>{const name=new URL(req.url,'http://localhost').pathname.replace(/^\/thinkup-App\//,'')||'index.html';if(!files.has(name)){res.writeHead(404);res.end();return}
  const mime={'.css':'text/css','.js':'application/javascript','.html':'text/html; charset=utf-8','.png':'image/png','.webmanifest':'application/manifest+json','.json':'application/json'};
@@ -23,6 +23,19 @@ async function answerMC(p){const prompt=await p.locator('.quiz-question').innerT
  browser=await chromium.launch({headless:true,...(process.env.TEST_BROWSER_CHANNEL?{channel:process.env.TEST_BROWSER_CHANNEL}:{})});
  try{
   const c=await browser.newContext({viewport:{width:390,height:844},isMobile:true,hasTouch:true,reducedMotion:'reduce'}),p=await seed(c);
+  const curated=require('../glossary-examples.js');
+  for(const id of ['1.1','2.9','3.2','4.1','5.1','6.1','7.1','8.1','9.7']){
+   const lesson=D.lessons.find(l=>l.id===id);await p.locator(`[data-module="${lesson.module}"]`).click();await p.locator(`.node[data-lesson="${id}"]`).click();await p.locator('.learning-glossary>summary').click();
+   const shown=[];for(const [i,term] of lesson.learning.terms.entries()){
+    const button=p.locator('.learning-terms dt button').nth(i);await button.click();
+    assert.equal(await p.locator('#supportTermDefinition').innerText(),term.definition);assert.equal(await p.locator('#supportTermExampleTitle').innerText(),'Praxisbeispiel');
+    const example=await p.locator('#supportTermExample').innerText();assert.equal(example,curated.local[id][term.term]);assert.notEqual(example,term.definition);shown.push(example);
+    await p.keyboard.press('Escape');assert.equal(await button.evaluate(el=>el===document.activeElement),true);
+   }
+   assert.equal(new Set(shown).size,lesson.learning.terms.length);await p.locator('.back[data-page="path"]').click();
+  }
+  console.log('PASS: distinct term-specific examples and unchanged definitions are shown in glossary dialogs across all nine modules.');
+  await p.locator('[data-module="2"]').click();
   await p.locator('.node[data-lesson="2.9"]').click();
   assert(await p.locator('.learning-tutorial [data-support-term]').count()>10);
   assert.equal(await p.locator('.learning-terms dt button').count(),6);
@@ -58,9 +71,9 @@ async function answerMC(p){const prompt=await p.locator('.quiz-question').innerT
   console.log('PASS: daily-round question hints reveal independently without advancing the daily round or changing XP.');
   oldVersion=true;const upgrade=await browser.newContext({viewport:{width:320,height:740},reducedMotion:'reduce'}),old=await seed(upgrade);
   await old.evaluate(async()=>{await navigator.serviceWorker.ready;await caches.open('unrelated-learning-app-cache')});await old.reload();await old.waitForFunction(()=>!!navigator.serviceWorker.controller);const previousProgress=core(await saved(old));
-  oldVersion=false;await old.evaluate(async()=>{const r=await navigator.serviceWorker.getRegistration();await r.update()});await old.waitForFunction(async()=>(await caches.keys()).includes('skillyr-m02-test::thinkup-learning-support-v19'));
+  oldVersion=false;await old.evaluate(async()=>{const r=await navigator.serviceWorker.getRegistration();await r.update()});await old.waitForFunction(async()=>(await caches.keys()).includes('skillyr-m02-test::thinkup-glossary-examples-v20'));
   await old.reload();assert.deepEqual(core(await saved(old)),previousProgress);assert(await old.evaluate(async()=>(await caches.keys()).includes('unrelated-learning-app-cache')));await upgrade.setOffline(true);await old.reload();
   await old.locator('.node[data-lesson="2.9"]').click();await old.locator('.learning-tutorial [aria-label="Fremdschlüssel erklären"]').first().click();assert.equal(await old.locator('#supportTermDialog[open]').count(),1);await old.keyboard.press('Escape');await old.locator('#startLessonQuiz').click();await old.locator('[data-support-hint]').click();await old.locator('[data-support-hint]').click();assert.equal(await old.locator('.support-hint-copy p').count(),2);assert(await old.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));await old.screenshot({path:path.join(out,'support-offline-320.png')});await upgrade.close();
-  assert.deepEqual(errors,[]);console.log('PASS: v18 upgrades to v19 without progress loss, new glossary and both hint stages work offline at 320px, unrelated caches remain, no browser errors.');
+  assert.deepEqual(errors,[]);console.log('PASS: v19 upgrades to v20 without progress loss, new glossary and both hint stages work offline at 320px, unrelated caches remain, no browser errors.');
  }finally{await browser?.close();await new Promise(resolve=>server.close(resolve))}
 })().catch(error=>{console.error(error);process.exitCode=1;server.close()});

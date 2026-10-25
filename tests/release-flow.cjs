@@ -2,8 +2,8 @@ const fs=require('node:fs'),path=require('node:path'),http=require('node:http'),
 const {execFileSync}=require('node:child_process');
 const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
 const root=path.join(__dirname,'..'),KEY='skillyr_learn_m01_m05_preview_v1';
-const names=['index.html','appearance.css','learning-support.css','learning-support-data.js','learning-support.js','study-features.js','sw.js','manifest.webmanifest','data-m02.json','data-m01-m05.json','data-m01-m09.json','icon-192.png','icon-512.png'];
-const previous=Object.fromEntries(names.filter(name=>!name.startsWith('learning-support')).map(name=>[name,execFileSync('git',['show',`57ea4de:${name}`],{cwd:root,maxBuffer:5000000})]));
+const names=['index.html','appearance.css','glossary-examples.js','learning-support.css','learning-support-data.js','learning-support.js','study-features.js','sw.js','manifest.webmanifest','data-m02.json','data-m01-m05.json','data-m01-m09.json','icon-192.png','icon-512.png'];
+const previous=Object.fromEntries(names.filter(name=>!name.startsWith('learning-support')&&name!=='glossary-examples.js').map(name=>[name,execFileSync('git',['show',`57ea4de:${name}`],{cwd:root,maxBuffer:5000000})]));
 const server=http.createServer((req,res)=>{
  const pathname=new URL(req.url,'http://localhost').pathname;
  const prefix=['/skillyr-m02-test/','/thinkup-App/'].find(prefix=>pathname.startsWith(prefix));

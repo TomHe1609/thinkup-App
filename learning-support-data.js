@@ -218,27 +218,153 @@ const LearningSupportData=(()=>{
  unit(9,7,[['Unterscheide geplante Leistung, tatsächlich erbrachte Leistung und tatsächlich angefallene Kosten.','Eine Aufgabe ist nur teilweise erledigt, hat aber bereits viel Geld verbraucht. Welcher Wert beschreibt die erreichte Leistung anhand ihres Budgets?'],['Vergleiche den Wert der erreichten Leistung mit den tatsächlich dafür entstandenen Kosten.','Bei EV = 6.000 und AC = 10.000 würde der Quotient 6.000 / 10.000 betrachtet. Setze anschließend die Werte der Frage ein.'],['SPI ist ein Verhältnis von Leistungswerten und keine direkte Zahl von Verspätungstagen.','Wenn weniger Leistungswert erreicht als geplant wurde, zeigt die Kennzahl eine Abweichung. Welche zusätzlichen Informationen brauchst du für eine Terminprognose?'],['Trenne Kosten- und Planvergleich und erkläre die Zahlen anschließend im fachlichen Kontext.','Bei anderen Werten EV = 6.000, AC = 8.000 und PV = 10.000 ergeben sich zwei unterschiedliche Quotienten. Welche Ursachen würdest du danach untersuchen?']]);
  unit(9,8,[['Eine Einführung betrifft neben Technik auch beteiligte Gruppen und abgestimmte Zeitpunkte.','Ein Portal ist bereit, aber Support und Anwender kennen den Starttermin nicht. Welche Abstimmung fehlt vor der Einführung?'],['Menschen sollen sichere Handlungen im konkreten Arbeitsalltag üben können.','Bei einer verdächtigen Nachricht hilft eine praktische Übung zum Erkennen und Melden mehr als eine bloße Liste von Schlagwörtern.'],['Suche einen Nachweis, dass Wissen in einer passenden Situation tatsächlich angewendet wird.','Nach einer Schulung führt jemand einen echten Standardfall selbstständig korrekt aus. Was belegt das im Vergleich zu einer bloßen Anwesenheitsliste?'],['Verbinde Bereitschaft der Technik mit Kommunikation, Unterstützung und prüfbarer Anwendung des Wissens.','Vor dem Start einer neuen Anwendung sollten Zuständigkeiten, Hilfewege und die spätere Kontrolle des Einführungserfolgs feststehen.']]);
  const glossary=[
- {term:'API',aliases:['APIs'],definition:'Eine definierte Schnittstelle, über die Software Funktionen oder Daten einer anderen Software nutzen kann. Ihr Vertrag beschreibt etwa erlaubte Anfragen, Antworten und Fehler.',example:'Eine Termin-App fragt freie Termine über eine API ab. Die Oberfläche muss dafür nicht direkt auf die Datenbank zugreifen.'},
- {term:'SQL',definition:'Eine Sprache für relationale Datenbanken. Mit ihr lassen sich Daten abfragen und ändern sowie Tabellen und Regeln definieren.',example:'SELECT name FROM kunde fragt die Namen aus einer Kundentabelle ab. Änderungen brauchen passende Berechtigungen und sorgfältig gewählte Bedingungen.'},
- {term:'REST',aliases:['REST-API'],definition:'Ein Architekturstil für verteilte Systeme. In HTTP-APIs werden Ressourcen häufig über URLs und passende Methoden angesprochen; REST umfasst außerdem weitere Regeln, etwa zustandslose Anfragen.',example:'GET /termine/17 kann einen vorhandenen Termin abfragen. Ein zusätzlicher Endpunkt allein macht eine gesamte Schnittstelle noch nicht automatisch REST-konform.'},
- {term:'Normalisierung',aliases:['normalisieren','normalisiert'],definition:'Die systematische Prüfung und Aufteilung relationaler Tabellen anhand von Schlüsseln und funktionalen Abhängigkeiten. Sie hilft, unnötige Wiederholungen und Änderungsprobleme zu vermeiden.',example:'Ein Artikelname wird beim Artikel gespeichert. Bestellpositionen verweisen über die Artikel-ID darauf, statt den Namen in jeder Bestellung erneut zu pflegen.'},
- {term:'Redundanz',aliases:['Redundanzen'],definition:'Dieselbe Information ist mehrfach gespeichert. Bei Änderungen können dadurch widersprüchliche Datenstände entstehen; bewusst eingesetzte Redundanz muss kontrolliert gepflegt werden.',example:'Eine Adresse steht in fünf Tabellen. Wird nur eine Kopie geändert, zeigen die anderen vier weiterhin den alten Stand.'},
- {term:'Kardinalität',aliases:['Kardinalitäten'],definition:'Beschreibt die erlaubte Anzahl von Beziehungspartnern. Minima wie 0 oder 1 zeigen, ob eine Zuordnung optional oder verpflichtend ist; Maxima wie 1 oder n zeigen ihre Obergrenze.',example:'Eine Kundin kann 0 bis n Bestellungen haben; jede Bestellung gehört in diesem Modell genau einer Kundin.'},
- {term:'1NF',aliases:['erste Normalform','ersten Normalform'],definition:'Die erste Normalform verlangt atomare Attributwerte und vermeidet wiederholende Gruppen. Was als einzelner Wert gilt, wird für den jeweiligen fachlichen Datentyp festgelegt.',example:'Wenn Telefonnummern einzeln gesucht und verwaltet werden sollen, werden mehrere Nummern nicht als kommaseparierte Liste in einem Feld abgelegt.'},
- {term:'2NF',aliases:['zweite Normalform','zweiten Normalform'],definition:'Die Tabelle erfüllt die 1NF. Außerdem hängt jedes Nichtschlüsselattribut vollständig von jedem Kandidatenschlüssel ab: kein solches Attribut wird bereits durch einen echten Teil eines Kandidatenschlüssels bestimmt.',example:'In Teilnahme(person_id, kurs_id, personenname) bestimmt schon person_id den Namen. Die Personenangaben gehören deshalb in eine eigene Personentabelle.'},
- {term:'3NF',aliases:['dritte Normalform','dritten Normalform'],definition:'Für eine Tabelle in 1NF gilt bei jeder nichttrivialen funktionalen Abhängigkeit X → A: X ist ein Superschlüssel oder A gehört zu einem Kandidatenschlüssel. Im einfachen Kursfall vermeidet das transitive Abhängigkeiten von Nichtschlüsselattributen.',example:'Wenn mitarbeiter_id die abteilungs_id bestimmt und diese den Abteilungsnamen, wird der Name in der Abteilungstabelle gepflegt.'},
- {term:'Entität',aliases:['Entitäten'],definition:'Ein fachlich unterscheidbares Objekt, über das Daten gespeichert werden. Gleichartige Objekte werden zu einem Entitätstyp zusammengefasst.',example:'Kundin 17 ist eine einzelne Entität. Der Entitätstyp Kunde beschreibt gemeinsam die Eigenschaften solcher Kundenobjekte.'},
- {term:'Attribut',aliases:['Attribute','Attributen'],definition:'Eine benannte Eigenschaft eines beschriebenen Objekts oder Entitätstyps.',example:'Bei einem Kunden können kundennummer und name Attribute sein. Der konkrete Name ist ein Wert dieses Attributs.'},
- {term:'Primärschlüssel',aliases:['Primärschlüssels'],definition:'Ein ausgewählter Kandidatenschlüssel, der jeden Datensatz eindeutig bezeichnet. Seine Werte dürfen nicht NULL sein. Er kann aus einer oder mehreren Spalten bestehen.',example:'kunde_id identifiziert einen Kundendatensatz zuverlässig, auch wenn mehrere Menschen denselben Namen haben.'},
- {term:'Fremdschlüssel',aliases:['Fremdschlüssels','Fremdschlüsseln'],definition:'Ein Verweis auf einen geeigneten eindeutigen Schlüssel einer referenzierten Tabelle. Eine Fremdschlüsselregel sichert den Bezug ab; ob ein leerer Verweis erlaubt ist, hängt unter anderem von NULL-Regeln ab.',example:'bestellung.kunde_id verweist auf kunde.kunde_id. So lässt sich eine Bestellung dem passenden Kunden zuordnen.'},
- {term:'Kandidatenschlüssel',aliases:['Kandidatenschlüssels'],definition:'Eine minimale Menge von Attributen, deren Werte jeden Datensatz eindeutig bestimmen. Minimal bedeutet, dass kein enthaltenes Attribut dafür weggelassen werden kann.',example:'Wenn eine Kombination aus Kursnummer und Personennummer eine Teilnahme eindeutig bestimmt und beide Teile benötigt werden, ist sie ein Kandidatenschlüssel.'},
- {term:'Funktionale Abhängigkeit',aliases:['funktionalen Abhängigkeit','funktionale Abhängigkeiten','funktionalen Abhängigkeiten'],definition:'X → Y bedeutet: Gleiche Werte von X müssen gleiche Werte von Y haben. Das folgt aus den fachlichen Regeln und lässt sich nicht allein aus zufällig vorhandenen Beispieldaten beweisen.',example:'Wenn jede Artikel-ID genau einen Artikel beschreibt, bestimmt artikel_id den Artikelnamen.'},
- {term:'m:n-Beziehung',aliases:['m:n','n:m'],definition:'Auf beiden Seiten einer Beziehung können mehrere Partner zugeordnet sein. Im relationalen Modell wird jede einzelne Zuordnung üblicherweise in einer Verbindungstabelle gespeichert.',example:'Eine Person kann mehrere Kurse besuchen, ein Kurs mehrere Personen haben. Teilnahme verbindet jeweils eine Person mit einem Kurs.'},
- {term:'1:n-Beziehung',aliases:['1:n'],definition:'Ein Datensatz auf einer Seite kann mehreren Datensätzen auf der anderen Seite zugeordnet sein. Jeder dieser Datensätze gehört im beschriebenen Modell höchstens einem Partner der ersten Seite.',example:'Eine Abteilung besitzt mehrere Arbeitsplätze. Jeder Arbeitsplatz gehört in diesem Modell genau einer Abteilung.'},
- {term:'1:1-Beziehung',aliases:['1:1'],definition:'Auf jeder Seite ist einem Datensatz höchstens ein Partner zugeordnet. Ob die Zuordnung verpflichtend ist, wird zusätzlich mit der minimalen Kardinalität beschrieben.',example:'Jede ausgegebene Zugangskarte gehört genau einer Person, und jede Person bekommt in diesem Modell genau eine Zugangskarte.'},
- {term:'Stakeholder',aliases:['Stakeholdern'],definition:'Eine Person oder Gruppe, die ein Vorhaben beeinflusst oder von dessen Verlauf beziehungsweise Ergebnis betroffen ist.',example:'Bei einem neuen Portal zählen neben Nutzenden auch Betrieb, Support und fachliche Verantwortliche zu den beteiligten Gruppen.'},
- {term:'Transaktion',aliases:['Transaktionen'],definition:'Fasst zusammengehörige Datenbankoperationen zu einer Einheit zusammen. Ihre Eigenschaften helfen, fachliche Regeln auch bei Fehlern und gleichzeitigen Zugriffen einzuhalten.',example:'Bei einer Umbuchung müssen das Freigeben des alten und das Belegen des neuen Platzes gemeinsam korrekt abgeschlossen werden.'}
- ];
+ {
+  "term": "API",
+  "aliases": [
+   "APIs"
+  ],
+  "definition": "Eine definierte Schnittstelle, über die Software Funktionen oder Daten einer anderen Software nutzen kann. Ihr Vertrag beschreibt etwa erlaubte Anfragen, Antworten und Fehler."
+ },
+ {
+  "term": "SQL",
+  "definition": "Eine Sprache für relationale Datenbanken. Mit ihr lassen sich Daten abfragen und ändern sowie Tabellen und Regeln definieren."
+ },
+ {
+  "term": "REST",
+  "aliases": [
+   "REST-API"
+  ],
+  "definition": "Ein Architekturstil für verteilte Systeme. In HTTP-APIs werden Ressourcen häufig über URLs und passende Methoden angesprochen; REST umfasst außerdem weitere Regeln, etwa zustandslose Anfragen."
+ },
+ {
+  "term": "Normalisierung",
+  "aliases": [
+   "normalisieren",
+   "normalisiert"
+  ],
+  "definition": "Die systematische Prüfung und Aufteilung relationaler Tabellen anhand von Schlüsseln und funktionalen Abhängigkeiten. Sie hilft, unnötige Wiederholungen und Änderungsprobleme zu vermeiden."
+ },
+ {
+  "term": "Redundanz",
+  "aliases": [
+   "Redundanzen"
+  ],
+  "definition": "Dieselbe Information ist mehrfach gespeichert. Bei Änderungen können dadurch widersprüchliche Datenstände entstehen; bewusst eingesetzte Redundanz muss kontrolliert gepflegt werden."
+ },
+ {
+  "term": "Kardinalität",
+  "aliases": [
+   "Kardinalitäten"
+  ],
+  "definition": "Beschreibt die erlaubte Anzahl von Beziehungspartnern. Minima wie 0 oder 1 zeigen, ob eine Zuordnung optional oder verpflichtend ist; Maxima wie 1 oder n zeigen ihre Obergrenze."
+ },
+ {
+  "term": "1NF",
+  "aliases": [
+   "erste Normalform",
+   "ersten Normalform"
+  ],
+  "definition": "Die erste Normalform verlangt atomare Attributwerte und vermeidet wiederholende Gruppen. Was als einzelner Wert gilt, wird für den jeweiligen fachlichen Datentyp festgelegt."
+ },
+ {
+  "term": "2NF",
+  "aliases": [
+   "zweite Normalform",
+   "zweiten Normalform"
+  ],
+  "definition": "Die Tabelle erfüllt die 1NF. Außerdem hängt jedes Nichtschlüsselattribut vollständig von jedem Kandidatenschlüssel ab: kein solches Attribut wird bereits durch einen echten Teil eines Kandidatenschlüssels bestimmt."
+ },
+ {
+  "term": "3NF",
+  "aliases": [
+   "dritte Normalform",
+   "dritten Normalform"
+  ],
+  "definition": "Für eine Tabelle in 1NF gilt bei jeder nichttrivialen funktionalen Abhängigkeit X → A: X ist ein Superschlüssel oder A gehört zu einem Kandidatenschlüssel. Im einfachen Kursfall vermeidet das transitive Abhängigkeiten von Nichtschlüsselattributen."
+ },
+ {
+  "term": "Entität",
+  "aliases": [
+   "Entitäten"
+  ],
+  "definition": "Ein fachlich unterscheidbares Objekt, über das Daten gespeichert werden. Gleichartige Objekte werden zu einem Entitätstyp zusammengefasst."
+ },
+ {
+  "term": "Attribut",
+  "aliases": [
+   "Attribute",
+   "Attributen"
+  ],
+  "definition": "Eine benannte Eigenschaft eines beschriebenen Objekts oder Entitätstyps."
+ },
+ {
+  "term": "Primärschlüssel",
+  "aliases": [
+   "Primärschlüssels"
+  ],
+  "definition": "Ein ausgewählter Kandidatenschlüssel, der jeden Datensatz eindeutig bezeichnet. Seine Werte dürfen nicht NULL sein. Er kann aus einer oder mehreren Spalten bestehen."
+ },
+ {
+  "term": "Fremdschlüssel",
+  "aliases": [
+   "Fremdschlüssels",
+   "Fremdschlüsseln"
+  ],
+  "definition": "Ein Verweis auf einen geeigneten eindeutigen Schlüssel einer referenzierten Tabelle. Eine Fremdschlüsselregel sichert den Bezug ab; ob ein leerer Verweis erlaubt ist, hängt unter anderem von NULL-Regeln ab."
+ },
+ {
+  "term": "Kandidatenschlüssel",
+  "aliases": [
+   "Kandidatenschlüssels"
+  ],
+  "definition": "Eine minimale Menge von Attributen, deren Werte jeden Datensatz eindeutig bestimmen. Minimal bedeutet, dass kein enthaltenes Attribut dafür weggelassen werden kann."
+ },
+ {
+  "term": "Funktionale Abhängigkeit",
+  "aliases": [
+   "funktionalen Abhängigkeit",
+   "funktionale Abhängigkeiten",
+   "funktionalen Abhängigkeiten"
+  ],
+  "definition": "X → Y bedeutet: Gleiche Werte von X müssen gleiche Werte von Y haben. Das folgt aus den fachlichen Regeln und lässt sich nicht allein aus zufällig vorhandenen Beispieldaten beweisen."
+ },
+ {
+  "term": "m:n-Beziehung",
+  "aliases": [
+   "m:n",
+   "n:m"
+  ],
+  "definition": "Auf beiden Seiten einer Beziehung können mehrere Partner zugeordnet sein. Im relationalen Modell wird jede einzelne Zuordnung üblicherweise in einer Verbindungstabelle gespeichert."
+ },
+ {
+  "term": "1:n-Beziehung",
+  "aliases": [
+   "1:n"
+  ],
+  "definition": "Ein Datensatz auf einer Seite kann mehreren Datensätzen auf der anderen Seite zugeordnet sein. Jeder dieser Datensätze gehört im beschriebenen Modell höchstens einem Partner der ersten Seite."
+ },
+ {
+  "term": "1:1-Beziehung",
+  "aliases": [
+   "1:1"
+  ],
+  "definition": "Auf jeder Seite ist einem Datensatz höchstens ein Partner zugeordnet. Ob die Zuordnung verpflichtend ist, wird zusätzlich mit der minimalen Kardinalität beschrieben."
+ },
+ {
+  "term": "Stakeholder",
+  "aliases": [
+   "Stakeholdern"
+  ],
+  "definition": "Eine Person oder Gruppe, die ein Vorhaben beeinflusst oder von dessen Verlauf beziehungsweise Ergebnis betroffen ist."
+ },
+ {
+  "term": "Transaktion",
+  "aliases": [
+   "Transaktionen"
+  ],
+  "definition": "Fasst zusammengehörige Datenbankoperationen zu einer Einheit zusammen. Ihre Eigenschaften helfen, fachliche Regeln auch bei Fehlern und gleichzeitigen Zugriffen einzuhalten."
+ }
+];
  const aliases={
  'Entität und Attribut':['Entität','Entitäten','Attribut','Attribute','Attributen'],
  'Funktionale Abhängigkeit X → Y':['funktionale Abhängigkeit','funktionalen Abhängigkeit','funktionale Abhängigkeiten','funktionalen Abhängigkeiten'],
@@ -258,6 +384,7 @@ const LearningSupportData=(()=>{
  'Technische Maßnahme':['technische Maßnahmen'],
  'Organisatorische Maßnahme':['organisatorische Maßnahmen']
  };
- return {hints,glossary,aliases};
+ const examples=typeof module!=='undefined'&&module.exports?require('./glossary-examples.js'):GlossaryExamples;
+ return {hints,glossary:glossary.map(term=>({...term,example:examples.common[term.term]})),aliases,examples:examples.local};
 })();
 if(typeof module!=='undefined'&&module.exports)module.exports=LearningSupportData;

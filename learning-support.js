@@ -7,9 +7,10 @@ const LearningSupportCore=(()=>{
   for(const [i,term] of lesson.learning.terms.entries()){
    const aliases=[term.term,...(content.aliases[term.term]||[])];
    const extra=common.find(item=>aliases.some(alias=>key(alias)===key(item.term)));
-   entries.push({id:lesson.id+':'+i,term:term.term,definition:term.definition,aliases:[...new Set([...aliases,...(extra?.aliases||[])])],examples:extra?[extra.example]:lesson.learning.example.steps,lessonId:lesson.id});
+   const example=content.examples?.[lesson.id]?.[term.term];
+   entries.push({id:lesson.id+':'+i,term:term.term,definition:term.definition,aliases:[...new Set([...aliases,...(extra?.aliases||[])])],examples:typeof example==='string'&&example.trim()?[example]:[],lessonId:lesson.id});
   }
-  for(const [i,term] of common.entries())entries.push({...term,id:'common:'+i,aliases:[term.term,...(term.aliases||[])],examples:[term.example]});
+  for(const [i,term] of common.entries())entries.push({...term,id:'common:'+i,aliases:[term.term,...(term.aliases||[])],examples:typeof term.example==='string'&&term.example.trim()?[term.example]:[]});
   return entries;
  }
  function matcher(entries){
@@ -60,7 +61,7 @@ const LearningSupport=(()=>{
   const dialog=document.getElementById('supportTermDialog');if(dialog.open)return;
   returnTarget=button;document.getElementById('supportTermTitle').textContent=entry.term;
   document.getElementById('supportTermDefinition').textContent=entry.definition;
-  document.getElementById('supportTermExampleTitle').textContent=entry.lessonId&&entry.examples.length>1?'Praxisbeispiel aus dieser Lektion':'Ein Beispiel';
+  const exampleTitle=document.getElementById('supportTermExampleTitle');exampleTitle.textContent='Praxisbeispiel';exampleTitle.hidden=entry.examples.length===0;
   const example=document.getElementById('supportTermExample');example.replaceChildren();
   for(const text of entry.examples){const p=document.createElement('p');p.textContent=text;example.append(p)}
   dialog.showModal();dialog.scrollTop=0;

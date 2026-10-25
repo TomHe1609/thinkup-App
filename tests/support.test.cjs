@@ -12,10 +12,39 @@ test('Every existing MC and free-text task has two authored stages without copyi
 });
 test('Glossaries retain all 255 local definitions and examples plus central database terms',()=>{
  let count=0;for(const lesson of D.lessons){const entries=Core.catalog(lesson,content);assert.equal(entries.length,lesson.learning.terms.length+content.glossary.length);
-  for(const [i,term] of lesson.learning.terms.entries()){assert.equal(entries[i].definition,term.definition);assert.equal(entries[i].term,term.term);assert(entries[i].examples.every(text=>text.length>30));count++}
+  for(const [i,term] of lesson.learning.terms.entries()){assert.equal(entries[i].definition,term.definition);assert.equal(entries[i].term,term.term);assert.equal(entries[i].examples.length,1);assert(entries[i].examples.every(text=>text.length>30));count++}
  }
  assert.equal(count,255);
  for(const name of ['Normalisierung','Kardinalität','1NF','2NF','3NF','API'])assert(content.glossary.some(t=>t.term===name));
+});
+test('Every glossary example is specific to its entry, distinct from definitions and never a reused whole-lesson example',()=>{
+ const curated=require('../glossary-examples.js'),all=[];
+ assert.deepEqual(Object.keys(curated.local).sort(),D.lessons.map(l=>l.id).sort());
+ for(const lesson of D.lessons){assert.deepEqual(Object.keys(curated.local[lesson.id]).sort(),lesson.learning.terms.map(t=>t.term).sort());
+  for(const entry of Core.catalog(lesson,content).slice(0,lesson.learning.terms.length)){
+   const example=entry.examples[0];assert.equal(example,curated.local[lesson.id][entry.term]);
+   assert(example.length>=100&&example.length<=650,entry.id);assert.notEqual(example,entry.definition);assert(!example.includes(entry.definition),entry.id);
+   assert(!lesson.learning.example.steps.includes(example),entry.id);assert.notEqual(example,lesson.learning.example.steps.join(' '));all.push(example);
+  }
+ }
+ assert.deepEqual(Object.keys(curated.common).sort(),content.glossary.map(t=>t.term).sort());
+ for(const term of content.glossary){assert.equal(term.example,curated.common[term.term]);assert(!term.example.includes(term.definition),term.term);all.push(term.example)}
+ assert.equal(all.length,275);assert.equal(new Set(all.map(Core.key)).size,275,'Examples were unintentionally shared between terms');
+});
+test('Missing future examples never fall back to a lesson-wide story or a definition',()=>{
+ const l=D.lessons.find(l=>l.id==='2.9'),entries=Core.catalog(l,{...content,examples:{}});
+ for(const entry of entries.slice(0,l.learning.terms.length)){assert.equal(typeof entry.definition,'string');assert.deepEqual(entry.examples,[])}
+});
+test('Example correction retains all quiz hints, common definitions and aliases from the published version',()=>{
+ const previous=require('node:child_process').execFileSync('git',['show','4facbb1:learning-support-data.js'],{cwd:root,encoding:'utf8',maxBuffer:2000000}),scope={module:{exports:{}}};
+ vm.runInNewContext(previous,scope);const old=JSON.parse(JSON.stringify(scope.module.exports));
+ assert.deepEqual(content.hints,old.hints);assert.deepEqual(content.aliases,old.aliases);
+ const definitions=terms=>terms.map(({example,...term})=>term);assert.deepEqual(definitions(content.glossary),definitions(old.glossary));
+});
+test('Earned-value examples separate planned value, completed value and actual costs with correct ratios',()=>{
+ const e=content.examples['9.7'];assert(e.PV.includes('4.000'));assert(e.EV.includes('3.000'));assert(e.AC.includes('3.750'));
+ const format=n=>n.toLocaleString('de-DE',{minimumFractionDigits:0,maximumFractionDigits:2});
+ assert(e.CPI.includes('CPI = 3.000 / 3.750 = '+format(3000/3750)));assert(e.SPI.includes('SPI = 3.000 / 4.000 = '+format(3000/4000)));
 });
 test('Term matching respects German word boundaries, compound names, local definitions and original text',()=>{
  const lesson=D.lessons.find(l=>l.id==='2.9'),entries=Core.catalog(lesson,content),match=Core.matcher(entries);
@@ -31,9 +60,9 @@ test('Term matching respects German word boundaries, compound names, local defin
  const pairs=Core.matcher(Core.catalog(D.lessons.find(l=>l.id==='2.5'),content))('PoC und MVP sind unterschiedliche Dinge.');assert.equal(pairs.length,1);assert.equal(pairs[0].entry.term,'PoC und MVP');
 });
 test('New scripts parse and all learning aids are available in the offline cache',()=>{
- for(const name of ['learning-support-data.js','learning-support.js'])new vm.Script(fs.readFileSync(path.join(root,name),'utf8'));
+ for(const name of ['glossary-examples.js','learning-support-data.js','learning-support.js'])new vm.Script(fs.readFileSync(path.join(root,name),'utf8'));
  const sw=fs.readFileSync(path.join(root,'sw.js'),'utf8'),html=fs.readFileSync(path.join(root,'index.html'),'utf8');
- for(const name of ['learning-support-data.js','learning-support.js','learning-support.css'])assert(sw.includes("'./"+name+"'"));
- assert(html.includes('LearningSupport.init(DATA,LearningSupportData)'));assert(sw.includes('thinkup-learning-support-v19'));
+ for(const name of ['glossary-examples.js','learning-support-data.js','learning-support.js','learning-support.css'])assert(sw.includes("'./"+name+"'"));
+ assert(html.includes('LearningSupport.init(DATA,LearningSupportData)'));assert(sw.includes('thinkup-glossary-examples-v20'));
  assert(!fs.readFileSync(path.join(root,'learning-support.js'),'utf8').includes('localStorage'));
 });
