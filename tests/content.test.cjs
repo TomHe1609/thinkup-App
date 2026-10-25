@@ -49,12 +49,30 @@ test('M02/2.9 explains optional cardinalities, keys, anomalies and all three nor
   for(const term of ['0..n','1:1','1:n','m:n','Kandidatenschlüssel','Fremdschlüssel','1NF','2NF','3NF','Änderungsanomalie','Einfügeanomalie','Löschanomalie','Superschlüssel','artikel_id → artikelname']) assert.ok(text.includes(term),term);
   assert.equal(l.questions.length,13);
 });
+test('All guided lessons explain a scenario in ordered paragraphs and map every existing course question',()=>{
+  const assigned=[];
+  for(const lesson of data.lessons){
+    const tutorial=lesson.learning.tutorial;
+    assert.ok(tutorial.goal.length>50,lesson.id);
+    assert.ok(tutorial.opening.length>100,lesson.id);
+    assert.ok(tutorial.chapters.length>=3,lesson.id);
+    assert.ok(tutorial.chapters.every(c=>c.title&&c.paragraphs.length&&c.paragraphs.every(p=>p.length>60)),lesson.id);
+    assert.ok(tutorial.recap.length>=3,lesson.id);
+    const expected=data.courseCards.filter(c=>c.lesson_id===lesson.id).map(c=>c.id);
+    assert.deepEqual(lesson.learning.courseCardIds,expected,lesson.id);
+    assigned.push(...lesson.learning.courseCardIds);
+  }
+  assert.equal(assigned.length,521);
+  assert.equal(new Set(assigned).size,521);
+  const first=JSON.stringify(data.lessons.find(l=>l.id==='1.1').learning.tutorial);
+  for(const term of ['Survey','Question','Read','Recite','Review','Cornell','Mind-Map','Concept Map','Loci','Spaced Repetition','Lernzugänge'])assert.ok(first.includes(term),term);
+});
 test('Learning text is cached with the app and the previous progress storage is retained',()=>{
   assert.ok(html.includes("const STORE='skillyr_learn_m01_m05_preview_v1'"));
   assert.ok(html.includes("const LEGACY_STORE='skillyr_learn_m02_preview_v1'"));
   const sw=fs.readFileSync(path.join(root,'sw.js'),'utf8');
   assert.ok(sw.includes("const PREFIX='skillyr-m02-test::'"));
-  assert.ok(sw.includes('learning-texts-v14'));
+  assert.ok(sw.includes('guided-lessons-v15'));
   assert.ok(sw.includes("'./data-m01-m09.json'"));
   assert.equal(crypto.createHash('sha256').update(JSON.stringify(data.lessons.map(l=>l.questions))).digest('hex'),crypto.createHash('sha256').update(JSON.stringify(baseline.lessons.map(l=>l.questions))).digest('hex'));
 });

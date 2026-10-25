@@ -14,7 +14,7 @@ const blank=()=>({activeModule:2,xp:0,done:{},correct:{},wrong:{},attempts:0,pra
 const allowed=new Set(['index.html','sw.js','manifest.webmanifest','data-m02.json','data-m01-m05.json','data-m01-m09.json','icon-192.png','icon-512.png']);
 const mime={'.html':'text/html; charset=utf-8','.js':'application/javascript','.json':'application/json','.webmanifest':'application/manifest+json','.png':'image/png'};
 let servePreviousVersion=false;
-const previousAssets=Object.fromEntries([...allowed].map(name=>[name,require('node:child_process').execFileSync('git',['show',`33beb11:${name}`],{cwd:root,maxBuffer:5000000})]));
+const previousAssets=Object.fromEntries([...allowed].map(name=>[name,require('node:child_process').execFileSync('git',['show',`1bf67b1:${name}`],{cwd:root,maxBuffer:5000000})]));
 const server=http.createServer((req,res)=>{
   const name=new URL(req.url,'http://localhost').pathname.slice(1)||'index.html';
   if(!allowed.has(name)){res.writeHead(404);res.end();return;}
@@ -65,7 +65,7 @@ async function mixedQuiz(p,id){
       await lookupAndReturn(p,id);
       assert.equal(await p.locator('.quiz-choice.right').count(),1);mc++;
     }else{
-      const draft='Ich trenne Artikel mit Artikelname und die Position mit Lieferung, Artikel und Menge. Die Menge gehört zur konkreten Zuordnung.';
+      const draft=lesson.practice[0].model_answer;
       await p.locator('#quizFreeText').fill(draft);
       await lookupAndReturn(p,id);
       assert.equal(await p.locator('#quizFreeText').inputValue(),draft);
@@ -80,7 +80,8 @@ async function mixedQuiz(p,id){
   }
   assert.equal(mc,Math.min(5,lesson.questions.length));assert.equal(free,1);
   assert.equal(await p.locator('.quiz-results').count(),1);
-  assert.match(await p.locator('.quiz-result-count').innerText(),/6 von 6/);
+  const total=Math.min(5,lesson.questions.length)+1;
+  assert.equal(await p.locator('.quiz-result-count').innerText(),`${total} von ${total} Aufgaben bestätigt`);
 }
 (async()=>{
   await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
@@ -99,7 +100,7 @@ async function mixedQuiz(p,id){
         assert.equal(await p.locator('.learning-text').count(),1);
         assert.equal(await p.locator('.quiz-question').count(),0);
         assert.equal(await p.locator('.learning-terms dt').count(),lesson.learning.terms.length);
-        assert.match(await p.locator('.learning-example').innerText(),/Schritt für Schritt/);
+        assert.match(await p.locator('.learning-example').innerText(),/Jetzt wenden wir es an/);
         assert(await p.locator('#startLessonQuiz').evaluate(el=>el.compareDocumentPosition(document.querySelector('.learning-text'))&Node.DOCUMENT_POSITION_PRECEDING));
         await p.locator('.learning-check summary').click();
         assert.deepEqual(await stored(p),before,'reading must not award XP or completion');
@@ -114,6 +115,29 @@ async function mixedQuiz(p,id){
     }
     console.log('PASS: all 67 lessons in nine modules open with learning text before quiz; reading changes no progress.');
     await c.close();
+
+    // The user's M01/1.1 example: read the tutorial, use course explanations, then start this lesson's quiz.
+    const firstContext=await context();
+    const first=await seed(firstContext,url,{...blank(),activeModule:1});
+    assert.equal(await first.locator('.node[data-lesson="1.2"]').isDisabled(),true);
+    await first.locator('.node[data-lesson="1.1"]').click();
+    assert.match(await first.locator('.learning-tutorial').innerText(),/Cornell/);
+    assert.match(await first.locator('.learning-tutorial').innerText(),/Recite/);
+    assert.equal(await first.locator('#startLessonQuiz').innerText(),'Quiz zu M01 / 1.1 starten');
+    await first.locator('.learning-course>summary').click();
+    assert.equal(await first.locator('[data-course-card]').count(),20);
+    await first.locator('[data-course-card="skillyr-m01-012"]>summary').click();
+    assert.match(await first.locator('[data-course-card="skillyr-m01-012"]').innerText(),/Notizbereich/);
+    assert.equal((await stored(first)).xp,0);
+    await first.locator('#startLessonQuiz').click();
+    await mixedQuiz(first,'1.1');
+    assert.equal((await stored(first)).done['1.1'],true);
+    assert.equal((await stored(first)).xp,40);
+    await first.locator('.quiz-result-secondary').click();
+    assert.equal(await first.locator('.node[data-lesson="1.2"]').isEnabled(),true);
+    assert.equal(await first.locator('.node[data-lesson="1.3"]').isDisabled(),true);
+    await firstContext.close();
+    console.log('PASS: M01/1.1 guided explanation, linked course knowledge, four-task quiz, XP and next-lesson unlock.');
 
     // Actual M02/2.9 progression with old progress and a mixed session.
     const mobile=await context(320);
@@ -188,16 +212,17 @@ async function mixedQuiz(p,id){
     await lookupAndReturn(r,'2.8');
     await reviewContext.close();
 
-    // Upgrade an already installed v13 service worker without resetting progress or unrelated caches.
+    // Upgrade an already installed v14 service worker without resetting progress or unrelated caches.
     servePreviousVersion=true;
     const upgradeContext=await context();const old=await seed(upgradeContext,url,initial);
     await old.evaluate(async()=>{await navigator.serviceWorker.ready;await caches.open('unrelated-app-test-cache');});
     await old.reload();await old.waitForFunction(()=>!!navigator.serviceWorker.controller);
     await old.locator('.node[data-lesson="2.9"]').click();
-    assert.equal(await old.locator('#nextConcept').count(),1);
+    assert.equal(await old.locator('.learning-tutorial').count(),0);
+    assert.equal(await old.locator('#startLessonQuiz').count(),1);
     servePreviousVersion=false;
     await old.evaluate(async()=>{const r=await navigator.serviceWorker.getRegistration();await r.update();});
-    await old.waitForFunction(async()=>{const keys=await caches.keys();return keys.includes('skillyr-m02-test::m01-m09-learning-texts-v14')&&!keys.includes('skillyr-m02-test::m01-m09-iphone-status-bar-v13');});
+    await old.waitForFunction(async()=>{const keys=await caches.keys();return keys.includes('skillyr-m02-test::m01-m09-guided-lessons-v15')&&!keys.includes('skillyr-m02-test::m01-m09-learning-texts-v14');});
     await old.reload();await old.locator('.node[data-lesson="2.9"]').click();
     assert.equal(await old.locator('#startLessonQuiz').count(),1);
     assert.deepEqual(await stored(old),initial);
@@ -206,7 +231,7 @@ async function mixedQuiz(p,id){
     await old.locator('.node[data-lesson="2.9"]').click();
     assert.match(await old.locator('.learning-text').innerText(),/Dritte Normalform/);
     await upgradeContext.close();
-    console.log('PASS: existing v13 offline installation upgrades to v14, retaining progress and unrelated caches.');
+    console.log('PASS: existing v14 offline installation upgrades to v15, retaining progress and unrelated caches.');
     assert.deepEqual(errors,[],'browser script errors');
     console.log('PASS: error-training lookup uses the current question lesson; no browser script errors.');
   }finally{await browser?.close();await new Promise(resolve=>server.close(resolve));}
