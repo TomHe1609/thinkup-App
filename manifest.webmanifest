@@ -1,7 +1,7 @@
 {
-  "name": "Skillyr Learn – M01 bis M09 Test",
-  "short_name": "Skillyr Learn",
-  "description": "Spielerische Test-Lernpfade für M01 bis M09.",
+  "name": "thinkup.learn",
+  "short_name": "thinkup.learn",
+  "description": "Verständliche Lerntexte, Quiz und Lernkarten für Softwareentwicklung M01 bis M09.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",

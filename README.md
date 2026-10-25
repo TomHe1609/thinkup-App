@@ -1,8 +1,12 @@
-# Skillyr Learn – öffentliche Testversion M01 bis M09
+# thinkup.learn – Version 1.0.0 · M01 bis M09
 
-Testseite: https://tomhe1609.github.io/skillyr-m02-test/
+App: https://tomhe1609.github.io/thinkup-App/
 
-Alle neun Module sind als eigenständige Test-Lernpfade verfügbar. Die bestehende Startseite mit schlichten Icons, Wellenlinie, Lektionssperren und Modul-Toren bleibt erhalten. Die Modulleiste lässt sich seitlich verschieben.
+Repository: https://github.com/TomHe1609/thinkup-App
+
+Die bisherige Test-App wird als thinkup.learn weitergeführt. Das bestehende Repository wird in `thinkup-App` umbenannt; Historie und Kursinhalte bleiben erhalten. Die vorherige produktive Lern-App `It-lernquiz` bleibt unverändert.
+
+Alle neun Module sind als eigenständige Lernpfade verfügbar. Die bestehende Startseite mit schlichten Icons, Wellenlinie, Lektionssperren und Modul-Toren bleibt erhalten. Die Modulleiste lässt sich seitlich verschieben.
 
 ## Umfang
 
@@ -20,7 +24,7 @@ Alle neun Module sind als eigenständige Test-Lernpfade verfügbar. Die bestehen
 
 Insgesamt 67 Lektionen, 211 Multiple-Choice-Fragen, 67 Freitextaufgaben, 211 zusätzliche Übungskarten und 521 Kursfragen mit eigenen Antworten. M06–M09 ergänzen 28 kompakte Trainingsabschnitte. Bestehende Lektionen, Quizfragen, Aufgabenkennungen und die Kompatibilitätsdateien M01–M05/M02 bleiben erhalten.
 
-M01 und M03 folgen den vorhandenen Kurslektionen. M04–M09 wurden aus den vorliegenden größeren Themenblöcken in kurze eigene Trainingseinheiten gegliedert. Die Testfassung dient zum Üben und ersetzt nicht die vollständigen Kursunterlagen. Quellen zur fachlichen Vertiefung stehen in den entsprechenden neuen Lektionen; aktuelle Grundlagen wurden am 21.10.2026 mit offiziellen Quellen abgeglichen.
+M01 und M03 folgen den vorhandenen Kurslektionen. M04–M09 wurden aus den vorliegenden größeren Themenblöcken in kurze eigene Trainingseinheiten gegliedert. Die App dient zum Üben und ersetzt nicht die vollständigen Kursunterlagen. Quellen zur fachlichen Vertiefung stehen in den entsprechenden neuen Lektionen; aktuelle Grundlagen wurden am 21.10.2026 mit offiziellen Quellen abgeglichen.
 
 ## Lernen und Freigabe
 
@@ -42,11 +46,13 @@ Multiple Choice wird anhand der hinterlegten Lösung geprüft. Freitext verwende
 
 Die App behält aus Kompatibilitätsgründen den vorhandenen lokalen Schlüssel `skillyr_learn_m01_m05_preview_v1` bei. Alle neuen Module werden in denselben Lernstand aufgenommen. Bisherige M01–M05-Stände bleiben direkt nutzbar. Beim ersten Start ohne diesen Eintrag wird ein gültiger alter M02-Stand aus `skillyr_learn_m02_preview_v1` übernommen; der alte Eintrag wird weder geändert noch gelöscht.
 
-Neue Exporte tragen die Kennung `skillyr-learn-m01-m09` (Schema 4). Sie enthalten auch Wiederholungstermine, Favoriten, Lesepositionen, Tagesrunde und abgeschlossene Prüfungsrunden. Bisherige Schema-3-, M01–M05- und M02-Exporte werden weiterhin angenommen. Ein Import ersetzt nach ausdrücklicher Bestätigung den gesamten aktuellen Lernstand. Sicherungen können eigene Freitexte enthalten. Andere Geräte und Browser haben eigene lokale Lernstände.
+Neue Exporte tragen die Kennung `thinkup-learn-m01-m09` (Schema 4). Sie enthalten auch Wiederholungstermine, Favoriten, Lesepositionen, Tagesrunde und abgeschlossene Prüfungsrunden. Bisherige `skillyr-learn-m01-m09`-, Schema-3-, M01–M05- und M02-Exporte werden weiterhin angenommen. Ein Import ersetzt nach ausdrücklicher Bestätigung den gesamten aktuellen Lernstand. Sicherungen können eigene Freitexte enthalten. Andere Geräte und Browser haben eigene lokale Lernstände.
+
+Der neue Link bleibt auf derselben Herkunft `https://tomhe1609.github.io`. Deshalb bleiben im selben Browser die bisherigen lokalen Lernstände und Darstellungspräferenzen unter den vorhandenen Kennungen zugänglich. Der Offline-Worker wird unter dem neuen Pfad erneut registriert und verwendet die neue Cache-Version `thinkup-release-v18`. Ein anderer Browser, ein anderes Gerät oder eine separat installierte Home-Bildschirm-App kann einen getrennten Speicher haben; dafür stehen Sicherung und Import bereit.
 
 ## Persönliche Lernwerkzeuge
 
-Der bestehende Lernpfad, die vier Navigationsbereiche, Kopfzeile, Farbwelten und bisherigen Stilregeln bleiben erhalten. Ein kompakter Bereich im Lernpfad öffnet die zusätzlichen Funktionen mit den vorhandenen Buttons und Flächen. Es gibt keine neuen Konten, Serverdienste oder KI-Verbindungen.
+Der bestehende Lernpfad, die vier Navigationsbereiche, Kopfzeilenstruktur, Farbwelten und bisherigen Stilregeln bleiben erhalten. Ein kompakter Bereich im Lernpfad öffnet die zusätzlichen Funktionen mit den vorhandenen Buttons und Flächen. Es gibt keine neuen Konten, Serverdienste oder KI-Verbindungen.
 
 - **Lernkarten bewerten:** Nach dem Umdrehen stehen „Nochmal“, „Unsicher“ und „Sicher“ bereit. Nochmal setzt die Wiederholung auf zehn Minuten, Unsicher auf einen Tag. Sicher beginnt mit drei Tagen und wächst bei wiederholt sicherem Abruf auf sechs, zwölf, 24, 48 und höchstens 60 Tage. Unsicherheit setzt diese Folge zurück. Manuelles Blättern bleibt jederzeit möglich. Bewertungen werden je Karte lokal gespeichert und vergeben keine Quiz-XP.
 - **Heute lernen:** Die Tagesrunde enthält höchstens zehn Schritte: eine kurze Einführung in eine noch offene freigegebene Lektion, bis zu sechs fällige beziehungsweise neue Karten und passende Quizfragen. Offene Quizfehler haben Vorrang. Ergänzende Quizfragen stammen aus freigegebenen Lektionen; neue Karten werden passend zum aktuellen Modul ausgewählt. Die Runde wird für den lokalen Kalendertag gespeichert und nach Unterbrechung fortgesetzt. Werden danach weitere Karten fällig, startet „Heute lernen“ eine zusätzliche Kartenrunde; so erscheinen mit „Nochmal“ bewertete Karten auch nach zehn Minuten am selben Tag erneut. Kartenbewertungen und Miniübungen öffnen keine Lektionen; korrekt beantwortete Quizfragen verwenden die vorhandene einmalige XP-Regel. Der vollständige Lerntext und sein eigenes Abschlussquiz bleiben erreichbar.
@@ -60,9 +66,9 @@ Der bestehende Lernpfad, die vier Navigationsbereiche, Kopfzeile, Farbwelten und
 
 Grundlage sind die bereitgestellten Skillyr-Kartenfragen mit vom Nutzer bestätigten Veröffentlichungsrechten sowie eigenständig formulierte Erklärungen, Antworten, Beispiele und Aufgaben. Original-Rückseiten, Kursfolien, private Entwicklungsdateien und API-Schlüssel werden nicht veröffentlicht. Das Angebot ist unabhängig und enthält keine offiziellen Musterlösungen oder Prüfungsaufgaben. Quellenlinks werden erst beim bewussten Öffnen einer externen Seite aufgerufen.
 
-GitHub Pages verwendet `main` und `/(root)` im Repository `TomHe1609/skillyr-m02-test`. `index.html` enthält sämtliche App-Daten; `data-m01-m09.json` stellt denselben öffentlichen Inhalt separat bereit. Die bisherigen Dateien `data-m01-m05.json` und `data-m02.json` bleiben unverändert als Kompatibilitätsdateien erhalten.
+GitHub Pages verwendet `main` und `/(root)` im Repository `TomHe1609/thinkup-App`. `index.html` enthält sämtliche App-Daten; `data-m01-m09.json` stellt denselben öffentlichen Inhalt separat bereit. Die bisherigen Dateien `data-m01-m05.json` und `data-m02.json` bleiben unverändert als Kompatibilitätsdateien erhalten.
 
-Der Service Worker erfasst nur Dateien dieser Test-App und löscht ausschließlich ältere eigene Caches mit dem Präfix `skillyr-m02-test::`. Das Repository `TomHe1609/It-lernquiz`, dessen GitHub Pages sowie seine lokalen Speicher und Offline-Caches bleiben unverändert. Beim Seitenaufruf fallen die üblichen Verbindungsdaten des Hosting-Anbieters an.
+Der Service Worker erfasst nur Dateien dieser App und löscht ausschließlich ältere eigene Caches mit dem Präfix `skillyr-m02-test::`. Das Repository `TomHe1609/It-lernquiz`, dessen GitHub Pages sowie seine lokalen Speicher und Offline-Caches bleiben unverändert. Beim Seitenaufruf fallen die üblichen Verbindungsdaten des Hosting-Anbieters an.
 
 ## Einheitliche Lernansichten
 
@@ -106,7 +112,7 @@ Die iPhone-Installationsmetadaten lassen sich unter Windows nicht mit der native
 
 ## Änderungen prüfen
 
-Voraussetzungen: vollständiger Git-Checkout mit dem bisherigen Stand `33beb11`, Node.js ab 20. Die App selbst benötigt weder Node.js noch diese Testabhängigkeiten; GitHub Pages liefert weiterhin die statischen Dateien aus.
+Voraussetzungen: vollständiger Git-Checkout mit den bisherigen Ständen `33beb11`, `f2e56bf` und `57ea4de`, Node.js ab 20. Die App selbst benötigt weder Node.js noch diese Testabhängigkeiten; GitHub Pages liefert weiterhin die statischen Dateien aus.
 
 ```sh
 npm ci
@@ -117,8 +123,10 @@ npm run test:browser
 
 Die Browserprüfung startet ihren eigenen lokalen Server und nutzt ein frisches Browserprofil. Vorhandene Browserdaten des Anwenders werden nicht verwendet. Bei installiertem Chrome kann `TEST_BROWSER_CHANNEL=chrome` verwendet werden; optional geben `PLAYWRIGHT_MODULE` und `TEST_OUTPUT_DIR` einen vorhandenen Playwright-Modulpfad beziehungsweise einen Ausgabeordner vor. Screenshots und Test-Sicherungen liegen standardmäßig im ignorierten Verzeichnis `test-results/`.
 
-Geprüft werden der vollständige Einstieg Lerntext → Quiz für alle 67 Lektionen, unveränderte Fragen und Karten gegenüber dem bisherigen Stand und die Zuordnung aller 521 Kursfragen. Lesen darf weder XP noch Lektionsabschlüsse verändern; die neue Leseposition wird gespeichert. M01/1.1 wird mit Kursvertiefung, vollständigem Quiz und Freischaltung von 1.2 geprüft; M02/2.9 weiterhin mit gemischtem Quiz und Freischaltung von 2.10. Hinzu kommen Nachlesen bei ausgewählten Antworten und Freitext, Export/Import, alter M02-Lernstand, Fehlertraining und Offlinebetrieb. Ein Update-Test aktualisiert die installierte Offline-Version v16 (`f2e56bf`) auf v17 und prüft erhaltenen Lernstand sowie unveränderte fremde Caches.
+Geprüft werden der vollständige Einstieg Lerntext → Quiz für alle 67 Lektionen, unveränderte Fragen und Karten gegenüber dem bisherigen Stand und die Zuordnung aller 521 Kursfragen. Lesen darf weder XP noch Lektionsabschlüsse verändern; die neue Leseposition wird gespeichert. M01/1.1 wird mit Kursvertiefung, vollständigem Quiz und Freischaltung von 1.2 geprüft; M02/2.9 weiterhin mit gemischtem Quiz und Freischaltung von 2.10. Hinzu kommen Nachlesen bei ausgewählten Antworten und Freitext, Export/Import, alter M02-Lernstand, Fehlertraining und Offlinebetrieb. Ein Update-Test aktualisiert die installierte Offline-Version v16 (`f2e56bf`) auf v18 und prüft erhaltenen Lernstand sowie unveränderte fremde Caches.
 
-Die neuen Tests prüfen tatsächliche Wiederholungstermine, die wachsende sichere Folge, eine fortsetzbare Tagesrunde ohne doppelte XP, Suchfilter und Favoriten, Wiederaufnahme der Leseposition, Sicherung aller neuen Daten und Import alter Schema-3-Sicherungen. Fehlerhilfen werden bei Multiple Choice, Freitext und Tagesrunde geprüft. Prüfungsrunden werden auf mehrere Module, aufgeschobene Lösungen, Änderung von Antworten, Neuladen, unbeantwortete Fragen, Auswertung und gezielte Übernahme ins Fehlertraining geprüft. Ein beschleunigter Browser-Zeittest bestätigt ein unverändertes Zeitende nach Neuladen und genau eine Auswertung nach Zeitablauf. Die bisherigen Stilblöcke, die Kopfzeile und untere Navigation werden mit dem vorherigen Stand verglichen. Layoutprüfungen laufen mit 320 und 390 Pixeln sowie Desktopbreite. Ein echtes iPhone und dessen Home-Bildschirm-App sind damit nicht geprüft.
+Die neuen Tests prüfen tatsächliche Wiederholungstermine, die wachsende sichere Folge, eine fortsetzbare Tagesrunde ohne doppelte XP, Suchfilter und Favoriten, Wiederaufnahme der Leseposition, Sicherung aller neuen Daten und Import alter Schema-3-Sicherungen. Fehlerhilfen werden bei Multiple Choice, Freitext und Tagesrunde geprüft. Prüfungsrunden werden auf mehrere Module, aufgeschobene Lösungen, Änderung von Antworten, Neuladen, unbeantwortete Fragen, Auswertung und gezielte Übernahme ins Fehlertraining geprüft. Ein beschleunigter Browser-Zeittest bestätigt ein unverändertes Zeitende nach Neuladen und genau eine Auswertung nach Zeitablauf. Die bisherigen Stilblöcke, die Kopfzeilenstruktur mit dem neuen Namen und die untere Navigation werden mit dem vorherigen Stand verglichen. Layoutprüfungen laufen mit 320 und 390 Pixeln sowie Desktopbreite. Ein echtes iPhone und dessen Home-Bildschirm-App sind damit nicht geprüft.
 
 Die Darstellungsprüfung umfasst alle zwölf Modus/Farb-Kombinationen, vollständige Farbvariablen im Light-Mode, gemessene Text- und Aktionskontraste, positive und negative Quizrückmeldungen, Freitextentwürfe und Musterlösungen, Lernkarten samt Bewertungen und die Suche. Zusätzlich werden Wechsel während einer Antwort, tabübergreifende Synchronisierung, alte Farbpräferenzen, Speicherung nach Neuladen, unveränderte Präferenzen nach Lernstandsimport oder Zurücksetzen, Offlinebetrieb und die Bedienbarkeit der Farbauswahl in kleinen Hoch- und Querformaten geprüft.
+
+Die Veröffentlichungsprüfung wechselt im selben Testbrowser vom bisherigen Pfad `/skillyr-m02-test/` zu `/thinkup-App/`. Sie prüft die unveränderte Übernahme von Lernstand und Farbauswahl, den Namen in Kopfzeile, Browser-Titel und Installationsmetadaten, neue thinkup-Sicherungen und den Import alter Skillyr-Sicherungen. M02/2.9 wird unter dem neuen Pfad online und offline geöffnet und sein Quiz gestartet. Fremde Offline-Caches bleiben erhalten; die Kopfzeile passt weiterhin auf 320 Pixel Breite.

@@ -175,7 +175,7 @@ async function mixedQuiz(p,id){
     const download=q.waitForEvent('download');await q.locator('#exportProgress').click();
     const backup=path.join(results,'progress-backup.json');await (await download).saveAs(backup);
     const exported=JSON.parse(fs.readFileSync(backup,'utf8'));
-    assert.equal(exported.app,'skillyr-learn-m01-m09');assert.equal(exported.schemaVersion,4);for(const key of ['xp','done','correct','wrong','attempts','practices'])assert.deepEqual(exported.progress[key],completed[key]);
+    assert.equal(exported.app,'thinkup-learn-m01-m09');assert.equal(exported.schemaVersion,4);for(const key of ['xp','done','correct','wrong','attempts','practices'])assert.deepEqual(exported.progress[key],completed[key]);
     await q.locator('.reset-settings>summary').click();q.once('dialog',d=>d.accept());await q.locator('#resetProgress').click();
     assert.equal((await stored(q)).xp,0);
     await q.locator('.data-settings>summary').click();q.once('dialog',d=>d.accept());await q.locator('#importProgress').setInputFiles(backup);
@@ -224,7 +224,7 @@ async function mixedQuiz(p,id){
     assert.equal(await old.locator('#startLessonQuiz').count(),1);
     servePreviousVersion=false;
     await old.evaluate(async()=>{const r=await navigator.serviceWorker.getRegistration();await r.update();});
-    await old.waitForFunction(async()=>{const keys=await caches.keys();return keys.includes('skillyr-m02-test::m01-m09-light-palettes-v17')&&!keys.includes('skillyr-m02-test::m01-m09-study-tools-v16');});
+    await old.waitForFunction(async()=>{const keys=await caches.keys();return keys.includes('skillyr-m02-test::thinkup-release-v18')&&!keys.includes('skillyr-m02-test::m01-m09-study-tools-v16');});
     await old.reload();await old.locator('.node[data-lesson="2.9"]').click();
     assert.equal(await old.locator('#startLessonQuiz').count(),1);
     for(const key of ['xp','done','correct','wrong','attempts'])assert.deepEqual((await stored(old))[key],initial[key]);
@@ -233,7 +233,7 @@ async function mixedQuiz(p,id){
     await old.locator('.node[data-lesson="2.9"]').click();
     assert.match(await old.locator('.learning-text').innerText(),/Dritte Normalform/);
     await upgradeContext.close();
-    console.log('PASS: existing v16 offline installation upgrades to v17, retaining progress and unrelated caches.');
+    console.log('PASS: existing v16 offline installation upgrades to v18, retaining progress and unrelated caches.');
     assert.deepEqual(errors,[],'browser script errors');
     console.log('PASS: error-training lookup uses the current question lesson; no browser script errors.');
   }finally{await browser?.close();await new Promise(resolve=>server.close(resolve));}

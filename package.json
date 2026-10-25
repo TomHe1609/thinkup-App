@@ -1,5 +1,6 @@
 {
-  "name": "skillyr-test-learning",
+  "name": "thinkup-app",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "test": "node --test tests/content.test.cjs tests/study-core.test.cjs tests/appearance.test.cjs",

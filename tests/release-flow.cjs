@@ -1,0 +1,60 @@
+const fs=require('node:fs'),path=require('node:path'),http=require('node:http'),assert=require('node:assert/strict');
+const {execFileSync}=require('node:child_process');
+const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
+const root=path.join(__dirname,'..'),KEY='skillyr_learn_m01_m05_preview_v1';
+const names=['index.html','appearance.css','study-features.js','sw.js','manifest.webmanifest','data-m02.json','data-m01-m05.json','data-m01-m09.json','icon-192.png','icon-512.png'];
+const previous=Object.fromEntries(names.map(name=>[name,execFileSync('git',['show',`57ea4de:${name}`],{cwd:root,maxBuffer:5000000})]));
+const server=http.createServer((req,res)=>{
+ const pathname=new URL(req.url,'http://localhost').pathname;
+ const prefix=['/skillyr-m02-test/','/thinkup-App/'].find(prefix=>pathname.startsWith(prefix));
+ const file=prefix&&(pathname.slice(prefix.length)||'index.html');
+ if(!names.includes(file)){res.writeHead(404);res.end();return}
+ const mime={'.css':'text/css','.js':'application/javascript','.html':'text/html; charset=utf-8','.webmanifest':'application/manifest+json','.png':'image/png','.json':'application/json'};
+ res.writeHead(200,{'Content-Type':mime[path.extname(file)],'Cache-Control':'no-cache'});
+ res.end(prefix==='/skillyr-m02-test/'?previous[file]:fs.readFileSync(path.join(root,file)));
+});
+let browser;
+(async()=>{
+ await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
+ const base=`http://localhost:${server.address().port}`;
+ browser=await chromium.launch({headless:true,...(process.env.TEST_BROWSER_CHANNEL?{channel:process.env.TEST_BROWSER_CHANNEL}:{})});
+ try{
+  const c=await browser.newContext({viewport:{width:320,height:740},reducedMotion:'reduce',acceptDownloads:true}),p=await c.newPage(),errors=[];
+  p.on('pageerror',error=>errors.push(error.message));
+  await p.goto(base+'/skillyr-m02-test/');
+  await p.evaluate(KEY=>{localStorage.setItem(KEY,JSON.stringify({activeModule:2,xp:217,done:{'1.1':true,'2.8':true},attempts:28,correct:{'SKY-005':true},wrong:{},practices:{'2.9':{text:'Mein bisheriger Entwurf',known:false,mode:'self'}},days:['2026-10-25'],reviewCards:{},coachReviews:{},favorites:{'2.9':true},reading:{},lastRead:null,daily:null,examHistory:[]}));localStorage.setItem('skillyr_learn_theme_v1','forest');localStorage.setItem('skillyr_learn_mode_v1','light')},KEY);
+  await p.reload();await p.evaluate(async()=>{await navigator.serviceWorker.ready;await caches.open('other-productive-app-cache')});
+  const oldProgress=await p.evaluate(KEY=>JSON.parse(localStorage.getItem(KEY)),KEY);
+  await p.goto(base+'/thinkup-App/');
+  assert.equal(await p.locator('.brand').innerText(),'thinkup.learn');
+  assert.equal(await p.title(),'thinkup.learn · M01–M09');
+  assert.equal(await p.locator('meta[name="apple-mobile-web-app-title"]').getAttribute('content'),'thinkup.learn');
+  assert(!/Testversion|Testmodule/i.test(await p.locator('body').innerText()));
+  assert.deepEqual(await p.evaluate(KEY=>JSON.parse(localStorage.getItem(KEY)),KEY),oldProgress);
+  assert.equal(await p.locator('html').getAttribute('data-theme'),'forest');
+  assert.equal(await p.locator('html').getAttribute('data-color-mode'),'light');
+  assert(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
+  const manifest=await p.evaluate(async()=>await(await fetch('./manifest.webmanifest')).json());
+  assert.equal(manifest.name,'thinkup.learn');assert.equal(manifest.short_name,'thinkup.learn');
+  assert.equal(new URL(manifest.start_url,p.url()).pathname,'/thinkup-App/index.html');
+  await p.locator('.node[data-lesson="2.9"]').click();assert.match(await p.locator('.learning-text').innerText(),/Dritte Normalform/);
+  await p.locator('#startLessonQuiz').click();assert.equal(await p.locator('.quiz-question').count(),1);
+  await p.locator('.quiz-close').click();await p.locator('#nav-stats').click();await p.locator('.data-settings>summary').click();
+  const downloadPromise=p.waitForEvent('download');await p.locator('#exportProgress').click();const download=await downloadPromise;
+  assert.equal(download.suggestedFilename(),'thinkup-m01-m09-fortschritt.json');
+  const chunks=[];for await(const chunk of await download.createReadStream())chunks.push(chunk);
+  const backup=JSON.parse(Buffer.concat(chunks).toString());assert.equal(backup.app,'thinkup-learn-m01-m09');assert.equal(backup.progress.xp,217);
+  p.once('dialog',dialog=>dialog.accept());
+  await p.locator('#importProgress').setInputFiles({name:'skillyr-backup.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify({app:'skillyr-learn-m01-m09',schemaVersion:4,progress:{...oldProgress,xp:231}}))});
+  await p.waitForFunction(KEY=>JSON.parse(localStorage.getItem(KEY)).xp===231,KEY);
+  assert.equal((await p.evaluate(KEY=>JSON.parse(localStorage.getItem(KEY)),KEY)).practices['2.9'].text,'Mein bisheriger Entwurf');
+  await p.evaluate(async()=>await navigator.serviceWorker.ready);await p.reload();
+  await p.waitForFunction(()=>navigator.serviceWorker.controller?.scriptURL.endsWith('/thinkup-App/sw.js'));
+  assert(await p.evaluate(async()=>(await caches.keys()).includes('other-productive-app-cache')));
+  await c.setOffline(true);await p.reload();assert.equal(await p.locator('.brand').innerText(),'thinkup.learn');
+  await p.locator('.node[data-lesson="2.9"]').click();assert.match(await p.locator('.learning-text').innerText(),/Dritte Normalform/);
+  await p.locator('#startLessonQuiz').click();assert.equal(await p.locator('.quiz-question').count(),1);
+  assert.deepEqual(errors,[]);await c.close();
+  console.log('PASS: renamed /thinkup-App/ path retains old progress and colours, title/manifest and new exports use thinkup.learn, old backups import, M02/2.9 works online/offline, unrelated caches remain.');
+ }finally{await browser?.close();await new Promise(resolve=>server.close(resolve))}
+})().catch(error=>{console.error(error);process.exitCode=1;server.close()});
