@@ -24,6 +24,12 @@ M01 und M03 folgen den vorhandenen Kurslektionen. M04–M09 wurden aus den vorli
 
 ## Lernen und Freigabe
 
+Alle 67 Unterkategorien in M01–M09 öffnen zuerst einen vollständigen Lerntext: Einstieg, erklärte Fachbegriffe, die vorhandenen Kurserklärungen mit Beispielen, ein schrittweise durchgearbeitetes Praxisbeispiel und ein kurzer Selbstcheck mit aufklappbarer Erklärung. Erst darunter steht „Quiz starten“. Das Lesen und der Selbstcheck vergeben keine XP und schließen keine Lektion ab. Die Lerntexte verwenden die vorhandenen Lektionen, Kursfragen und Praxisaufgaben als fachlichen Rahmen; die ergänzten Texte und Beispiele sind selbst formuliert.
+
+Im Quiz öffnet „Lerntext nachlesen“ den passenden Text zur gerade gezeigten Frage. Die laufende Runde, Antwortauswahl, eingegebene oder bereits eingereichte Freitexte und Bewertungen bleiben dabei erhalten. Schließen oder Escape führt zur laufenden Frage zurück. Das gilt auch für das Fehlertraining mit Fragen aus verschiedenen Lektionen. Es gibt keine neue Lesesperre oder Änderung der Bewertung.
+
+M02/2.9 erläutert insbesondere minimale und maximale Kardinalitäten, Primär-, Fremd- und Kandidatenschlüssel, m:n-Zuordnungen, Redundanz und Anomalien sowie 1NF, 2NF und 3NF. Das durchgerechnete Beispiel erklärt die Abhängigkeiten vor und nach der Tabellenzerlegung. Die bisherigen 13 Quizfragen bleiben erhalten; die vorhandene Quizlogik wählt weiterhin höchstens fünf davon sowie eine Freitextaufgabe für eine Runde.
+
 Jedes Modul beginnt mit einer offenen ersten Lektion. Ein gemischtes Quiz mit mindestens 60 % öffnet die direkte Nachfolgerin. Frühere Abschlüsse außerhalb der Reihenfolge und ihre direkte Nachfolgerin bleiben zugänglich. Praxisaufgaben und Fehlertraining beachten dieselbe Freigabe; vorhandene Daten gesperrter Lektionen bleiben gespeichert. Lernkarten sind unabhängig davon vollständig zugänglich.
 
 Ein neuer Abschluss animiert beim Zurückkehren den erreichten Linienabschnitt einmal. Bei reduzierter Bewegung wird der Zustand ohne Animation angezeigt. Das Tor unter der letzten Lektion öffnet nach Abschluss aller Lektionen den Weg ins nächste Modul. Das Modulziel von M09 führt nach dessen Abschluss zum Gesamtfortschritt, ohne einen nicht vorhandenen M10-Lernpfad anzubieten.
@@ -77,3 +83,18 @@ Das Palettensymbol in der Kopfzeile und im Quiz öffnet vier Farbwelten: Lila, P
 Für iPhone-Home-Bildschirm-Apps ist eine feste schwarze Statusleiste eingestellt (`apple-mobile-web-app-status-bar-style=black`); `viewport-fit=auto` überlässt dem Browser die Begrenzung auf den sicheren Bildschirmbereich. Der Seitenhintergrund und die Kopfzeile sind deckend und passen zur gewählten Farbwelt. Zusätzliche vom Browser gemeldete sichere Abstände werden weiterhin in Kopfzeile, Quiz und Farbauswahl berücksichtigt. Es gibt keinen pauschalen, geräteabhängigen Pixelaufschlag.
 
 Die iPhone-Installationsmetadaten lassen sich unter Windows nicht mit der nativen Home-Bildschirm-App prüfen. Falls eine bestehende Installation die alte transparente Darstellung beibehält, zuerst in dieser App unter **Fortschritt → Fortschritt sichern und verwalten → Sicherung herunterladen** eine Sicherung speichern. Danach die alte Home-Bildschirm-App entfernen und die aktuelle Seite in Safari erneut zum Home-Bildschirm hinzufügen. Die Sicherung lässt sich bei Bedarf unter **Fortschritt → Fortschritt sichern und verwalten → Sicherung wiederherstellen** einlesen. Eine Neuinstallation kann einen getrennten oder zurückgesetzten lokalen Speicher erhalten; deshalb vorher exportieren.
+
+## Änderungen prüfen
+
+Voraussetzungen: vollständiger Git-Checkout mit dem bisherigen Stand `33beb11`, Node.js ab 20. Die App selbst benötigt weder Node.js noch diese Testabhängigkeiten; GitHub Pages liefert weiterhin die statischen Dateien aus.
+
+```sh
+npm ci
+npm test
+npx playwright install chromium
+npm run test:browser
+```
+
+Die Browserprüfung startet ihren eigenen lokalen Server und nutzt ein frisches Browserprofil. Vorhandene Browserdaten des Anwenders werden nicht verwendet. Bei installiertem Chrome kann `TEST_BROWSER_CHANNEL=chrome` verwendet werden; optional geben `PLAYWRIGHT_MODULE` und `TEST_OUTPUT_DIR` einen vorhandenen Playwright-Modulpfad beziehungsweise einen Ausgabeordner vor. Screenshots und Test-Sicherungen liegen standardmäßig im ignorierten Verzeichnis `test-results/`.
+
+Geprüft werden der vollständige Einstieg Lerntext → Quiz für alle 67 Lektionen, unveränderte Fragen und Karten gegenüber dem bisherigen Stand, keine Fortschrittsänderung beim Lesen, M02/2.9 mit gemischtem Quiz und Freischaltung von 2.10, Nachlesen bei ausgewählten Antworten und Freitext in mehreren Bearbeitungszuständen, Export/Import, alter M02-Lernstand, Fehlertraining und Offlinebetrieb. Ein zusätzlicher Test aktualisiert eine installierte Offline-Version v13 auf v14 und prüft erhaltenen Lernstand sowie unveränderte fremde Caches. Layoutprüfungen laufen mit 320 und 390 Pixeln sowie Desktopbreite. Ein echtes iPhone und dessen Home-Bildschirm-App sind damit nicht geprüft.

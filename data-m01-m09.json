@@ -270,7 +270,36 @@
           "difficulty": "Anwendung",
           "origin": "Eigene Praxisaufgabe"
         }
-      ]
+      ],
+      "learning": {
+        "introduction": "Lernen bedeutet, Wissen später selbst erklären und anwenden zu können. Lies einen Abschnitt zunächst mit einer konkreten Frage. Versuche danach ohne Vorlage zu antworten. Die folgende Verbindung aus Lesemethode, Notizen und verteiltem Wiederholen hilft dir, Vertrautheit von tatsächlichem Verständnis zu unterscheiden.",
+        "terms": [
+          {
+            "term": "SQ3R",
+            "definition": "Survey, Question, Read, Recite, Review: Überblick gewinnen, Fragen stellen, lesen, frei wiedergeben und rückblickend prüfen."
+          },
+          {
+            "term": "Spaced Repetition",
+            "definition": "Wiederholung mit zeitlichen Abständen, angepasst an das Erinnern. Schwierige Inhalte werden früher erneut abgerufen."
+          },
+          {
+            "term": "Cornell-Notizen",
+            "definition": "Notizblatt mit ausführlichen Notizen, einer Spalte für Stichworte oder Fragen und einer kurzen Zusammenfassung in eigenen Worten."
+          }
+        ],
+        "example": {
+          "title": "Schritt für Schritt in der Praxis",
+          "steps": [
+            "Du möchtest Fremdschlüssel verstehen: Überfliege zuerst den Abschnitt und frage dich, welches Problem sie lösen.",
+            "Lies die Erklärung, schließe sie und zeichne Kunde und Bestellung samt Verbindung. Notiere offene Fragen in der Cornell-Spalte.",
+            "Prüfe deine Skizze und erkläre den Zusammenhang morgen erneut ohne Vorlage. Bleibt eine Lücke, übe ein weiteres Beispiel."
+          ]
+        },
+        "selfCheck": {
+          "question": "Woran merkst du, dass du mehr als den Text wiedererkannt hast?",
+          "answer": "Du kannst den Zusammenhang ohne Vorlage erklären und auf ein neues Beispiel übertragen."
+        }
+      }
     },
     {
       "id": "1.2",
@@ -360,7 +389,40 @@
           "difficulty": "Anwendung",
           "origin": "Eigene Praxisaufgabe"
         }
-      ]
+      ],
+      "learning": {
+        "introduction": "Ein Lernplan braucht erreichbare Ergebnisse und Platz für Unterbrechungen. Zeitmanagement hilft bei der Auswahl der nächsten Aufgabe. Gruppenarbeit benötigt zusätzlich klare Absprachen; bei einer Präsentation entscheidest du, welche Kernaussage dein Publikum verstehen soll.",
+        "terms": [
+          {
+            "term": "ALPEN",
+            "definition": "Aufgaben notieren, Länge schätzen, Puffer einplanen, Entscheidungen treffen und Nachkontrolle durchführen."
+          },
+          {
+            "term": "Eisenhower-Matrix",
+            "definition": "Aufgaben nach Wichtigkeit und Dringlichkeit einordnen. Wichtige, nicht dringende Arbeit erhält bewusst einen Termin."
+          },
+          {
+            "term": "Tuckman-Phasen",
+            "definition": "Forming: Orientierung; Storming: Konflikte und Rollenklärung; Norming: gemeinsame Regeln; Performing: leistungsfähige Zusammenarbeit; Adjourning: Abschluss."
+          },
+          {
+            "term": "Pomodoro",
+            "definition": "Arbeit in begrenzten konzentrierten Abschnitten mit Pausen, häufig zunächst 25 und 5 Minuten."
+          }
+        ],
+        "example": {
+          "title": "Schritt für Schritt in der Praxis",
+          "steps": [
+            "Plane für heute ein überprüfbares Ergebnis: eine kleine Datenbank modellieren. Schätze die Bearbeitungszeit und reserviere einen Puffer.",
+            "In der Lerngruppe klärt ihr, wer zeichnet, wer prüft und wann ihr wechselt. Eine Meinungsverschiedenheit wird anhand der Aufgabe besprochen.",
+            "Präsentiere anschließend Problem, Modell und Begründung. Eine verständliche Skizze unterstützt die Erklärung; sie ersetzt sie nicht."
+          ]
+        },
+        "selfCheck": {
+          "question": "Wie behandelst du eine wichtige Prüfungsvorbereitung, die erst nächste Woche fällig ist?",
+          "answer": "Einen festen Lerntermin einplanen, statt bis zur Dringlichkeit zu warten."
+        }
+      }
     },
     {
       "id": "1.3",
@@ -450,7 +512,36 @@
           "difficulty": "Anwendung",
           "origin": "Eigene Praxisaufgabe"
         }
-      ]
+      ],
+      "learning": {
+        "introduction": "Ein Lernmedium ist dann passend, wenn es die gewünschte Handlung unterstützt. Begriffe lassen sich lesen, Beziehungen zeichnen und Abläufe praktisch erproben. Ein Selbstcheck macht sichtbar, welche dieser Handlungen schon gelingt und welche du gezielt wiederholen solltest.",
+        "terms": [
+          {
+            "term": "Lernziel",
+            "definition": "Eine beschriebene Fähigkeit, etwa einen API-Aufruf erklären oder eine Tabelle normalisieren."
+          },
+          {
+            "term": "Aktives Abrufen",
+            "definition": "Wissen ohne Vorlage aus dem Gedächtnis rekonstruieren und danach prüfen."
+          },
+          {
+            "term": "Transfer",
+            "definition": "Ein gelerntes Prinzip in einer anderen, noch nicht auswendig bekannten Situation anwenden."
+          }
+        ],
+        "example": {
+          "title": "Schritt für Schritt in der Praxis",
+          "steps": [
+            "Für eine REST-API liest du zuerst die Bedeutung von Anfrage und Antwort.",
+            "Danach zeichnest du einen Client und einen Server und führst in einer Testumgebung einen Aufruf aus.",
+            "Erkläre das Ergebnis ohne Text. Wenn die Bedeutung eines Statuscodes fehlt, wiederhole genau diesen Punkt und prüfe ihn an einem zweiten Fall."
+          ]
+        },
+        "selfCheck": {
+          "question": "Warum reichen Markierungen im Text als Selbstcheck nicht aus?",
+          "answer": "Sie zeigen, was du wichtig findest, aber noch nicht, ob du es selbst erklären oder anwenden kannst."
+        }
+      }
     },
     {
       "id": "2.0",
@@ -539,7 +630,40 @@
           "origin": "Eigene Praxisaufgabe"
         }
       ],
-      "module": 2
+      "module": 2,
+      "learning": {
+        "introduction": "Der Kursfall verbindet die späteren Architekturthemen: Mittelland Logistik ersetzt das Altsystem PALOS durch Lagerkompass. Papiergestützte Arbeit und verspätet abgeglichene Bestände sind der Ausgangspunkt. Die Lagerleiterin Heike Schulz ist als Key-Userin eine wichtige fachliche Ansprechpartnerin.",
+        "terms": [
+          {
+            "term": "Altsystem",
+            "definition": "Die bisher eingesetzte Lösung, deren Funktionen und Daten bei der Ablösung berücksichtigt werden."
+          },
+          {
+            "term": "Batch-Abgleich",
+            "definition": "Änderungen werden gesammelt und zu bestimmten Zeitpunkten übertragen. Dazwischen können unterschiedliche Datenstände bestehen."
+          },
+          {
+            "term": "Key-User",
+            "definition": "Fachlich erfahrene Person, die typische Abläufe kennt und bei Anforderungen, Tests und Einführung unterstützt."
+          },
+          {
+            "term": "Medienbruch",
+            "definition": "Informationen werden zwischen verschiedenen Medien übertragen, etwa von Papier in eine Anwendung."
+          }
+        ],
+        "example": {
+          "title": "Schritt für Schritt in der Praxis",
+          "steps": [
+            "Eine Lieferung trifft morgens ein, wird aber zunächst nur auf Papier vermerkt.",
+            "Eine andere Abteilung sieht vor dem nächtlichen Abgleich noch den alten Bestand und plant mit unvollständigen Informationen.",
+            "Das Projektziel lautet deshalb zeitnahe, nachvollziehbare Erfassung. Wie das technisch gelingt, wird erst nach Prüfung der Abläufe und Randbedingungen entschieden."
+          ]
+        },
+        "selfCheck": {
+          "question": "Warum sollte das Projekt zuerst den Ablauf und nicht die App-Farbe besprechen?",
+          "answer": "Der Ablauf erklärt das fachliche Problem und damit die Anforderungen, die die neue Lösung erfüllen muss."
+        }
+      }
     },
     {
       "id": "2.1",
@@ -633,7 +757,36 @@
           "origin": "Eigene Praxisaufgabe"
         }
       ],
-      "module": 2
+      "module": 2,
+      "learning": {
+        "introduction": "Eine genannte Lösung verrät noch nicht das eigentliche Problem. Frage nach Aufgabe, Hindernis und gewünschtem Ergebnis. Verschiedene Beteiligte können unterschiedliche Bedürfnisse haben; eine technisch gute Lösung muss deshalb zu den tatsächlichen Nutzergruppen und ihrem Arbeitsumfeld passen.",
+        "terms": [
+          {
+            "term": "Bedarf",
+            "definition": "Ein zugrunde liegendes Problem oder Ziel, beispielsweise weniger Erfassungsfehler."
+          },
+          {
+            "term": "Stakeholder",
+            "definition": "Person oder Gruppe, die das Projekt beeinflusst oder davon betroffen ist; dazu gehören auch Betrieb und Support."
+          },
+          {
+            "term": "Persona",
+            "definition": "Auf Recherche beruhendes, verdichtetes Beispiel einer Nutzergruppe mit Zielen, Umfeld und Schwierigkeiten."
+          }
+        ],
+        "example": {
+          "title": "Schritt für Schritt in der Praxis",
+          "steps": [
+            "Die Lagerleitung wünscht Tablets. Frage nach: Welche Arbeit soll dadurch leichter werden und wo entstehen heute Fehler?",
+            "Beobachte einen Scanvorgang und berücksichtige Handschuhe, Licht und Netzabdeckung.",
+            "Leite aus den Erkenntnissen eine Persona und überprüfbare Anforderungen ab. Ein Gerät ist erst dann passend, wenn es diese Anforderungen erfüllt."
+          ]
+        },
+        "selfCheck": {
+          "question": "Ist „Wir brauchen eine neue App“ bereits ein ausreichend verstandener Bedarf?",
+          "answer": "Nein. Zunächst müssen das dahinterliegende Problem, die betroffenen Personen und das gewünschte Ergebnis geklärt werden."
+        }
+      }
     },
     {
       "id": "2.2",
@@ -727,7 +880,40 @@
           "origin": "Eigene Praxisaufgabe"
         }
       ],
-      "module": 2
+      "module": 2,
+      "learning": {
+        "introduction": "Anforderungen entstehen durch gezieltes Untersuchen der Arbeit. Interviews liefern Sichtweisen, Beobachtung zeigt tatsächliche Abläufe und Dokumente enthalten Regeln. Verbinde diese Erkenntnisse und formuliere anschließend, was das System leisten muss und wie du die Erfüllung prüfen kannst.",
+        "terms": [
+          {
+            "term": "IST-Analyse",
+            "definition": "Untersuchung des aktuellen Ablaufs einschließlich Beteiligten, Daten, Hilfsmitteln und Problemen."
+          },
+          {
+            "term": "Funktionale Anforderung",
+            "definition": "Beschreibt eine Fähigkeit des Systems, etwa Lieferungen erfassen."
+          },
+          {
+            "term": "Qualitätsanforderung",
+            "definition": "Beschreibt eine verlangte Eigenschaft unter Bedingungen, etwa Antwortzeit bei definierter Last."
+          },
+          {
+            "term": "Offene Frage",
+            "definition": "Eine Frage, die eine ausführliche Beschreibung statt nur Ja oder Nein ermöglicht."
+          }
+        ],
+        "example": {
+          "title": "Schritt für Schritt in der Praxis",
+          "steps": [
+            "Beobachte, wie eine Lieferung erfasst wird. Frage: Was passiert bei einer falschen Menge?",
+            "Dokumentiere die Fähigkeit „Mengenabweichung erfassen“ und kläre die benötigten Angaben.",
+            "Für die Geschwindigkeit vereinbart ihr eine Messbedingung, einen Anteil von Anfragen und einen Grenzwert. „Schnell“ allein lässt sich nicht eindeutig abnehmen."
+          ]
+        },
+        "selfCheck": {
+          "question": "Warum ergänzen sich Interview und Beobachtung?",
+          "answer": "Menschen erklären Ziele und Ausnahmen; Beobachtung zeigt zusätzlich unbewusste Routinen und tatsächliche Umwege."
+        }
+      }
     },
     {
       "id": "2.3",
@@ -821,7 +1007,44 @@
           "origin": "Eigene Praxisaufgabe"
         }
       ],
-      "module": 2
+      "module": 2,
+      "learning": {
+        "introduction": "Eine Anforderung muss auch für andere nachvollziehbar sein. Beschreibe Ziel und erwartetes Verhalten, halte die Quelle fest und trenne gewünschte Leistung von der geplanten Umsetzung. So können Fachbereich, Entwicklung und Test auf dieselbe Vereinbarung zurückgreifen.",
+        "terms": [
+          {
+            "term": "Lastenheft",
+            "definition": "Beschreibt im klassischen Vorgehen Anforderungen und Ziele aus Sicht des Auftraggebers."
+          },
+          {
+            "term": "Pflichtenheft",
+            "definition": "Beschreibt, wie der Auftragnehmer die vereinbarten Anforderungen umsetzen will."
+          },
+          {
+            "term": "User Story",
+            "definition": "Kurze Beschreibung aus Rolle, gewünschter Funktion und Nutzen; sie braucht weitere Klärung und Kriterien."
+          },
+          {
+            "term": "Akzeptanzkriterium",
+            "definition": "Beobachtbare Bedingung, an der die Erfüllung beurteilt wird."
+          },
+          {
+            "term": "Traceability",
+            "definition": "Nachverfolgbarkeit zwischen Anforderung, Quelle, Umsetzung und Testnachweis."
+          }
+        ],
+        "example": {
+          "title": "Schritt für Schritt in der Praxis",
+          "steps": [
+            "Vergib die Kennung ANF-17 für „beschädigte Ware melden“ und notiere die Lagerleitung als Quelle.",
+            "Formuliere eine User Story und kläre Pflichtfelder sowie den Umgang mit fehlenden Angaben.",
+            "Verknüpfe ANF-17 mit Umsetzung und Tests. Bei einer Änderung erkennst du, welche Stellen mitgeprüft werden müssen."
+          ]
+        },
+        "selfCheck": {
+          "question": "Was fehlt einer User Story ohne Akzeptanzkriterien häufig?",
+          "answer": "Die genaue überprüfbare Vereinbarung darüber, wann die Funktion die gewünschte Leistung erfüllt."
+        }
+      }
     },
     {
       "id": "2.4",
@@ -915,7 +1138,36 @@
           "origin": "Eigene Praxisaufgabe"
         }
       ],
-      "module": 2
+      "module": 2,
+      "learning": {
+        "introduction": "Wenn Zeit und Budget begrenzt sind, müssen Anforderungen nachvollziehbar priorisiert werden. Priorität, erwartete Kundenzufriedenheit und der Vergleich verschiedener Lösungen beantworten unterschiedliche Fragen. Die Ergebnisse helfen bei Entscheidungen, ersetzen aber keine begründeten Annahmen.",
+        "terms": [
+          {
+            "term": "MoSCoW",
+            "definition": "Must: unverzichtbar; Should: wichtig; Could: optional; Won’t this time: bewusst außerhalb des aktuellen Umfangs."
+          },
+          {
+            "term": "Kano-Modell",
+            "definition": "Unterscheidet unter anderem erwartete Basismerkmale, Leistungsmerkmale und überraschende Begeisterungsmerkmale."
+          },
+          {
+            "term": "Nutzwertanalyse",
+            "definition": "Vergleich von Alternativen durch gewichtete Kriterien und Bewertungen auf einer vereinbarten Skala."
+          }
+        ],
+        "example": {
+          "title": "Schritt für Schritt in der Praxis",
+          "steps": [
+            "Korrekte Buchungen sind für den Start unverzichtbar; ein zusätzliches Dashboard kann später folgen.",
+            "Vergleiche zwei Scanner etwa anhand Bedienbarkeit und Offlinefähigkeit. Bei Gewichten 0,6 und 0,4 und Punkten 4 und 3 ergibt sich 0,6 × 4 + 0,4 × 3 = 3,6.",
+            "Prüfe, ob andere plausible Gewichte die Empfehlung verändern. Eine Dezimalzahl ist nur so belastbar wie ihre Grundlagen."
+          ]
+        },
+        "selfCheck": {
+          "question": "Bedeutet Won’t this time, dass ein Wunsch dauerhaft verboten ist?",
+          "answer": "Nein. Er gehört bewusst nicht zum aktuell vereinbarten Umfang und kann später neu bewertet werden."
+        }
+      }
     },
     {
       "id": "2.5",
@@ -1009,7 +1261,40 @@
           "origin": "Eigene Praxisaufgabe"
         }
       ],
-      "module": 2
+      "module": 2,
+      "learning": {
+        "introduction": "Bei der Softwareauswahl vergleichst du die Eignung für konkrete Anforderungen. Der Kaufpreis ist nur ein Teil der Entscheidung. Technische Unsicherheit sollte früh mit einem begrenzten Versuch untersucht werden, bevor sich das Team langfristig an eine Lösung bindet.",
+        "terms": [
+          {
+            "term": "Standardsoftware",
+            "definition": "Fertiges Produkt für wiederkehrende Aufgaben, gegebenenfalls mit Konfiguration und Anpassungen."
+          },
+          {
+            "term": "Individualsoftware",
+            "definition": "Für konkrete Anforderungen entwickelte Lösung mit eigener Entwicklungs- und Pflegeverantwortung."
+          },
+          {
+            "term": "TCO",
+            "definition": "Total Cost of Ownership: Kosten über den betrachteten Lebenszyklus, einschließlich Einführung, Betrieb, Wartung und Änderungen."
+          },
+          {
+            "term": "PoC und MVP",
+            "definition": "Ein Proof of Concept prüft vor allem Machbarkeit; ein Minimum Viable Product ermöglicht Lernen über Nutzen mit einem kleinen nutzbaren Produktumfang."
+          }
+        ],
+        "example": {
+          "title": "Schritt für Schritt in der Praxis",
+          "steps": [
+            "Ein Standardprodukt ist günstig, benötigt aber eine teure Scanner-Anbindung. Berücksichtige diese ebenso wie Schulung und laufenden Betrieb.",
+            "Prüfe mit einem PoC, ob die Scanner unter schlechten Netzbedingungen korrekt arbeiten.",
+            "Vergleiche erst danach die Alternativen anhand derselben Anforderungen und eines transparenten Kostenzeitraums."
+          ]
+        },
+        "selfCheck": {
+          "question": "Warum entscheidet ein niedriger Kaufpreis die Auswahl nicht allein?",
+          "answer": "Einführung, Anpassungen, Betrieb und Pflege können die Gesamtkosten und Eignung erheblich verändern."
+        }
+      }
     },
     {
       "id": "2.6",
@@ -1103,7 +1388,40 @@
           "origin": "Eigene Praxisaufgabe"
         }
       ],
-      "module": 2
+      "module": 2,
+      "learning": {
+        "introduction": "Architekturdokumentation erklärt ein System aus verschiedenen Blickwinkeln. Beginne mit der Grenze des Systems und seinen Nachbarn. Beschreibe dann Aufbau, Abläufe und Betrieb. Entscheidungen werden verständlich, wenn auch Alternativen und Konsequenzen dokumentiert sind.",
+        "terms": [
+          {
+            "term": "arc42",
+            "definition": "Vorlage zur strukturierten Architekturdokumentation, unter anderem mit Kontext, Bausteinen, Laufzeit und Verteilung."
+          },
+          {
+            "term": "C4-Kontext",
+            "definition": "Zeigt das betrachtete System mit nutzenden Personen und Nachbarsystemen."
+          },
+          {
+            "term": "C4-Container",
+            "definition": "Zeigt ausführbare Anwendungen und Datenspeicher innerhalb des Systems; Container bedeutet hier nicht zwingend Docker."
+          },
+          {
+            "term": "ADR",
+            "definition": "Architecture Decision Record: dokumentiert Kontext, Entscheidung, Alternativen und Folgen."
+          }
+        ],
+        "example": {
+          "title": "Schritt für Schritt in der Praxis",
+          "steps": [
+            "Zeichne Lagerkompass mit Scanner-Nutzern und dem angrenzenden ERP-System als Kontext.",
+            "Zoome hinein: Web-Anwendung, API und Datenbank sind mögliche Container. Zeige für eine Buchung anschließend den Nachrichtenablauf.",
+            "Halte in einem ADR fest, warum die gewählte Datenhaltung zu Transaktionen und Betrieb passt und welche Nachteile akzeptiert werden."
+          ]
+        },
+        "selfCheck": {
+          "question": "Welche Sicht brauchst du, um Anwendungen und Datenspeicher innerhalb eines Systems zu zeigen?",
+          "answer": "Die C4-Container-Sicht; die Kontextsicht zeigt dagegen das System in seiner Umgebung."
+        }
+      }
     },
     {
       "id": "2.7",
@@ -1197,7 +1515,40 @@
           "origin": "Eigene Praxisaufgabe"
         }
       ],
-      "module": 2
+      "module": 2,
+      "learning": {
+        "introduction": "Frühe Entwürfe dienen dazu, Annahmen mit geringem Aufwand zu prüfen. Ein Prototyp muss dafür noch keine fertige Software sein. Die spätere Plattformwahl berücksichtigt Arbeitsumfeld, Gerätezugriff, Netzverfügbarkeit, Entwicklungskosten und die Verantwortung für den Betrieb.",
+        "terms": [
+          {
+            "term": "Prototyp",
+            "definition": "Vorläufiger Entwurf, mit dem bestimmte Fragen geprüft werden; er ist nicht automatisch produktionsreif."
+          },
+          {
+            "term": "Usability-Test",
+            "definition": "Personen bearbeiten realistische Aufgaben; beobachtet wird, wie gut sie damit zurechtkommen."
+          },
+          {
+            "term": "Native und Web",
+            "definition": "Native Anwendungen richten sich an eine Plattform; Web-Anwendungen laufen im Browser. Tatsächliche Fähigkeiten müssen auf den Zielgeräten geprüft werden."
+          },
+          {
+            "term": "SaaS",
+            "definition": "Software as a Service: typischerweise betreibt der Anbieter die Anwendung; eigene Pflichten wie Konfiguration und Datenumgang bleiben zu klären."
+          }
+        ],
+        "example": {
+          "title": "Schritt für Schritt in der Praxis",
+          "steps": [
+            "Zeige einer Lagerkraft einen Papierentwurf und bitte sie, eine fehlerhafte Menge zu korrigieren.",
+            "Beobachte zunächst ohne Hilfestellung, wo der Ablauf unklar ist, und verbessere den Entwurf.",
+            "Prüfe danach Scannerzugriff und Offlineanforderungen auf den echten Zielgeräten. Eine attraktive Bildschirmzeichnung beweist diese technischen Fähigkeiten noch nicht."
+          ]
+        },
+        "selfCheck": {
+          "question": "Warum sollte die Testleitung nicht sofort auf den richtigen Knopf zeigen?",
+          "answer": "Sonst wird die Hilfe der Testleitung statt der selbstständigen Bedienbarkeit des Entwurfs geprüft."
+        }
+      }
     },
     {
       "id": "2.8",
@@ -1291,7 +1642,44 @@
           "origin": "Eigene Praxisaufgabe"
         }
       ],
-      "module": 2
+      "module": 2,
+      "learning": {
+        "introduction": "Ein Entwurf wird schrittweise konkreter. Zunächst brauchst du die wichtigsten Verantwortlichkeiten und Verbindungen. Danach folgen Details der Datenstrukturen und Abläufe. Gute Grenzen erleichtern Änderungen, weil eine fachliche Anpassung möglichst wenige unabhängige Teile betrifft.",
+        "terms": [
+          {
+            "term": "Grob-Design",
+            "definition": "Hauptbausteine, Zuständigkeiten und grundlegende Verbindungen."
+          },
+          {
+            "term": "Fein-Design",
+            "definition": "Konkrete Schnittstellen, Klassen, Datenstrukturen und detaillierte Abläufe."
+          },
+          {
+            "term": "Kohäsion",
+            "definition": "Inhaltlicher Zusammenhalt innerhalb eines Bausteins; zusammengehörende Aufgaben bleiben beieinander."
+          },
+          {
+            "term": "Kopplung",
+            "definition": "Abhängigkeiten zwischen Bausteinen; unnötige Abhängigkeiten erschweren unabhängige Änderungen."
+          },
+          {
+            "term": "Sequenzdiagramm",
+            "definition": "Zeigt die zeitliche Folge von Nachrichten zwischen Beteiligten."
+          }
+        ],
+        "example": {
+          "title": "Schritt für Schritt in der Praxis",
+          "steps": [
+            "Im Grob-Design trennt ihr Scanner-Oberfläche, Buchungslogik und Datenhaltung.",
+            "Im Fein-Design vereinbart ihr die Eingaben für eine Buchung und zeichnet den Ablauf bis zur Bestätigung.",
+            "Eine geänderte Mengenregel soll in der zuständigen Fachlogik angepasst werden können, ohne dieselbe Regel in mehreren Oberflächen suchen zu müssen."
+          ]
+        },
+        "selfCheck": {
+          "question": "Warum helfen hohe Kohäsion und geringe Kopplung bei einer Änderung?",
+          "answer": "Zusammengehörende Regeln liegen beieinander, während andere Bausteine möglichst wenig von internen Details abhängen."
+        }
+      }
     },
     {
       "id": "2.9",
@@ -1300,24 +1688,39 @@
       "slide_count": 29,
       "concepts": [
         {
-          "title": "Entitäten und Beziehungen",
-          "body": "Ein ER-Diagramm zeigt Entitäten (zum Beispiel Kunde, Bestellung), deren Attribute und Beziehungen.",
-          "example": "Ein Kunde gibt Bestellungen auf. Beide brauchen eine eindeutige Identifikation."
+          "title": "Vom ER-Modell zu Tabellen",
+          "body": "Ein Entity-Relationship-Modell beschreibt gleichartige Objekte, ihre Attribute und Beziehungen. Im relationalen Modell werden daraus Tabellen mit Zeilen und Spalten. Attribute bekommen geeignete Datentypen. Beziehungen folgen den fachlichen Regeln: Nicht der gerade vorhandene Datenbestand allein entscheidet, wie viele Zuordnungen erlaubt sind.",
+          "example": "Kunde(kunde_id, name) und Bestellung(bestellung_id, kunde_id) bilden zwei Objektarten ab. Der Name ist kein sicherer Schlüssel, weil verschiedene Kunden denselben Namen haben können."
         },
         {
-          "title": "Kardinalitäten",
-          "body": "1:1 bedeutet eins zu eins, 1:n eins zu vielen und m:n viele zu vielen. Eine m:n-Beziehung wird relational meist durch eine Zwischentabelle aufgelöst.",
-          "example": "Eine Bestellung hat viele Positionen. Ein Artikel kann in vielen Bestellungen vorkommen."
+          "title": "Kardinalitäten und optionale Beziehungen",
+          "body": "1:1 bedeutet höchstens eine Zuordnung je Seite, 1:n eine zu vielen und m:n viele zu vielen. Mindestkardinalitäten ergänzen, ob eine Zuordnung erforderlich ist. Ein Kunde darf beispielsweise 0..n Bestellungen haben, während jede Bestellung genau einen Kunden benötigt. Bei einer verpflichtenden 1:1-Zuordnung braucht jedes Objekt genau ein Gegenstück; eine bloße 1:1-Angabe beschreibt zunächst die maximale Anzahl.",
+          "example": "Mitarbeiterin und fest zugeordneter Spind sind im Beispiel 1:1. Kunde zu Bestellung ist 1:n. Bestellung zu Artikel ist m:n, weil mehrere Artikel bestellt werden und ein Artikel in mehreren Bestellungen vorkommen kann."
         },
         {
-          "title": "Schlüssel",
-          "body": "Ein Primärschlüssel identifiziert einen Datensatz eindeutig. Ein Fremdschlüssel verweist auf einen Datensatz einer anderen Tabelle.",
-          "example": "bestellung.kunde_id verweist auf kunde.id."
+          "title": "Primärschlüssel, Fremdschlüssel und m:n",
+          "body": "Ein Primärschlüssel identifiziert jede Zeile eindeutig und darf nicht NULL sein. Ein Fremdschlüssel sichert den Bezug auf einen geeigneten eindeutigen Schlüssel. Bei Kunde zu Bestellung liegt kunde_id auf der n-Seite, also in Bestellung. Eine m:n-Beziehung wird durch eine Zuordnungstabelle mit zwei Fremdschlüsseln in zwei 1:n-Beziehungen zerlegt. Zusätzliche Attribute der Zuordnung bleiben dort.",
+          "example": "Position(bestellung_id, artikel_id, menge) verbindet Bestellung und Artikel. Menge ist weder eine feste Eigenschaft des Artikels noch der ganzen Bestellung, sondern der konkreten Position."
         },
         {
-          "title": "Normalformen",
-          "body": "1NF: atomare Werte. 2NF: keine Teilabhängigkeit eines Nichtschlüsselattributs von einem zusammengesetzten Schlüssel. 3NF: keine transitiven Abhängigkeiten zwischen Nichtschlüsselattributen.",
-          "example": "Artikelname gehört in die Artikeltabelle statt wiederholt in jede Bestellposition."
+          "title": "Warum normalisieren?",
+          "body": "Mehrfach gespeicherte Sachverhalte erzeugen Redundanz. Muss ein Artikelname in vielen Positionen korrigiert werden, können widersprüchliche Namen entstehen: eine Änderungsanomalie. Eine Einfügeanomalie liegt vor, wenn ein Artikel nur zusammen mit einer Bestellung gespeichert werden könnte. Eine Löschanomalie entsteht, wenn beim Löschen der letzten Position zugleich die einzigen Artikelinformationen verloren gehen. Normalisierung zerlegt Tabellen anhand ihrer Abhängigkeiten und erhält die fachlich benötigten Verknüpfungen.",
+          "example": "Der Name von Artikel A7 wird einmal in Artikel gespeichert. Positionen verweisen über artikel_id darauf. Wiederholte Fremdschlüssel sind dabei sinnvoll und nicht die zu vermeidende Mehrfachpflege des Artikelnamens."
+        },
+        {
+          "title": "Erste Normalform: einzelne Werte",
+          "body": "Die 1NF verlangt im relationalen Modell atomare Werte in den Attributen; wiederholende Gruppen werden vermieden. Atomar heißt hier ein einzelner Wert der vorgesehenen fachlichen Domäne. Eine Liste unabhängiger Telefonnummern in einem Feld ist dafür ungeeignet. Eine eindeutige ID allein behebt dieses Problem nicht. Zerlege Informationen entsprechend ihrem Verwendungszweck; nicht jede Zeichenkette mit Komma ist automatisch eine Werteliste.",
+          "example": "Statt Mitarbeiter(1, „0171…, 0151…“) speicherst du Mitarbeiter(1, name) und Telefon(telefon_id, mitarbeiter_id, nummer). Jedes Nummernfeld enthält eine Telefonnummer; Mitarbeiter zu Telefon ist 1:n."
+        },
+        {
+          "title": "Zweite Normalform: der ganze Schlüssel",
+          "body": "Die 2NF setzt die 1NF voraus. Jedes Nichtschlüsselattribut muss von jedem Kandidatenschlüssel vollständig funktional abhängen; eine Abhängigkeit von einem echten Teil eines Kandidatenschlüssels ist ausgeschlossen. Ein zusammengesetzter Schlüssel ist erlaubt. Prüfe deshalb zuerst die fachlichen Abhängigkeiten und alle Kandidatenschlüssel. Eine zusätzliche technische ID allein beseitigt die problematische Abhängigkeit nicht.",
+          "example": "Bei Position(bestellung_id, artikel_id, artikelname, menge) mit dem Schlüssel (bestellung_id, artikel_id) gilt artikel_id → artikelname. Der Name hängt nur von einem Schlüsselteil ab. Er wird in Artikel ausgelagert. Die Menge hängt im gewählten Beispiel vom ganzen Schlüsselpaar ab und bleibt in Position."
+        },
+        {
+          "title": "Dritte Normalform: transitive Abhängigkeiten verstehen",
+          "body": "Die 3NF setzt die 2NF voraus. Im typischen Einsteigerfall darf ein Nichtschlüsselattribut nicht transitiv über ein anderes Nichtschlüsselattribut vom Schlüssel abhängen. Mitarbeiter-ID → Abteilungs-ID → Abteilungsname ist so ein Fall: Der Name beschreibt die Abteilung, nicht eigenständig den Mitarbeiter. Präzise gilt für jede nichttriviale funktionale Abhängigkeit X → A: X ist ein Superschlüssel oder A gehört zu einem Kandidatenschlüssel. Diese allgemeine Regel berücksichtigt auch mehrere Kandidatenschlüssel.",
+          "example": "Zerlege Mitarbeiter(mitarbeiter_id, abteilungs_id, abteilungsname) in Mitarbeiter(mitarbeiter_id, abteilungs_id) und Abteilung(abteilungs_id, abteilungsname). Ändert sich der Abteilungsname, wird nur die Abteilung angepasst."
         }
       ],
       "questions": [
@@ -1570,7 +1973,59 @@
           "origin": "Eigene Praxisaufgabe"
         }
       ],
-      "module": 2
+      "module": 2,
+      "references": [
+        {
+          "title": "Microsoft · Datenbankentwurf und Normalisierung",
+          "url": "https://support.microsoft.com/en-us/access/database-design-basics"
+        },
+        {
+          "title": "PostgreSQL · Primärschlüssel, Fremdschlüssel und Constraints",
+          "url": "https://www.postgresql.org/docs/current/ddl-constraints.html"
+        }
+      ],
+      "learning": {
+        "introduction": "Ein Datenmodell beschreibt, welche Dinge du speicherst, welche Eigenschaften sie haben und wie sie zusammenhängen. Wir entwickeln das Modell vom Kundenauftrag bis zur normalisierten Bestellposition. Lies besonders die Unterschiede zwischen maximaler Kardinalität, optionaler Zuordnung und funktionaler Abhängigkeit: Sie beantworten verschiedene Fragen.",
+        "terms": [
+          {
+            "term": "Entität und Attribut",
+            "definition": "Eine Entität ist ein unterscheidbares Objekt wie Kunde 17. Ein Attribut beschreibt eine Eigenschaft, etwa seinen Namen; eine Tabelle fasst gleichartige Objekte zusammen."
+          },
+          {
+            "term": "Kandidatenschlüssel",
+            "definition": "Minimale Attributmenge, die einen Datensatz eindeutig bestimmt. Minimal bedeutet: Kein Attribut lässt sich entfernen, ohne die Eindeutigkeit zu verlieren."
+          },
+          {
+            "term": "Primärschlüssel",
+            "definition": "Einer der ausgewählten Kandidatenschlüssel; seine Werte sind eindeutig und nicht NULL. Er kann aus mehreren Attributen bestehen."
+          },
+          {
+            "term": "Fremdschlüssel",
+            "definition": "Verweist auf einen geeigneten eindeutigen Schlüssel einer referenzierten Tabelle, auch derselben Tabelle. Ein passender Constraint sichert den Bezug ab."
+          },
+          {
+            "term": "Funktionale Abhängigkeit X → Y",
+            "definition": "Gleiche Werte für X verlangen gleiche Werte für Y. Die Abhängigkeit folgt aus fachlichen Regeln, nicht nur aus zufällig vorhandenen Beispieldaten."
+          },
+          {
+            "term": "Nichtschlüsselattribut",
+            "definition": "Hier ein Attribut, das zu keinem Kandidatenschlüssel gehört. Das ist für die genaue Prüfung der Normalformen relevant."
+          }
+        ],
+        "example": {
+          "title": "Schritt für Schritt in der Praxis",
+          "steps": [
+            "Ausgangslage: Position(bestellung_id, artikel_id, artikelname, menge). Für dieses Beispiel darf jeder Artikel je Bestellung genau einmal vorkommen. Der Schlüssel ist deshalb (bestellung_id, artikel_id). Bei mehrfach erlaubten Artikelzeilen wäre etwa (bestellung_id, positionsnummer) nötig.",
+            "Die Beispieldaten (501, A7, Schraube, 10) und (502, A7, Schraube, 4) wiederholen den Artikelnamen. Artikel-ID → Artikelname; nur das Paar aus Bestellung und Artikel bestimmt die Menge.",
+            "Zerlege in Artikel(artikel_id, artikelname) und Position(bestellung_id, artikel_id, menge). Beide IDs sind in Position Fremdschlüssel; gemeinsam bilden sie hier den Primärschlüssel. Menge bleibt in Position, weil sie zur Zuordnung gehört.",
+            "Prüfe die Verbindung: Ein JOIN über artikel_id liefert zu jeder Position wieder den Artikelnamen. Ändert sich der Name, wird nur Artikel angepasst. Die eindeutigen Artikel-IDs verhindern, dass der JOIN Positionen versehentlich vervielfacht."
+          ]
+        },
+        "selfCheck": {
+          "question": "Eine Mitarbeiter-Projekt-Tabelle hat den Schlüssel (mitarbeiter_id, projekt_id), dazu mitarbeitername, projektname und stunden. Was muss getrennt werden?",
+          "answer": "Mitarbeiter(mitarbeiter_id, mitarbeitername), Projekt(projekt_id, projektname) und Zuordnung(mitarbeiter_id, projekt_id, stunden). Namen hängen nur von einem Teil des Schlüssels ab, Stunden dagegen von der gesamten Zuordnung."
+        }
+      }
     },
     {
       "id": "2.10",
@@ -1664,7 +2119,40 @@
           "origin": "Eigene Praxisaufgabe"
         }
       ],
-      "module": 2
+      "module": 2,
+      "learning": {
+        "introduction": "Eine neue Anwendung ist erst nutzbar, wenn benötigte Daten und Abläufe kontrolliert übernommen wurden. Migration benötigt Prüfkriterien und einen Rückweg. Wartung beginnt nach der Einführung und umfasst neben Fehlerkorrekturen auch Anpassungen und Verbesserungen.",
+        "terms": [
+          {
+            "term": "Migration",
+            "definition": "Kontrollierte Übernahme von Daten oder Funktionen in eine neue Umgebung."
+          },
+          {
+            "term": "ETL",
+            "definition": "Extract: entnehmen; Transform: bereinigen und in das Zielformat umwandeln; Load: in das Ziel laden."
+          },
+          {
+            "term": "Parallelbetrieb",
+            "definition": "Alt- und Neusystem werden zeitweise nebeneinander betrieben; Daten und Verantwortlichkeiten müssen abgestimmt werden."
+          },
+          {
+            "term": "Korrektive Wartung",
+            "definition": "Behebt Fehler. Adaptive Wartung passt an neue Rahmenbedingungen an; perfektive beziehungsweise verbessernde Wartung verbessert Eigenschaften."
+          }
+        ],
+        "example": {
+          "title": "Schritt für Schritt in der Praxis",
+          "steps": [
+            "Exportiere zunächst einen begrenzten Testdatenbestand und kläre die Zuordnung alter zu neuer Felder.",
+            "Bereinige etwa verschiedene Datumsformate und prüfe nach dem Laden sowohl Datensatzanzahl als auch fachliche Summen und Stichproben.",
+            "Ein Parallelbetrieb ermöglicht Vergleich, erfordert aber klare Regeln, wo Änderungen erfasst werden. Ein erfolgreicher Import allein beweist keinen korrekten Arbeitsablauf."
+          ]
+        },
+        "selfCheck": {
+          "question": "Warum sind gleich viele Datensätze vor und nach einer Migration noch kein vollständiger Nachweis?",
+          "answer": "Inhalte, Beziehungen und fachliche Ergebnisse können trotz gleicher Anzahl falsch sein."
+        }
+      }
     },
     {
       "id": "2.11",
@@ -1758,7 +2246,36 @@
           "origin": "Eigene Praxisaufgabe"
         }
       ],
-      "module": 2
+      "module": 2,
+      "learning": {
+        "introduction": "In einer Fallaufgabe zählt die begründete Entscheidung für die beschriebene Situation. Verbinde die Anforderung mit deiner Lösung und ihren Folgen. Beziehe Einführung und späteren Betrieb bereits in die Architekturwahl ein, damit die Empfehlung praktisch tragfähig bleibt.",
+        "terms": [
+          {
+            "term": "Operator",
+            "definition": "Arbeitsauftrag wie nennen, erläutern, vergleichen oder begründen; er bestimmt die benötigte Antworttiefe."
+          },
+          {
+            "term": "Bewertungskriterium",
+            "definition": "Nachvollziehbarer Maßstab für Alternativen, etwa Offlinefähigkeit oder Betriebskosten."
+          },
+          {
+            "term": "Lebenszyklus",
+            "definition": "Betrachtung von Planung und Entwicklung über Einführung und Betrieb bis zur Ablösung."
+          }
+        ],
+        "example": {
+          "title": "Schritt für Schritt in der Praxis",
+          "steps": [
+            "Das Lager hat häufige Netzunterbrechungen. Nenne zunächst diese Anforderung.",
+            "Empfiehl einen geprüften Offlineablauf und erkläre den Nutzen: Buchungen können kontrolliert zwischengespeichert werden.",
+            "Benenne auch Konfliktbehandlung, Synchronisation, Migration und Wartungsaufwand. So wird aus einer Technologiebehauptung eine prüfbare Architekturbegründung."
+          ]
+        },
+        "selfCheck": {
+          "question": "Was macht „Wir nehmen Produkt X, weil es modern ist“ als Begründung schwach?",
+          "answer": "Der konkrete Anforderungsbezug, überprüfbare Nutzen und die bewerteten Folgen fehlen."
+        }
+      }
     },
     {
       "id": "2.12",
@@ -1852,7 +2369,36 @@
           "origin": "Eigene Praxisaufgabe"
         }
       ],
-      "module": 2
+      "module": 2,
+      "learning": {
+        "introduction": "Ein Anforderungsinterview ist ein vorbereitetes Gespräch zum Verstehen der Arbeit. Es braucht offene Fragen, konkrete Beispiele und eine Ergebnissicherung. Widersprüche sind wertvolle Hinweise auf unterschiedliche Aufgaben oder Erwartungen und werden mit den Beteiligten geklärt.",
+        "terms": [
+          {
+            "term": "Leitfaden",
+            "definition": "Geordnete Fragen zu Ziel, Ablauf, Ausnahmen und Schwierigkeiten; er lässt Rückfragen zu."
+          },
+          {
+            "term": "Quelle",
+            "definition": "Person, Beobachtung oder Dokument, aus der eine Anforderung stammt."
+          },
+          {
+            "term": "Validierung einer Anforderung",
+            "definition": "Gemeinsam prüfen, ob sie das tatsächlich benötigte und verständlich beschriebene Verhalten erfasst."
+          }
+        ],
+        "example": {
+          "title": "Schritt für Schritt in der Praxis",
+          "steps": [
+            "Beginne mit „Wie bearbeiten Sie eine Lieferung vom Eintreffen bis zur Buchung?“ und frage nach dem letzten Problemfall.",
+            "Notiere einen Widerspruch: Eine Person verlangt sofortige Buchung, eine andere vorherige Prüfung. Kläre, ob unterschiedliche Lieferarten gemeint sind.",
+            "Vergib eindeutige Kennungen, dokumentiere die Quellen und lies die Ergebnisse zur Bestätigung zurück. Eine Vermutung wird bis zur Klärung als offen markiert."
+          ]
+        },
+        "selfCheck": {
+          "question": "Wie gehst du mit zwei widersprüchlichen Aussagen um?",
+          "answer": "Beide mit Kontext dokumentieren und mit den Beteiligten klären, statt stillschweigend eine auszuwählen."
+        }
+      }
     },
     {
       "id": "3.1",
@@ -1942,7 +2488,40 @@
           "difficulty": "Anwendung",
           "origin": "Eigene Praxisaufgabe"
         }
-      ]
+      ],
+      "learning": {
+        "introduction": "Eine API ist eine vereinbarte Grenze zwischen Softwareteilen. Wenn Teams Eingaben, Ergebnisse und Fehler früh abstimmen, können sie unabhängig entwickeln und ihre Zusammenarbeit prüfen. Der Vertrag beschreibt fachliches Verhalten und nicht nur Adressen.",
+        "terms": [
+          {
+            "term": "API-Vertrag",
+            "definition": "Vereinbarung zu Operationen, Datenformaten, Voraussetzungen, Ergebnissen und Fehlerfällen."
+          },
+          {
+            "term": "Contract-First",
+            "definition": "Zuerst den Vertrag abstimmen, anschließend die beteiligten Implementierungen entwickeln."
+          },
+          {
+            "term": "POST und 201",
+            "definition": "POST wird häufig zum Anlegen einer Ressource verwendet; 201 Created zeigt eine erfolgreiche Neuanlage."
+          },
+          {
+            "term": "Validierungsfehler",
+            "definition": "Eine Anfrage verletzt vereinbarte Eingabe- oder Fachregeln und braucht eine verständliche, passende Fehlerantwort."
+          }
+        ],
+        "example": {
+          "title": "Schritt für Schritt in der Praxis",
+          "steps": [
+            "Für einen Wareneingang vereinbart ihr Artikelkennung und positive Menge als Eingaben.",
+            "Beschreibt die erfolgreiche Antwort mit neuer Kennung sowie Fälle für ungültige Mengen und fehlende Berechtigung.",
+            "Frontend und Server prüfen ihre Umsetzung gegen denselben Vertrag. Ein allgemeiner Serverfehler würde dem Client nicht erklären, welche Eingabe er korrigieren muss."
+          ]
+        },
+        "selfCheck": {
+          "question": "Warum reicht eine URL-Liste als API-Vertrag nicht?",
+          "answer": "Daten, Verhalten, Berechtigungen, Ergebnisse und Fehlerbehandlung bleiben sonst ungeklärt."
+        }
+      }
     },
     {
       "id": "3.2",
@@ -2032,7 +2611,44 @@
           "difficulty": "Anwendung",
           "origin": "Eigene Praxisaufgabe"
         }
-      ]
+      ],
+      "learning": {
+        "introduction": "Eine Schnittstelle verbindet Transport, fachliche Verarbeitung und Datenzugriff. Klare Zuständigkeiten erleichtern kleine Tests. Zusätzlich musst du prüfen, ob die realen Komponenten korrekt zusammenarbeiten; isolierte Prüfungen können diese Aussage allein nicht liefern.",
+        "terms": [
+          {
+            "term": "Middleware",
+            "definition": "Querschnittliche Verarbeitung im Anfrageweg, beispielsweise Authentifizierung oder Logging."
+          },
+          {
+            "term": "Unit-Test",
+            "definition": "Prüft einen begrenzten Baustein weitgehend isoliert."
+          },
+          {
+            "term": "Stub",
+            "definition": "Testdouble mit vorgegebenen Antworten für kontrollierte Testbedingungen."
+          },
+          {
+            "term": "Mock",
+            "definition": "Testdouble, mit dem insbesondere erwartete Aufrufe und Interaktionen überprüft werden können."
+          },
+          {
+            "term": "Integrationstest",
+            "definition": "Prüft das Zusammenspiel mehrerer tatsächlicher Komponenten innerhalb einer gewählten Systemgrenze."
+          }
+        ],
+        "example": {
+          "title": "Schritt für Schritt in der Praxis",
+          "steps": [
+            "Teste die Mengenregel isoliert mit gültigen und ungültigen Zahlen.",
+            "Ein Stub liefert einen festen Bestand, damit der Test unabhängig von einer echten Datenbank bleibt.",
+            "Prüfe zusätzlich API und Testdatenbank gemeinsam. Erst dadurch werden etwa falsche Feldzuordnungen oder Transaktionsgrenzen sichtbar."
+          ]
+        },
+        "selfCheck": {
+          "question": "Kann ein erfolgreicher isolierter Validator-Test die Datenbankintegration bestätigen?",
+          "answer": "Nein. Dafür braucht es einen Test des tatsächlichen Zusammenspiels."
+        }
+      }
     },
     {
       "id": "3.3",
@@ -2122,7 +2738,44 @@
           "difficulty": "Anwendung",
           "origin": "Eigene Praxisaufgabe"
         }
-      ]
+      ],
+      "learning": {
+        "introduction": "Das Datenbankschema setzt fachliche Regeln technisch durch. Schlüssel und Constraints verhindern bestimmte ungültige Zustände. Bei zusammengehörenden und parallelen Änderungen musst du zusätzlich Transaktionsgrenzen und das Verhalten bei Konkurrenz festlegen.",
+        "terms": [
+          {
+            "term": "Constraint",
+            "definition": "Datenbankregel wie UNIQUE, NOT NULL, CHECK oder FOREIGN KEY."
+          },
+          {
+            "term": "Transaktion",
+            "definition": "Zusammengehörende Datenbankoperationen mit festgelegten Konsistenzeigenschaften."
+          },
+          {
+            "term": "ACID",
+            "definition": "Atomicity: ganz oder gar nicht; Consistency: Regeln einhalten; Isolation: parallele Vorgänge kontrollieren; Durability: bestätigte Änderungen dauerhaft sichern."
+          },
+          {
+            "term": "Ausführungsplan",
+            "definition": "Zeigt, welche Verarbeitungsschritte das Datenbanksystem für eine Abfrage auswählt."
+          },
+          {
+            "term": "Least Privilege",
+            "definition": "Ein Konto erhält nur die für seine Aufgabe erforderlichen Rechte."
+          }
+        ],
+        "example": {
+          "title": "Schritt für Schritt in der Praxis",
+          "steps": [
+            "Eine Reservierung soll Bestand reduzieren und einen Reservierungsdatensatz erzeugen. Beides gehört in eine Transaktion.",
+            "Prüfe mit zwei gleichzeitig arbeitenden Clients, ob die Restmenge doppelt vergeben werden kann. Atomicity allein verhindert nicht jeden Parallelitätsfehler.",
+            "Wähle eine geeignete atomare Buchungsoperation oder Sperr- und Isolationsstrategie und prüfe den Konfliktfall. Das Anwendungskonto benötigt dafür keine administrativen Vollrechte."
+          ]
+        },
+        "selfCheck": {
+          "question": "Was bedeutet Atomicity bei einem Fehler zwischen zwei zusammengehörenden Änderungen?",
+          "answer": "Die Transaktion darf nicht nur einen Teil dauerhaft übernehmen; sie wird insgesamt zurückgenommen."
+        }
+      }
     },
     {
       "id": "3.4",
@@ -2212,7 +2865,44 @@
           "difficulty": "Anwendung",
           "origin": "Eigene Praxisaufgabe"
         }
-      ]
+      ],
+      "learning": {
+        "introduction": "Die Anwendung sollte ihre öffentliche Datenansicht nicht ungeprüft aus internen Tabellen ableiten. Eine klare Zugriffsschicht bündelt Persistenz. Plane Schemaänderungen und Abfragen so, dass aktuelle Datenmengen und gleichzeitig eingesetzte Anwendungsversionen berücksichtigt werden.",
+        "terms": [
+          {
+            "term": "Repository",
+            "definition": "Bündelt den Datenzugriff hinter einer fachlich passenden Schnittstelle."
+          },
+          {
+            "term": "DTO",
+            "definition": "Data Transfer Object: festgelegte Datenstruktur für den Austausch, getrennt vom internen Persistenzmodell."
+          },
+          {
+            "term": "Migration",
+            "definition": "Versionierter Schritt zur Änderung von Schema oder Daten."
+          },
+          {
+            "term": "N+1-Problem",
+            "definition": "Eine Grundabfrage wird von je einer weiteren Abfrage für N gefundene Datensätze begleitet."
+          },
+          {
+            "term": "Connection Pool",
+            "definition": "Begrenzter Vorrat wiederverwendbarer Datenbankverbindungen."
+          }
+        ],
+        "example": {
+          "title": "Schritt für Schritt in der Praxis",
+          "steps": [
+            "Eine Liste lädt 50 Bestellungen und danach je Bestellung deren Kunden separat: insgesamt können 51 Abfragen entstehen.",
+            "Prüfe gebündeltes Laden oder einen passenden JOIN, statt nur mehr Verbindungen zu öffnen.",
+            "Für eine neue Pflichtspalte führst du zunächst eine kompatible Erweiterung ein, ergänzt vorhandene Daten und verschärfst erst danach die Regel. Das DTO wird bewusst angepasst."
+          ]
+        },
+        "selfCheck": {
+          "question": "Warum ist ein DTO keine bloße Kopie jeder Datenbankspalte?",
+          "answer": "Der API-Vertrag braucht nur freigegebene Daten und soll unabhängig von internen Schemaänderungen gestaltet werden."
+        }
+      }
     },
     {
       "id": "3.5",
@@ -2302,7 +2992,40 @@
           "difficulty": "Anwendung",
           "origin": "Eigene Praxisaufgabe"
         }
-      ]
+      ],
+      "learning": {
+        "introduction": "Wartbarer Code macht fachliche Absichten sichtbar. Begrenzte Verantwortlichkeiten und überprüfbare Schnittstellen helfen, Änderungen sicher vorzunehmen. Tests sichern beobachtbares Verhalten, während Refactoring die Struktur verbessert.",
+        "terms": [
+          {
+            "term": "SRP",
+            "definition": "Single Responsibility Principle: eine klar abgegrenzte Verantwortung beziehungsweise ein maßgeblicher Änderungsgrund."
+          },
+          {
+            "term": "SOLID",
+            "definition": "Fünf Entwurfsprinzipien: Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation und Dependency Inversion."
+          },
+          {
+            "term": "TDD",
+            "definition": "Test-Driven Development: Red, Green, Refactor, also fehlschlagender Test, kleinste passende Umsetzung, Strukturverbesserung."
+          },
+          {
+            "term": "Given–When–Then",
+            "definition": "Voraussetzungen, ausgelöste Handlung und erwartetes Ergebnis eines Beispiels."
+          }
+        ],
+        "example": {
+          "title": "Schritt für Schritt in der Praxis",
+          "steps": [
+            "Eine Klasse prüft Mengen, speichert Daten und versendet E-Mails. Sichere zuerst wichtige Fälle durch Tests.",
+            "Trenne dann Fachregel, Speicherung und Benachrichtigung in passende Zuständigkeiten und ändere die Struktur in kleinen Schritten.",
+            "Prüfe nach jedem Schritt das bisherige Verhalten. Neue Abstraktionen sind nur hilfreich, wenn sie einen tatsächlichen Änderungsbedarf verständlicher machen."
+          ]
+        },
+        "selfCheck": {
+          "question": "Was folgt im TDD-Zyklus auf den erfolgreichen kleinen Umsetzungsschritt?",
+          "answer": "Refactoring: Die Struktur verbessern und dabei die Tests weiter erfolgreich halten."
+        }
+      }
     },
     {
       "id": "3.6",
@@ -2392,7 +3115,44 @@
           "difficulty": "Anwendung",
           "origin": "Eigene Praxisaufgabe"
         }
-      ]
+      ],
+      "learning": {
+        "introduction": "Entwurfsmuster benennen wiederkehrende Lösungsformen. Wähle ein Muster anhand des Problems und nicht nach seiner Bekanntheit. UML-Diagramme ergänzen die Erklärung, wenn ihre Sicht zur konkreten Frage passt.",
+        "terms": [
+          {
+            "term": "Strategy",
+            "definition": "Austauschbare Verfahren hinter einer gemeinsamen Schnittstelle."
+          },
+          {
+            "term": "Observer",
+            "definition": "Beobachter abonnieren Änderungen eines beobachteten Objekts und werden darüber benachrichtigt."
+          },
+          {
+            "term": "Factory",
+            "definition": "Kapselt die passende Erzeugung von Objekten."
+          },
+          {
+            "term": "Klassendiagramm",
+            "definition": "Zeigt statische Strukturen wie Klassen, Attribute, Operationen und Beziehungen."
+          },
+          {
+            "term": "Sequenzdiagramm",
+            "definition": "Zeigt Nachrichten und ihre zeitliche Reihenfolge in einem Ablauf."
+          }
+        ],
+        "example": {
+          "title": "Schritt für Schritt in der Praxis",
+          "steps": [
+            "Verschiedene Kunden benötigen unterschiedliche Regeln für Mengenabweichungen.",
+            "Definiere eine gemeinsame Bewertungsoperation und eigene Strategien. Eine neue Regel wird als weitere Variante ergänzt.",
+            "Zeige die statischen Beziehungen im Klassendiagramm und den Aufruf einer konkreten Bewertung im Sequenzdiagramm. Beide Darstellungen beantworten verschiedene Fragen."
+          ]
+        },
+        "selfCheck": {
+          "question": "Welches Muster passt zu austauschbaren Rabattberechnungen?",
+          "answer": "Strategy, weil verschiedene Verfahren dieselbe vereinbarte Operation anbieten können."
+        }
+      }
     },
     {
       "id": "3.7",
@@ -2482,7 +3242,44 @@
           "difficulty": "Anwendung",
           "origin": "Eigene Praxisaufgabe"
         }
-      ]
+      ],
+      "learning": {
+        "introduction": "Versionsmanagement macht Änderungen nachvollziehbar; eine Pipeline prüft und verpackt sie wiederholbar. Lege fest, wann integriert wird und welche Freigabe vor einer Produktionsbereitstellung nötig ist. Automatisierung braucht dieselben Qualitätskriterien wie manuelle Arbeit.",
+        "terms": [
+          {
+            "term": "Branch und Commit",
+            "definition": "Ein Branch verweist auf einen Entwicklungsstand; ein Commit dokumentiert einen versionierten Änderungsschritt."
+          },
+          {
+            "term": "Rebase",
+            "definition": "Setzt Commits auf eine andere Basis und verändert dabei die Historie. Gemeinsam genutzte Historie benötigt Abstimmung."
+          },
+          {
+            "term": "CI",
+            "definition": "Continuous Integration: häufig integrieren und automatisiert prüfen."
+          },
+          {
+            "term": "Continuous Delivery",
+            "definition": "Eine auslieferbare Fassung wird bereitgehalten; der Produktionsschritt kann eine manuelle Freigabe besitzen."
+          },
+          {
+            "term": "Continuous Deployment",
+            "definition": "Auch die Produktionsbereitstellung erfolgt automatisiert nach den vereinbarten Prüfungen."
+          }
+        ],
+        "example": {
+          "title": "Schritt für Schritt in der Praxis",
+          "steps": [
+            "Ein kleiner Pull Request wird geprüft und integriert.",
+            "Die Pipeline führt Tests aus, baut ein versioniertes Artefakt und stellt es in einer Testumgebung bereit.",
+            "Geheimnisse werden aus einer geschützten Verwaltung eingebunden. Erst die vereinbarte Freigabe oder Automatik bestimmt, ob die Produktion aktualisiert wird."
+          ]
+        },
+        "selfCheck": {
+          "question": "Warum sollte ein Rebase auf einem gemeinsam verwendeten Branch abgestimmt werden?",
+          "answer": "Andere arbeiten auf der bisherigen Historie; deren Umschreiben kann ihre Arbeit beeinträchtigen."
+        }
+      }
     },
     {
       "id": "3.8",
@@ -2572,7 +3369,40 @@
           "difficulty": "Anwendung",
           "origin": "Eigene Praxisaufgabe"
         }
-      ]
+      ],
+      "learning": {
+        "introduction": "Ein Release verbindet eine identifizierbare Softwarefassung mit geprüften Artefakten und verständlichen Änderungshinweisen. Plane vor der Bereitstellung auch den Umgang mit Fehlern. Ein Rückwechsel muss zur Anwendung und zu bereits geänderten Daten passen.",
+        "terms": [
+          {
+            "term": "SemVer",
+            "definition": "MAJOR.MINOR.PATCH: bei festgelegter öffentlicher API kennzeichnet eine inkompatible Änderung eine neue Major-Version, eine kompatible Erweiterung Minor und eine kompatible Korrektur Patch."
+          },
+          {
+            "term": "Release Notes",
+            "definition": "Beschreiben relevante Änderungen, Folgen und gegebenenfalls erforderliche Handlungen."
+          },
+          {
+            "term": "Blue-Green Deployment",
+            "definition": "Zwei Umgebungen ermöglichen das Umschalten des Verkehrs auf die neue Fassung."
+          },
+          {
+            "term": "Rollback",
+            "definition": "Geplanter Rückweg zu einem geeigneten vorherigen Zustand; Datenänderungen müssen gesondert berücksichtigt werden."
+          }
+        ],
+        "example": {
+          "title": "Schritt für Schritt in der Praxis",
+          "steps": [
+            "Ein neues Antwortformat entfernt ein bisher zugesichertes Feld. Prüfe die Inkompatibilität gegenüber vorhandenen Clients.",
+            "Baue und teste das versionierte Release und dokumentiere die notwendige Client-Anpassung.",
+            "Bei Blue-Green kann der Verkehr zurückgeschaltet werden. Prüfe vorher, ob die alte Fassung mit inzwischen geschriebenen Daten noch korrekt arbeitet."
+          ]
+        },
+        "selfCheck": {
+          "question": "Warum reicht das Kopieren der alten Programmdatei als Rückfallplan nicht?",
+          "answer": "Daten, Schema und angrenzende Systeme können sich bereits geändert haben."
+        }
+      }
     },
     {
       "id": "3.9",
@@ -2662,7 +3492,44 @@
           "difficulty": "Anwendung",
           "origin": "Eigene Praxisaufgabe"
         }
-      ]
+      ],
+      "learning": {
+        "introduction": "Sicherheit benötigt mehrere passende Prüfungen. Korrekt formatierte Daten beweisen keine Zugriffsberechtigung. Der Server muss für die jeweilige Aktion und Ressource entscheiden, ob sie erlaubt ist, und Eingaben sicher weiterverarbeiten.",
+        "terms": [
+          {
+            "term": "Authentifizierung",
+            "definition": "Prüft die behauptete Identität."
+          },
+          {
+            "term": "Autorisierung",
+            "definition": "Entscheidet, was eine Identität an einer konkreten Ressource tun darf."
+          },
+          {
+            "term": "Parametrisierte Abfrage",
+            "definition": "Trennt feste SQL-Struktur von gebundenen Eingabewerten."
+          },
+          {
+            "term": "Passwort-Hashing",
+            "definition": "Ein geeignetes langsames, gesalzenes Verfahren prüft Passwörter ohne deren Klartextspeicherung."
+          },
+          {
+            "term": "Secret",
+            "definition": "Geheimer Zugangswert wie ein API-Schlüssel, der nicht in öffentlich ausgelieferten Browser-Code gehört."
+          }
+        ],
+        "example": {
+          "title": "Schritt für Schritt in der Praxis",
+          "steps": [
+            "Ein angemeldeter Nutzer ändert in der URL die Lieferungs-ID. Die neue ID ist syntaktisch gültig.",
+            "Der Server prüft trotzdem die Berechtigung für genau diese Lieferung und verweigert fremde Datensätze.",
+            "Ein Negativtest wiederholt den Angriff mit einem anderen Konto. Parametrisierte Abfragen schützen zusätzlich die Verarbeitung der Eingaben, ersetzen aber keine Autorisierung."
+          ]
+        },
+        "selfCheck": {
+          "question": "Ist eine gültige Anmeldung gleichbedeutend mit Zugriff auf jede Lieferung?",
+          "answer": "Nein. Die Berechtigung muss für die konkrete Aktion und Ressource geprüft werden."
+        }
+      }
     },
     {
       "id": "3.10",
@@ -2752,7 +3619,36 @@
           "difficulty": "Anwendung",
           "origin": "Eigene Praxisaufgabe"
         }
-      ]
+      ],
+      "learning": {
+        "introduction": "Ein Integrationsprojekt verbindet einzelne Entwicklungsthemen zu einem überprüfbaren Ablauf. Kleine vollständige Ergebnisse zeigen früh, ob Fachlichkeit, Schnittstellen und Datenhaltung zusammenpassen. Checkpoints helfen, offene Annahmen sichtbar zu machen, bevor sie teuer werden.",
+        "terms": [
+          {
+            "term": "Vertikaler Ausschnitt",
+            "definition": "Ein kleiner fachlicher Ablauf durch mehrere Schichten, etwa von der Oberfläche bis zur Datenbank."
+          },
+          {
+            "term": "Checkpoint",
+            "definition": "Vereinbarter Zwischenstand mit sichtbarem Ergebnis und Prüfkriterien."
+          },
+          {
+            "term": "Traceability",
+            "definition": "Verbindung von Anforderungen über Entwurf und Umsetzung zu passenden Nachweisen."
+          }
+        ],
+        "example": {
+          "title": "Schritt für Schritt in der Praxis",
+          "steps": [
+            "Vereinbare als erstes Ergebnis einen API-Vertrag und ein Datenmodell für genau einen Wareneingang.",
+            "Implementiere danach den vollständigen Erfolgsweg einschließlich gespeicherter Buchung.",
+            "Ergänze Konflikte, Berechtigungen, Tests und Betriebsinformationen. Begründe Entscheidungen jeweils mit einer Anforderung und ihren Folgen."
+          ]
+        },
+        "selfCheck": {
+          "question": "Warum ist ein kleiner vollständiger Ablauf ein guter Zwischenstand?",
+          "answer": "Er zeigt das reale Zusammenspiel und macht Integrationsprobleme früh überprüfbar."
+        }
+      }
     },
     {
       "id": "3.11",
@@ -2842,7 +3738,40 @@
           "difficulty": "Anwendung",
           "origin": "Eigene Praxisaufgabe"
         }
-      ]
+      ],
+      "learning": {
+        "introduction": "Eine technische Prüfungsantwort muss den Arbeitsauftrag im Fall beantworten. Ordne vor dem Schreiben, welche Aussagen verlangt werden. Eine klare Begründung verbindet Anforderung, Entscheidung, Wirkung und relevante Grenzen.",
+        "terms": [
+          {
+            "term": "Nennen",
+            "definition": "Geforderte Punkte knapp angeben."
+          },
+          {
+            "term": "Erläutern und Begründen",
+            "definition": "Einen Zusammenhang verständlich machen beziehungsweise Gründe für eine Aussage liefern."
+          },
+          {
+            "term": "Fallbezug",
+            "definition": "Die konkrete Situation und ihre Randbedingungen in die Antwort einbeziehen."
+          },
+          {
+            "term": "Gegenmaßnahme",
+            "definition": "Handlung, die einen benannten Nachteil oder ein Risiko begrenzt."
+          }
+        ],
+        "example": {
+          "title": "Schritt für Schritt in der Praxis",
+          "steps": [
+            "Die Aufgabe verlangt zwei begründete Schutzmaßnahmen für Buchungen. Markiere Anzahl und Operator.",
+            "Erkläre etwa Transaktionen für zusammengehörende Datenänderungen und Autorisierung für erlaubte Zugriffe, jeweils anhand der Buchung.",
+            "Prüfe anschließend, ob die Wirkung tatsächlich begründet wurde und plane genügend Zeit für die übrigen Teilaufgaben ein."
+          ]
+        },
+        "selfCheck": {
+          "question": "Was fehlt einer Liste von zwei Technologien bei „Begründen Sie zwei Maßnahmen“?",
+          "answer": "Für jede Maßnahme die nachvollziehbare Wirkung in der beschriebenen Situation."
+        }
+      }
     },
     {
       "id": "4.1",
@@ -2933,7 +3862,36 @@
           "difficulty": "Anwendung",
           "origin": "Eigene Praxisaufgabe"
         }
-      ]
+      ],
+      "learning": {
+        "introduction": "Qualität wird erst überprüfbar, wenn aus einem Wunsch ein konkretes Ziel entsteht. Betrachte dabei nicht nur einzelne Funktionen, sondern auch Zuverlässigkeit, Bedienbarkeit und spätere Änderbarkeit. Vorbeugende Regeln und untersuchende Prüfungen ergänzen einander.",
+        "terms": [
+          {
+            "term": "Qualitätsziel",
+            "definition": "Beschreibt eine verlangte Eigenschaft mit Messgröße, Zielwert und Bedingungen."
+          },
+          {
+            "term": "Konstruktive QS",
+            "definition": "Vorbeugende Maßnahmen wie Standards, Schulung und geeignete Entwurfsregeln."
+          },
+          {
+            "term": "Analytische QS",
+            "definition": "Untersuchende Maßnahmen wie Reviews, statische Analyse und Tests."
+          }
+        ],
+        "example": {
+          "title": "Schritt für Schritt in der Praxis",
+          "steps": [
+            "Für eine Terminsuche vereinbart ihr eine Antwortzeit unter festgelegter Last und eine eindeutige Messmethode.",
+            "Ein Implementierungsstandard unterstützt einheitliche Fehlerbehandlung; ein Lasttest prüft das Laufzeitverhalten.",
+            "Ergänze Tests für das Zusammenspiel. Viele erfolgreiche Unit-Tests allein beantworten weder die Lastfrage noch jede Nutzeraufgabe."
+          ]
+        },
+        "selfCheck": {
+          "question": "Was fehlt dem Ziel „Die Suche soll schnell sein“?",
+          "answer": "Eine Messgröße, ein Grenzwert und die Bedingungen, unter denen gemessen wird."
+        }
+      }
     },
     {
       "id": "4.2",
@@ -3024,7 +3982,36 @@
           "difficulty": "Anwendung",
           "origin": "Eigene Praxisaufgabe"
         }
-      ]
+      ],
+      "learning": {
+        "introduction": "Testplanung entscheidet, welche Risiken mit welchen Nachweisen untersucht werden. Anforderungen und Tests müssen verbunden sein, damit fehlende Prüfungen und betroffene Tests bei Änderungen sichtbar werden. Unterschiedliche Teststufen betrachten unterschiedliche Grenzen.",
+        "terms": [
+          {
+            "term": "Testplan",
+            "definition": "Legt unter anderem Umfang, Risiken, Zuständigkeit, Umgebung und Abschlusskriterien fest."
+          },
+          {
+            "term": "Nachverfolgbarkeitsmatrix",
+            "definition": "Zuordnung von Anforderungen zu Tests und ihren Ergebnissen."
+          },
+          {
+            "term": "Teststufe",
+            "definition": "Gewählte Betrachtungsebene, etwa Komponente, Integration, Gesamtsystem oder Abnahme."
+          }
+        ],
+        "example": {
+          "title": "Schritt für Schritt in der Praxis",
+          "steps": [
+            "Die Anforderung ANF-12 lautet „Nur eigene Rechnungen lesen“. Ordne ihr einen erlaubten und einen verbotenen Zugriff als Tests zu.",
+            "Prüfe die Berechtigungsregel isoliert und API samt Datenbank im Integrationstest.",
+            "Halte fest, welche Softwareversion und Umgebung geprüft wurden und welches Risiko nach den Tests offenbleibt."
+          ]
+        },
+        "selfCheck": {
+          "question": "Was macht ein Integrationstest sichtbar, das ein isolierter Test übersehen kann?",
+          "answer": "Fehler im tatsächlichen Zusammenspiel, etwa eine falsche Datenzuordnung zwischen API und Datenbank."
+        }
+      }
     },
     {
       "id": "4.3",
@@ -3115,7 +4102,40 @@
           "difficulty": "Anwendung",
           "origin": "Eigene Praxisaufgabe"
         }
-      ]
+      ],
+      "learning": {
+        "introduction": "Du kannst selten jede denkbare Eingabe ausprobieren. Teile Eingaben deshalb nach erwartetem Verhalten auf und prüfe die Übergänge besonders sorgfältig. Für jeden Test muss vorab klar sein, was beobachtet werden soll.",
+        "terms": [
+          {
+            "term": "Äquivalenzklasse",
+            "definition": "Eingabebereich, dessen Werte bezüglich einer Regel ähnlich behandelt werden sollen."
+          },
+          {
+            "term": "Grenzwertanalyse",
+            "definition": "Untersuchung an und nahe den Grenzen gültiger Bereiche."
+          },
+          {
+            "term": "Entscheidungstabelle",
+            "definition": "Ordnet Kombinationen mehrerer Bedingungen den erwarteten Aktionen zu."
+          },
+          {
+            "term": "Black Box und White Box",
+            "definition": "Fälle aus äußerem Verhalten ableiten beziehungsweise innere Struktur zusätzlich berücksichtigen."
+          }
+        ],
+        "example": {
+          "title": "Schritt für Schritt in der Praxis",
+          "steps": [
+            "Erlaubte Mengen sind 1 bis 20. Unterscheide zu kleine, gültige und zu große Werte.",
+            "Prüfe zum Beispiel 0, 1, 20 und 21 und ergänze je nach Verfahren weitere Nachbar- und Repräsentativwerte.",
+            "Erwarte bei 0 eine konkrete Fehlermeldung und keine Buchung. „Test ausführen“ ohne erwartetes Ergebnis lässt sich nicht eindeutig bewerten."
+          ]
+        },
+        "selfCheck": {
+          "question": "Wann ist eine Entscheidungstabelle hilfreicher als eine einfache Zahlenbereichsprüfung?",
+          "answer": "Wenn mehrere Bedingungen gemeinsam bestimmen, welches fachliche Ergebnis gilt."
+        }
+      }
     },
     {
       "id": "4.4",
@@ -3206,7 +4226,40 @@
           "difficulty": "Anwendung",
           "origin": "Eigene Praxisaufgabe"
         }
-      ]
+      ],
+      "learning": {
+        "introduction": "Ein Testergebnis muss unter bekannten Bedingungen wiederholbar sein. Definiere Umgebung, Softwarestand und Ausgangsdaten. Automatisierung lohnt sich besonders für häufige, stabil auswertbare Prüfungen; sie braucht ebenfalls Wartung und verständliche Erwartungen.",
+        "terms": [
+          {
+            "term": "Synthetische Testdaten",
+            "definition": "Für Tests erzeugte Daten mit bekannten Eigenschaften und kontrollierten Sonderfällen."
+          },
+          {
+            "term": "Regressionstest",
+            "definition": "Prüft, ob vorhandenes Verhalten nach Änderungen weiterhin funktioniert."
+          },
+          {
+            "term": "Testpyramide",
+            "definition": "Orientierung für viele schnelle, begrenzte Tests und weniger aufwendige Tests umfassender Abläufe."
+          },
+          {
+            "term": "Reproduzierbarkeit",
+            "definition": "Ein Ablauf kann mit definierten Voraussetzungen erneut nachvollziehbar geprüft werden."
+          }
+        ],
+        "example": {
+          "title": "Schritt für Schritt in der Praxis",
+          "steps": [
+            "Erzeuge eine bekannte Testbestellung und setze den Zustand vor jedem Lauf zurück.",
+            "Automatisiere Mengenregeln und einige kritische Buchungsabläufe mit klaren Erwartungen.",
+            "Ein zufälliger Fehler wird untersucht statt durch wahlloses Wiederholen verdeckt. Passe Daten und Umgebung gezielt an, wenn der Test sie voraussetzt."
+          ]
+        },
+        "selfCheck": {
+          "question": "Warum sind unbekannte Restdaten aus einem früheren Test problematisch?",
+          "answer": "Sie verändern die Voraussetzungen und können Ergebnisse zufällig bestehen oder scheitern lassen."
+        }
+      }
     },
     {
       "id": "4.5",
@@ -3297,7 +4350,40 @@
           "difficulty": "Anwendung",
           "origin": "Eigene Praxisaufgabe"
         }
-      ]
+      ],
+      "learning": {
+        "introduction": "Ein Fehlerbericht ermöglicht einer anderen Person, das Problem zu verstehen und nachzustellen. Unterscheide dabei die Auswirkung vom vereinbarten Bearbeitungszeitpunkt. Eine gemeinsame Bewertung hilft, begrenzte Kapazität nach Risiko und Bedarf einzusetzen.",
+        "terms": [
+          {
+            "term": "Soll und Ist",
+            "definition": "Erwartetes Verhalten und tatsächlich beobachtetes Ergebnis."
+          },
+          {
+            "term": "Schweregrad",
+            "definition": "Ausmaß der fachlichen oder technischen Folgen eines Fehlers."
+          },
+          {
+            "term": "Priorität",
+            "definition": "Vereinbarte Dringlichkeit und Reihenfolge der Bearbeitung."
+          },
+          {
+            "term": "Triage",
+            "definition": "Gemeinsames Klären, Bewerten und Zuordnen eingegangener Befunde."
+          }
+        ],
+        "example": {
+          "title": "Schritt für Schritt in der Praxis",
+          "steps": [
+            "Notiere beim fehlgeschlagenen Export Version, Voraussetzungen und genaue Schritte.",
+            "Beschreibe das erwartete Ergebnis und die tatsächliche Meldung mit bereinigten Belegen.",
+            "Bewertet anschließend Wirkung und Dringlichkeit. Ein schwerer Fehler in einem seltenen Ablauf und ein kleiner Fehler vor einer wichtigen Vorführung können unterschiedliche Prioritäten erhalten."
+          ]
+        },
+        "selfCheck": {
+          "question": "Sind Schweregrad und Priorität immer gleich?",
+          "answer": "Nein. Die Wirkung eines Fehlers und seine Bearbeitungsdringlichkeit sind verschiedene Bewertungen."
+        }
+      }
     },
     {
       "id": "4.6",
@@ -3388,7 +4474,36 @@
           "difficulty": "Anwendung",
           "origin": "Eigene Praxisaufgabe"
         }
-      ]
+      ],
+      "learning": {
+        "introduction": "Testergebnisse brauchen ihren Kontext. Eine hohe Erfolgsquote oder Abdeckung sagt noch nicht, welche Risiken tatsächlich untersucht wurden. Beschreibe geprüften Umfang, offene Punkte und Grenzen, bevor du eine Empfehlung zur Auslieferung gibst.",
+        "terms": [
+          {
+            "term": "Codeabdeckung",
+            "definition": "Anteil einer gewählten Codestruktur, der bei Tests ausgeführt wurde; sie bewertet nicht automatisch die Qualität der Erwartungen."
+          },
+          {
+            "term": "Testbericht",
+            "definition": "Verbindet Ergebnisse mit Umfang, Version, Umgebung und offenen Risiken."
+          },
+          {
+            "term": "Wirksamkeitsprüfung",
+            "definition": "Prüft später, ob eine umgesetzte Maßnahme die erwartete Verbesserung gebracht hat."
+          }
+        ],
+        "example": {
+          "title": "Schritt für Schritt in der Praxis",
+          "steps": [
+            "Ein Test führt viele Codezeilen aus, prüft aber keinen Zugriff auf fremde Daten. Hohe Abdeckung entkräftet dieses Risiko nicht.",
+            "Ergänze eine gezielte Prüfung und dokumentiere, was weiterhin ungeprüft ist.",
+            "Nach einem wiederkehrenden Fehler vereinbart ihr eine Maßnahme und prüft beim nächsten geeigneten Durchlauf, ob das Problem ausbleibt."
+          ]
+        },
+        "selfCheck": {
+          "question": "Warum ist „Alle ausgeführten Tests bestanden“ keine vollständige Freigabebegründung?",
+          "answer": "Wichtige Anforderungen oder Risiken könnten gar nicht in den ausgeführten Tests enthalten sein."
+        }
+      }
     },
     {
       "id": "5.1",
@@ -3479,7 +4594,40 @@
           "difficulty": "Anwendung",
           "origin": "Eigene Praxisaufgabe"
         }
-      ]
+      ],
+      "learning": {
+        "introduction": "Gute Dokumentation beginnt bei der Frage der lesenden Person. Eine neue Nutzerin braucht einen anderen Einstieg als ein erfahrener Entwickler beim Nachschlagen. Wähle Form, Sprache und Tiefe danach, welche Aufgabe die Dokumentation ermöglichen soll.",
+        "terms": [
+          {
+            "term": "Tutorial",
+            "definition": "Geführter Einstieg für einen ersten Lernerfolg."
+          },
+          {
+            "term": "Anleitung",
+            "definition": "Unterstützt eine konkrete praktische Aufgabe."
+          },
+          {
+            "term": "Referenz",
+            "definition": "Geordnete Beschreibung von Details zum Nachschlagen."
+          },
+          {
+            "term": "Erklärung",
+            "definition": "Vermittelt Gründe und Zusammenhänge, damit Entscheidungen verständlich werden."
+          }
+        ],
+        "example": {
+          "title": "Schritt für Schritt in der Praxis",
+          "steps": [
+            "Für den ersten API-Aufruf erstellst du ein Tutorial mit Voraussetzungen und kleinem Beispiel.",
+            "Die erlaubten Felder und Antwortcodes stehen in einer Referenz.",
+            "Eine zusätzliche Erklärung beschreibt, warum Konflikte getrennt von Eingabefehlern behandelt werden. Klare Verknüpfungen helfen beim Wechsel zwischen Lernen und Nachschlagen."
+          ]
+        },
+        "selfCheck": {
+          "question": "Welche Form hilft beim schnellen Nachschlagen eines erlaubten API-Feldes?",
+          "answer": "Eine strukturierte Referenz."
+        }
+      }
     },
     {
       "id": "5.2",
@@ -3570,7 +4718,36 @@
           "difficulty": "Anwendung",
           "origin": "Eigene Praxisaufgabe"
         }
-      ]
+      ],
+      "learning": {
+        "introduction": "Dokumentation muss mit der Software weiterentwickelt werden. Versionierung und Reviews machen Änderungen nachvollziehbar. Ein Architekturentscheidungsprotokoll bewahrt zusätzlich die Gründe, die später aus dem fertigen Code allein oft nicht mehr ersichtlich sind.",
+        "terms": [
+          {
+            "term": "Docs-as-Code",
+            "definition": "Dokumentation mit Versionierung, Änderungsprüfung und geeigneten automatisierten Kontrollen pflegen."
+          },
+          {
+            "term": "Review",
+            "definition": "Gezielte Prüfung einer Änderung durch passende Beteiligte."
+          },
+          {
+            "term": "ADR",
+            "definition": "Architecture Decision Record mit Kontext, Entscheidung, Alternativen und Konsequenzen."
+          }
+        ],
+        "example": {
+          "title": "Schritt für Schritt in der Praxis",
+          "steps": [
+            "Ein neuer API-Parameter wird zusammen mit Referenz und Beispiel im selben Änderungsvorgang bearbeitet.",
+            "Ein Review prüft sowohl technische Richtigkeit als auch verständliche Nutzung.",
+            "Ein ADR erklärt eine wesentliche Architekturwahl und nennt den Anlass für eine spätere Neubewertung. Ein automatischer Linktest kann diese fachliche Begründung nicht ersetzen."
+          ]
+        },
+        "selfCheck": {
+          "question": "Warum hilft ein ADR auch dann, wenn der aktuelle Aufbau bereits dokumentiert ist?",
+          "answer": "Er erklärt zusätzlich, warum dieser Aufbau gewählt wurde und welche Abwägungen dahinterstehen."
+        }
+      }
     },
     {
       "id": "5.3",
@@ -3661,7 +4838,36 @@
           "difficulty": "Anwendung",
           "origin": "Eigene Praxisaufgabe"
         }
-      ]
+      ],
+      "learning": {
+        "introduction": "Dokumentation liefert zusätzlichen Nutzen, wenn sie Absicht, Verträge und unerwartete Randbedingungen erklärt. Für Schnittstellen müssen Daten und Fehlerverhalten klar sein. Bei Prozessen brauchen Beteiligte vor allem verständliche Zuständigkeiten und Übergaben.",
+        "terms": [
+          {
+            "term": "Codekommentar",
+            "definition": "Ergänzt nicht offensichtliche Gründe oder Bedingungen; er muss zum aktuellen Verhalten passen."
+          },
+          {
+            "term": "API-Beschreibung",
+            "definition": "Vertrag zu Eingaben, Ausgaben, Berechtigungen und Fehlerfällen."
+          },
+          {
+            "term": "Prozessdokumentation",
+            "definition": "Erklärt Aufgabenfolge, Rollen, Entscheidungen und Übergaben."
+          }
+        ],
+        "example": {
+          "title": "Schritt für Schritt in der Praxis",
+          "steps": [
+            "Ein Kommentar begründet das fachlich erforderliche Rundungsverfahren, statt die sichtbare Rundungsanweisung zu wiederholen.",
+            "Die API-Referenz nennt Zahlenformat und Verhalten bei ungültigen Beträgen.",
+            "Der Freigabeprozess zeigt, wer eine Abweichung bearbeitet und was bei Ablehnung folgt. Prüfe alle drei Beschreibungen am realen Ablauf."
+          ]
+        },
+        "selfCheck": {
+          "question": "Welchen Nutzen hat ein Kommentar, der nur den unmittelbar sichtbaren Code umformuliert?",
+          "answer": "Meist wenig. Gründe und überraschende Randbedingungen helfen stärker beim Verständnis."
+        }
+      }
     },
     {
       "id": "5.4",
@@ -3752,7 +4958,40 @@
           "difficulty": "Anwendung",
           "origin": "Eigene Praxisaufgabe"
         }
-      ]
+      ],
+      "learning": {
+        "introduction": "Eine Anwenderanleitung führt vom konkreten Ziel zu einem erkennbaren Ergebnis. Beschreibe notwendige Voraussetzungen und kurze Handlungen mit den tatsächlich sichtbaren Bezeichnungen. Erkläre auch häufige Hindernisse und den passenden nächsten Schritt.",
+        "terms": [
+          {
+            "term": "Voraussetzung",
+            "definition": "Benötigter Zustand oder Zugang vor Beginn der Aufgabe."
+          },
+          {
+            "term": "Handlungsschritt",
+            "definition": "Eindeutige auszuführende Aktion, etwa einen Termin wählen."
+          },
+          {
+            "term": "Erwartetes Ergebnis",
+            "definition": "Sichtbare Rückmeldung, an der die Person den Erfolg erkennt."
+          },
+          {
+            "term": "Versionsbezug",
+            "definition": "Angabe, für welchen Anwendungsstand die Anleitung gilt."
+          }
+        ],
+        "example": {
+          "title": "Schritt für Schritt in der Praxis",
+          "steps": [
+            "Beginne „Termin verschieben“ mit Voraussetzung und Ziel: Ein vorhandener Termin darf bearbeitet werden.",
+            "Schreibe „Wähle den Termin und tippe auf Verschieben“ und erkläre die anschließende Bestätigung.",
+            "Bei belegter Uhrzeit zeigst du den Weg zur freien Alternative. Ein Screenshot dient der Orientierung und enthält nur benötigte, bereinigte Informationen."
+          ]
+        },
+        "selfCheck": {
+          "question": "Warum ist eine Anleitung ohne beschriebenes Ergebnis unvollständig?",
+          "answer": "Die lesende Person kann nicht zuverlässig erkennen, ob die Aufgabe erfolgreich beendet wurde."
+        }
+      }
     },
     {
       "id": "5.5",
@@ -3843,7 +5082,36 @@
           "difficulty": "Anwendung",
           "origin": "Eigene Praxisaufgabe"
         }
-      ]
+      ],
+      "learning": {
+        "introduction": "Schulungsunterlagen sollen eine Handlung ermöglichen, nicht nur Funktionen aufzählen. Eine Übung mit Rückmeldung prüft das Verständnis. Eine Wissenssammlung unterstützt danach den Alltag, wenn Einträge auffindbar, aktuell und verantwortlich betreut sind.",
+        "terms": [
+          {
+            "term": "Lernziel",
+            "definition": "Überprüfbare Fähigkeit nach einer Lernphase."
+          },
+          {
+            "term": "Multiplikator",
+            "definition": "Person, die Wissen an weitere Nutzende vermittelt und dafür auch didaktische Hinweise benötigt."
+          },
+          {
+            "term": "Wissenssammlung",
+            "definition": "Geordnete, auffindbare und gepflegte Sammlung praktischer Informationen."
+          }
+        ],
+        "example": {
+          "title": "Schritt für Schritt in der Praxis",
+          "steps": [
+            "Neue Mitarbeitende legen einen Testvorgang an und bearbeiten einen typischen Fehler.",
+            "Unterlagen für Multiplikatoren enthalten zusätzlich erwartete Schwierigkeiten und Hinweise für Rückmeldungen.",
+            "Ein häufiger Fehler wird als Wissenseintrag dokumentiert. Benenne Verantwortliche und prüfe ihn bei Änderungen des betroffenen Ablaufs erneut."
+          ]
+        },
+        "selfCheck": {
+          "question": "Was brauchen Multiplikatoren zusätzlich zu einer normalen Nutzeranleitung?",
+          "answer": "Hinweise zum Erklären, Begleiten von Übungen und Umgang mit typischen Lernschwierigkeiten."
+        }
+      }
     },
     {
       "id": "5.6",
@@ -3934,7 +5202,36 @@
           "difficulty": "Anwendung",
           "origin": "Eigene Praxisaufgabe"
         }
-      ]
+      ],
+      "learning": {
+        "introduction": "Vor der Veröffentlichung muss eine Anleitung an der tatsächlichen Aufgabe geprüft werden. Fachlich richtige Sätze können für neue Nutzende trotzdem unverständlich sein. Versionsbezug und geeignete Bereitstellung sorgen dafür, dass die passende Anleitung auch gefunden wird.",
+        "terms": [
+          {
+            "term": "Fachreview",
+            "definition": "Prüft sachliche Richtigkeit und Vollständigkeit."
+          },
+          {
+            "term": "Anwendungstest einer Anleitung",
+            "definition": "Eine passende Person führt die Aufgabe nur anhand der Beschreibung aus."
+          },
+          {
+            "term": "Automatisierte Dokumentationsprüfung",
+            "definition": "Prüft etwa Links, den Dokumentationsbau oder ausführbare Beispiele."
+          }
+        ],
+        "example": {
+          "title": "Schritt für Schritt in der Praxis",
+          "steps": [
+            "Eine neue Kollegin folgt der Anleitung und markiert unbekannte Begriffe und fehlende Voraussetzungen.",
+            "Korrigiere diese Stellen und überprüfe die relevanten Schritte erneut.",
+            "Veröffentliche die passende Dokumentationsversion zusammen mit der Software. Linktests ergänzen die Prüfung, beweisen aber keine verständliche Aufgabenführung."
+          ]
+        },
+        "selfCheck": {
+          "question": "Welche Prüfung zeigt besonders direkt, ob eine Anleitung im Alltag hilft?",
+          "answer": "Eine Person aus der Zielgruppe bearbeitet die Aufgabe tatsächlich mit dieser Anleitung."
+        }
+      }
     },
     {
       "id": "6.1",
@@ -4024,7 +5321,36 @@
           "origin": "Eigene Praxisaufgabe"
         }
       ],
-      "references": []
+      "references": [],
+      "learning": {
+        "introduction": "Eine Abnahme braucht vorher vereinbarte, beobachtbare Kriterien und klare Zuständigkeiten. Testnachweise müssen sich auf die tatsächlich gelieferte Fassung beziehen. So wird aus einer allgemeinen Zufriedenheitsfrage eine nachvollziehbare Prüfung des vereinbarten Umfangs.",
+        "terms": [
+          {
+            "term": "Abnahmekriterium",
+            "definition": "Überprüfbare Bedingung zur Beurteilung der vereinbarten Leistung."
+          },
+          {
+            "term": "Testnachweis",
+            "definition": "Dokumentiert Voraussetzungen, Durchführung, Ergebnis und geprüfte Fassung."
+          },
+          {
+            "term": "Prüfverantwortung",
+            "definition": "Festlegung, wer prüft, Befunde bewertet und die erforderliche Entscheidung trifft."
+          }
+        ],
+        "example": {
+          "title": "Schritt für Schritt in der Praxis",
+          "steps": [
+            "Vereinbare für eine Umbuchung Erfolgspfad und Konfliktfall mit erwarteter Rückmeldung.",
+            "Prüfe die identifizierte Release-Version in der vereinbarten Umgebung.",
+            "Lege vor dem Termin fest, wer das Ergebnis bewertet und wie offene Punkte behandelt werden. Ein Test einer älteren Fassung ist kein eindeutiger Nachweis für das neue Release."
+          ]
+        },
+        "selfCheck": {
+          "question": "Was verbindet einen Prüfbericht mit genau der ausgelieferten Software?",
+          "answer": "Eine eindeutige Versions- oder Artefaktkennung zusammen mit dem dokumentierten Testkontext."
+        }
+      }
     },
     {
       "id": "6.2",
@@ -4119,7 +5445,36 @@
           "title": "BGB § 640 · Abnahme",
           "url": "https://www.gesetze-im-internet.de/bgb/__640.html"
         }
-      ]
+      ],
+      "learning": {
+        "introduction": "Befunde und Entscheidungen müssen nachvollziehbar festgehalten werden. Beschreibe die Abweichung von der vereinbarten Leistung und ihre Auswirkung. Bei vertraglichen Abnahmefragen ist der konkrete Vertragsrahmen maßgeblich; technische Prüfung und rechtliche Entscheidung werden darauf abgestimmt.",
+        "terms": [
+          {
+            "term": "Mangel",
+            "definition": "Abweichung von der geschuldeten Leistung; die Einordnung hängt vom konkreten Vertragsinhalt ab."
+          },
+          {
+            "term": "Abnahmeprotokoll",
+            "definition": "Hält geprüften Umfang, Ergebnisse, offene Punkte und Entscheidung fest."
+          },
+          {
+            "term": "Nachprüfung",
+            "definition": "Prüft nach einer Korrektur die vereinbarte Wirkung und betroffene Zusammenhänge."
+          }
+        ],
+        "example": {
+          "title": "Schritt für Schritt in der Praxis",
+          "steps": [
+            "Ein vereinbarter Export fehlt. Dokumentiere erwartetes Verhalten, Beobachtung und fachliche Auswirkung.",
+            "Im Werkvertragsrahmen wird die Abnahme anhand der einschlägigen Regeln bewertet; § 640 BGB unterscheidet insbesondere die Bedeutung unwesentlicher Mängel.",
+            "Für vereinbarte Nachbesserungen benennt das Protokoll Verantwortliche, Termin und Nachweis. „Wird später gemacht“ ist kein überprüfbarer Arbeitsauftrag."
+          ]
+        },
+        "selfCheck": {
+          "question": "Was braucht ein Nachbesserungspunkt, damit er weiterverfolgt werden kann?",
+          "answer": "Konkreten Inhalt, Verantwortlichkeit, Termin und eine vereinbarte Nachprüfung."
+        }
+      }
     },
     {
       "id": "6.3",
@@ -4209,7 +5564,36 @@
           "origin": "Eigene Praxisaufgabe"
         }
       ],
-      "references": []
+      "references": [],
+      "learning": {
+        "introduction": "Die Übergabe an den Betrieb umfasst mehr als Programmdateien. Die empfangenden Rollen müssen die Anwendung starten, überwachen und bei Problemen unterstützen können. Eine abgestimmte Checkliste verbindet technische Artefakte mit Betriebswissen und Zuständigkeiten.",
+        "terms": [
+          {
+            "term": "Release-Paket",
+            "definition": "Identifizierbare Artefakte mit passenden Installations-, Änderungs- und Betriebsinformationen."
+          },
+          {
+            "term": "Runbook",
+            "definition": "Praktische Anleitung für wiederkehrende Betriebs- und Störungsaufgaben."
+          },
+          {
+            "term": "Support-Transition",
+            "definition": "Geplanter Übergang von Projektwissen und Zuständigkeit in den laufenden Support."
+          }
+        ],
+        "example": {
+          "title": "Schritt für Schritt in der Praxis",
+          "steps": [
+            "Prüfe mit dem Betrieb Artefakte, Konfiguration, Überwachung und Wiederherstellung.",
+            "Übergib produktive Zugangsdaten über einen geschützten, berechtigten Weg und prüfe den notwendigen Zugriff.",
+            "Besprecht offene Punkte, Kontakte und Eskalation. Die empfangende Person führt einen wichtigen Betriebsablauf selbst aus."
+          ]
+        },
+        "selfCheck": {
+          "question": "Warum reicht eine E-Mail mit allen Passwörtern als Übergabe nicht aus?",
+          "answer": "Sie ist kein angemessen geschützter Übergabeweg und vermittelt weder klare Rechte noch benötigte Betriebsabläufe."
+        }
+      }
     },
     {
       "id": "6.4",
@@ -4299,7 +5683,40 @@
           "origin": "Eigene Praxisaufgabe"
         }
       ],
-      "references": []
+      "references": [],
+      "learning": {
+        "introduction": "Eine Einführung verändert Arbeitsabläufe und benötigt technische sowie organisatorische Vorbereitung. Wähle eine Roll-out-Strategie nach Risiko, Vergleichsmöglichkeiten und Unterstützungsbedarf. Informierte Nutzende und erreichbarer Support helfen beim kontrollierten Übergang.",
+        "terms": [
+          {
+            "term": "Pilot",
+            "definition": "Einführung bei einer begrenzten Gruppe mit vereinbarten Erfolgskriterien."
+          },
+          {
+            "term": "Big Bang",
+            "definition": "Umstellung des vorgesehenen Umfangs zu einem gemeinsamen Zeitpunkt."
+          },
+          {
+            "term": "Stufenweiser Roll-out",
+            "definition": "Einführung in aufeinanderfolgenden Teilen, etwa je Standort."
+          },
+          {
+            "term": "Parallelbetrieb",
+            "definition": "Zeitweilige Nutzung von Alt- und Neusystem mit abgestimmtem Umgang mit Daten und Arbeit."
+          }
+        ],
+        "example": {
+          "title": "Schritt für Schritt in der Praxis",
+          "steps": [
+            "Fünf Standorte sollen ein Portal erhalten. Beginne mit einem passenden Pilotstandort und klaren Prüfkriterien.",
+            "Werte fachliche Ergebnisse und Supportbedarf aus, bevor weitere Standorte folgen.",
+            "Im Parallelbetrieb bestimmt ihr, welches System führend ist und wie Änderungen abgeglichen werden. Zwei Systeme schaffen sonst widersprüchliche Arbeitsstände."
+          ]
+        },
+        "selfCheck": {
+          "question": "Was macht einen Pilot aussagekräftiger als einen bloßen frühen Start?",
+          "answer": "Eine geeignete Zielgruppe, definierter Umfang, Erfolgskriterien und die Auswertung vor der nächsten Stufe."
+        }
+      }
     },
     {
       "id": "6.5",
@@ -4389,7 +5806,40 @@
           "origin": "Eigene Praxisaufgabe"
         }
       ],
-      "references": []
+      "references": [],
+      "learning": {
+        "introduction": "Der Start erfolgt anhand überprüfbarer Bereitschaft und nicht allein wegen eines Kalendertermins. Lege vorab Entscheidungskriterien, Beobachtung und Rückfall fest. Besonders bei Datenänderungen muss klar sein, welcher Zustand nach einem Abbruch noch konsistent hergestellt werden kann.",
+        "terms": [
+          {
+            "term": "Go/No-Go",
+            "definition": "Bewusste Startentscheidung anhand zuvor vereinbarter Kriterien."
+          },
+          {
+            "term": "Rückfallplan",
+            "definition": "Auslöser, Entscheidungsbefugnis und Schritte zur sicheren Rückkehr oder Stabilisierung."
+          },
+          {
+            "term": "Monitoring",
+            "definition": "Beobachtung relevanter technischer und fachlicher Signale."
+          },
+          {
+            "term": "Schwellenwert",
+            "definition": "Vereinbarte Grenze, ab der geprüft oder gehandelt werden muss."
+          }
+        ],
+        "example": {
+          "title": "Schritt für Schritt in der Praxis",
+          "steps": [
+            "Vor dem Start bestätigt ihr getestete Datenübernahme, erreichbaren Support und akzeptierte Restrisiken.",
+            "Nach dem Start beobachtet ihr fehlgeschlagene Buchungen und ihre fachlichen Folgen.",
+            "Bei Überschreiten der Grenze entscheidet die benannte Rolle über den Rückfall. Der Plan berücksichtigt bereits neu geschriebene Daten und prüft anschließend ihre Konsistenz."
+          ]
+        },
+        "selfCheck": {
+          "question": "Wann sollten Abbruchkriterien feststehen?",
+          "answer": "Vor dem Start, damit unter Zeitdruck nach vereinbarten Regeln entschieden werden kann."
+        }
+      }
     },
     {
       "id": "6.6",
@@ -4484,7 +5934,36 @@
           "title": "Kirkpatrick · Evaluationsmodell",
           "url": "https://www.kirkpatrickpartners.com/the-kirkpatrick-model/"
         }
-      ]
+      ],
+      "learning": {
+        "introduction": "Eine Qualifizierung richtet sich nach Aufgaben und Vorkenntnissen. Definiere zuerst, was Teilnehmende anschließend selbst leisten sollen. Prüfe danach mehrere Wirkungen: Zufriedenheit, erworbenes Können, Anwendung im Alltag und betriebliche Ergebnisse.",
+        "terms": [
+          {
+            "term": "Schulungsbedarf",
+            "definition": "Lücke zwischen erforderlichen und vorhandenen Fähigkeiten für konkrete Aufgaben."
+          },
+          {
+            "term": "Lernziel",
+            "definition": "Beobachtbare Handlung, beispielsweise einen Konfliktfall korrekt bearbeiten."
+          },
+          {
+            "term": "Kirkpatrick",
+            "definition": "Vier Perspektiven: Reaktion, Lernen, Verhalten und Ergebnisse. Belege einer Perspektive ersetzen nicht die Prüfung der anderen."
+          }
+        ],
+        "example": {
+          "title": "Schritt für Schritt in der Praxis",
+          "steps": [
+            "Supportkräfte üben eine Umbuchung einschließlich Fehlermeldung und passendem Meldeweg.",
+            "Prüfe direkt, ob sie den Ablauf selbstständig bewältigen, und hole Rückmeldung zur Schulung ein.",
+            "Beobachte später die Anwendung am Arbeitsplatz und passende betriebliche Kennzahlen. Eine positive Bewertung allein beweist noch keinen erfolgreichen Wissenstransfer."
+          ]
+        },
+        "selfCheck": {
+          "question": "Welche Kirkpatrick-Perspektive untersucht die Anwendung am Arbeitsplatz?",
+          "answer": "Verhalten; ein Wissenscheck unmittelbar nach dem Training untersucht dagegen zunächst Lernen."
+        }
+      }
     },
     {
       "id": "7.1",
@@ -4574,7 +6053,36 @@
           "origin": "Eigene Praxisaufgabe"
         }
       ],
-      "references": []
+      "references": [],
+      "learning": {
+        "introduction": "Verbesserung beginnt mit einer klaren Frage und einem nachvollziehbaren Ausgangszustand. Miss unter vergleichbaren Bedingungen und prüfe gewünschte wie unerwünschte Wirkungen. PDCA organisiert diesen Lernprozess als wiederholbaren Versuch.",
+        "terms": [
+          {
+            "term": "Baseline",
+            "definition": "Dokumentierter Ausgangswert vor einer Veränderung."
+          },
+          {
+            "term": "Kennzahl",
+            "definition": "Definierte Messgröße mit Zeitraum, Datenbasis und Auswertungsregel."
+          },
+          {
+            "term": "PDCA",
+            "definition": "Plan: planen; Do: erproben; Check: Wirkung prüfen; Act: anpassen oder bewährtes Vorgehen übernehmen."
+          }
+        ],
+        "example": {
+          "title": "Schritt für Schritt in der Praxis",
+          "steps": [
+            "Miss die Wartezeit vor Reviews über einen festgelegten Zeitraum und mit einheitlicher Definition.",
+            "Erprobe feste Review-Zeiten und vergleiche anschließend unter ähnlichen Bedingungen.",
+            "Beobachte zugleich Nacharbeit. Kürzere Wartezeit ist kein ausreichender Erfolg, wenn die Qualität der Prüfung sinkt."
+          ]
+        },
+        "selfCheck": {
+          "question": "Was passiert bei PDCA in der Check-Phase?",
+          "answer": "Beobachtete Wirkung mit der Erwartung vergleichen und auch Nebenwirkungen prüfen."
+        }
+      }
     },
     {
       "id": "7.2",
@@ -4664,7 +6172,36 @@
           "origin": "Eigene Praxisaufgabe"
         }
       ],
-      "references": []
+      "references": [],
+      "learning": {
+        "introduction": "Ein sichtbares Problem ist zunächst ein Symptom. Eine Ursachenanalyse untersucht beeinflussbare Bedingungen und prüft Vermutungen mit Belegen. Lessons Learned werden nützlich, wenn daraus konkrete Maßnahmen mit Zuständigkeit und Wirkungskontrolle entstehen.",
+        "terms": [
+          {
+            "term": "5 Why",
+            "definition": "Wiederholtes Nachfragen nach Ursachen; fünf Fragen sind keine starre Pflichtzahl."
+          },
+          {
+            "term": "Ishikawa",
+            "definition": "Diagramm zum geordneten Sammeln möglicher Ursachen aus verschiedenen Bereichen."
+          },
+          {
+            "term": "Lessons Learned",
+            "definition": "Reflektierte Erfahrungen mit Konsequenzen für künftige Arbeit."
+          }
+        ],
+        "example": {
+          "title": "Schritt für Schritt in der Praxis",
+          "steps": [
+            "Ein Alarm wurde zu spät bearbeitet. Frage, ob Weiterleitung, Bereitschaftsregel oder Information fehlten.",
+            "Sammle mögliche Ursachen und prüfe sie anhand des tatsächlichen Ablaufs, statt die erste Vermutung als bewiesen anzusehen.",
+            "Vereinbare einen Test der Alarmweiterleitung bis Freitag mit verantwortlicher Rolle und Erfolgskriterium."
+          ]
+        },
+        "selfCheck": {
+          "question": "Warum ist „besser aufpassen“ meist eine schwache Maßnahme?",
+          "answer": "Die konkrete veränderbare Bedingung, Zuständigkeit und überprüfbare Wirkung bleiben unklar."
+        }
+      }
     },
     {
       "id": "7.3",
@@ -4754,7 +6291,36 @@
           "origin": "Eigene Praxisaufgabe"
         }
       ],
-      "references": []
+      "references": [],
+      "learning": {
+        "introduction": "Eine Verbesserung muss erwarteten Nutzen, Aufwand und mögliche Nebenwirkungen zusammenbringen. Eine einfache Priorisierung hilft bei der Auswahl, solange die Annahmen sichtbar bleiben. Nicht jede nützliche Idee gehört zum sofort notwendigen Mindestumfang.",
+        "terms": [
+          {
+            "term": "Nutzen-Aufwand-Matrix",
+            "definition": "Grobe Einordnung möglicher Maßnahmen anhand erwarteter Wirkung und benötigter Ressourcen."
+          },
+          {
+            "term": "Must",
+            "definition": "Für den definierten Umfang unverzichtbare Anforderung, die begründet werden muss."
+          },
+          {
+            "term": "Alternative",
+            "definition": "Andere Handlungsmöglichkeit zum gleichen Ziel, einschließlich eines bewussten Aufschubs."
+          }
+        ],
+        "example": {
+          "title": "Schritt für Schritt in der Praxis",
+          "steps": [
+            "Eine automatische Erinnerung verspricht weniger Wartezeit bei geringem Aufwand.",
+            "Prüfe zunächst, ob fehlende Erinnerung tatsächlich die Ursache ist oder ob Entscheidungskapazität fehlt.",
+            "Vergleiche eine klar geregelte Zuständigkeit als Alternative und formuliere die erwartete Wirkung. Kontrolliere sie nach der Umsetzung."
+          ]
+        },
+        "selfCheck": {
+          "question": "Was bedeutet ein Eintrag mit hohem Nutzen und niedrigem Aufwand?",
+          "answer": "Ein interessanter Kandidat; die Annahmen und Risiken müssen trotzdem geprüft werden."
+        }
+      }
     },
     {
       "id": "7.4",
@@ -4849,7 +6415,40 @@
           "title": "PostgreSQL · EXPLAIN",
           "url": "https://www.postgresql.org/docs/current/using-explain.html"
         }
-      ]
+      ],
+      "learning": {
+        "introduction": "Datenbankoptimierung beginnt mit gemessenen Problemen und repräsentativen Abfragen. Änderungen an Indexen oder Datenstrukturen haben Nebenwirkungen. Vergleiche deshalb vor und nach einer Änderung nicht nur Laufzeit, sondern auch Pflegeaufwand und Korrektheit.",
+        "terms": [
+          {
+            "term": "Ausführungsplan",
+            "definition": "Beschreibt die vorgesehenen Schritte der Abfrageverarbeitung."
+          },
+          {
+            "term": "EXPLAIN ANALYZE",
+            "definition": "Führt die Anweisung tatsächlich aus und ergänzt gemessene Ausführungsdaten; daher nur bewusst in geeigneter Umgebung verwenden."
+          },
+          {
+            "term": "Index",
+            "definition": "Zusätzliche Zugriffsstruktur, die bestimmte Suchvorgänge beschleunigen kann, aber Speicher und Schreibaufwand benötigt."
+          },
+          {
+            "term": "Denormalisierung",
+            "definition": "Bewusste zusätzliche oder zusammengefasste Datenhaltung, deren Konsistenz gepflegt werden muss."
+          }
+        ],
+        "example": {
+          "title": "Schritt für Schritt in der Praxis",
+          "steps": [
+            "Erfasse eine tatsächlich langsame Bestandsabfrage mit realistischen Daten in einer Testumgebung.",
+            "Prüfe Plan und Laufzeit und untersuche einen passenden Index.",
+            "Wenn du eine vorberechnete Summe speicherst, definiere ihre Aktualisierung und prüfe Abweichungen. Schnellere Lesezugriffe allein rechtfertigen keine falschen Bestände."
+          ]
+        },
+        "selfCheck": {
+          "question": "Warum ist EXPLAIN ANALYZE bei einer schreibenden Anweisung besonders sorgfältig zu verwenden?",
+          "answer": "Die Anweisung wird tatsächlich ausgeführt und kann Daten verändern."
+        }
+      }
     },
     {
       "id": "7.5",
@@ -4944,7 +6543,36 @@
           "title": "DORA · Software Delivery Metrics",
           "url": "https://dora.dev/guides/dora-metrics/"
         }
-      ]
+      ],
+      "learning": {
+        "introduction": "Lieferfähigkeit hängt nicht nur von Programmierzeit ab. Übergaben und Wartezeiten können den größten Teil eines Ablaufs ausmachen. Kennzahlen helfen beim gemeinsamen Lernen, wenn Dienst, Zeitraum und Definitionen vergleichbar bleiben.",
+        "terms": [
+          {
+            "term": "Wertstrom",
+            "definition": "Betrachtung des Weges vom Bedarf bis zum nutzbaren Ergebnis einschließlich Wartezeiten und Übergaben."
+          },
+          {
+            "term": "Durchlaufzeit",
+            "definition": "Zeit zwischen vereinbartem Start- und Endpunkt eines Vorgangs."
+          },
+          {
+            "term": "DORA-Metriken",
+            "definition": "Kennzahlen zur Softwarelieferfähigkeit und Stabilität; sie benötigen Kontext und eignen sich nicht als pauschale persönliche Rangliste."
+          }
+        ],
+        "example": {
+          "title": "Schritt für Schritt in der Praxis",
+          "steps": [
+            "Die Umsetzung dauert zwei Tage, die Freigabe wartet aber acht Tage. Zeichne beides im Wertstrom ein.",
+            "Kläre Zuständigkeit, Kriterien und Reaktionszeit der Freigabe, statt nur die Entwicklung zu beschleunigen.",
+            "Vergleiche später denselben Dienst mit denselben Definitionen und prüfe auch Fehlerraten und Wiederherstellung."
+          ]
+        },
+        "selfCheck": {
+          "question": "Warum senkt schnelleres Programmieren eine lange Freigabewartezeit nicht automatisch?",
+          "answer": "Der Engpass liegt in einem anderen Schritt des gesamten Ablaufs."
+        }
+      }
     },
     {
       "id": "7.6",
@@ -5034,7 +6662,36 @@
           "origin": "Eigene Praxisaufgabe"
         }
       ],
-      "references": []
+      "references": [],
+      "learning": {
+        "introduction": "Erfahrungen bleiben nutzbar, wenn ihr Kontext und die daraus abgeleiteten Handlungen dokumentiert werden. Eine frühere Entscheidung kann unter damaligen Bedingungen sinnvoll gewesen sein. Neue Anforderungen oder veränderte Annahmen sind ein Anlass zur erneuten Prüfung.",
+        "terms": [
+          {
+            "term": "ADR",
+            "definition": "Entscheidungsprotokoll mit Kontext, Begründung und Konsequenzen."
+          },
+          {
+            "term": "Maßnahmenverfolgung",
+            "definition": "Zuständigkeit, Termin, Status und Wirkung einer vereinbarten Handlung nachhalten."
+          },
+          {
+            "term": "Prüfanlass",
+            "definition": "Ereignis oder Erkenntnis, die eine erneute Bewertung sinnvoll macht."
+          }
+        ],
+        "example": {
+          "title": "Schritt für Schritt in der Praxis",
+          "steps": [
+            "Dokumentiere nach einem Roll-out, warum die gewählte Strategie funktionierte und welche Grenzen sichtbar wurden.",
+            "Leite eine konkrete Verbesserung ab und benenne, wer ihre Wirkung wann überprüft.",
+            "Wenn ein neuer Standort andere Netzbedingungen hat, prüfe die Architekturentscheidung erneut. Ein altes Protokoll erklärt die Vergangenheit, garantiert aber keine heutige Eignung."
+          ]
+        },
+        "selfCheck": {
+          "question": "Wann wird eine gesammelte Erfahrung zu einer tatsächlichen Verbesserung?",
+          "answer": "Wenn eine passende Handlung umgesetzt und ihre Wirkung überprüft wird."
+        }
+      }
     },
     {
       "id": "8.1",
@@ -5133,7 +6790,40 @@
           "title": "EU-Kommission · Rechtsgrundlagen",
           "url": "https://commission.europa.eu/law/law-topic/data-protection/information-business-and-organisations/legal-grounds-processing-data_en"
         }
-      ]
+      ],
+      "learning": {
+        "introduction": "Datenschutz beginnt beim Zweck einer Verarbeitung. Kläre, welche Informationen dafür tatsächlich benötigt werden und welche Rechtsgrundlage passt. Eine Einwilligung ist eine mögliche Grundlage, aber kein allgemeiner Ersatz für die Prüfung des konkreten Vorgangs.",
+        "terms": [
+          {
+            "term": "Personenbezogene Daten",
+            "definition": "Informationen über eine identifizierte oder identifizierbare natürliche Person; auch eine zuordenbare Kundennummer kann dazugehören."
+          },
+          {
+            "term": "Zweckbindung",
+            "definition": "Daten für festgelegte, eindeutige und rechtmäßige Zwecke verarbeiten."
+          },
+          {
+            "term": "Datenminimierung",
+            "definition": "Daten auf das für den Zweck Erforderliche begrenzen."
+          },
+          {
+            "term": "Rechtsgrundlage",
+            "definition": "Rechtliche Erlaubnis für die Verarbeitung, etwa eine passende Grundlage nach Art. 6 DSGVO."
+          }
+        ],
+        "example": {
+          "title": "Schritt für Schritt in der Praxis",
+          "steps": [
+            "Ein Rückrufformular benötigt geeignete Kontaktdaten. Prüfe, ob ein zusätzliches Pflichtfeld wirklich erforderlich ist.",
+            "Beschreibe den Zweck und kläre die einschlägige Rechtsgrundlage mit der zuständigen Stelle.",
+            "Unterscheide die Bearbeitung der Anfrage von einer zusätzlichen Werbenutzung. Ein gemeinsames Formular macht die Zwecke nicht automatisch gleich."
+          ]
+        },
+        "selfCheck": {
+          "question": "Ist eine interne Kundennummer automatisch anonym?",
+          "answer": "Nein. Ist eine Person damit identifizierbar, kann sie personenbezogen sein."
+        }
+      }
     },
     {
       "id": "8.2",
@@ -5236,7 +6926,40 @@
           "title": "EDPB · Datenschutz-Folgenabschätzung",
           "url": "https://www.edpb.europa.eu/sme/be-compliant/be-compliant_en"
         }
-      ]
+      ],
+      "learning": {
+        "introduction": "Die Datenschutzrolle folgt der tatsächlichen Entscheidung über Zwecke und wesentliche Mittel. Plane außerdem Abläufe für Betroffenenrechte. Bei voraussichtlich hohem Risiko muss vor der Verarbeitung geprüft werden, ob eine Datenschutz-Folgenabschätzung erforderlich ist.",
+        "terms": [
+          {
+            "term": "Verantwortlicher",
+            "definition": "Bestimmt Zwecke und wesentliche Mittel einer Verarbeitung."
+          },
+          {
+            "term": "Auftragsverarbeiter",
+            "definition": "Verarbeitet personenbezogene Daten im Auftrag und nach Weisung des Verantwortlichen."
+          },
+          {
+            "term": "Betroffenenrechte",
+            "definition": "Anwendbare Rechte wie Auskunft und Berichtigung, die geeignete Bearbeitungsprozesse benötigen."
+          },
+          {
+            "term": "DSFA",
+            "definition": "Datenschutz-Folgenabschätzung: strukturierte Bewertung voraussichtlich hoher Risiken für Rechte und Freiheiten natürlicher Personen."
+          }
+        ],
+        "example": {
+          "title": "Schritt für Schritt in der Praxis",
+          "steps": [
+            "Ein Unternehmen bestimmt, wofür sein Kundenportal Daten verarbeitet. Ein weisungsgebundener Hostingdienst kann Auftragsverarbeiter sein.",
+            "Für eine Auskunftsanfrage wird die Identität bei Bedarf angemessen geprüft und die fristgerechte Bearbeitung organisiert.",
+            "Vor umfassendem Beschäftigtenprofiling werden Risiken und die mögliche DSFA-Pflicht geprüft. Die bloße Vertragsüberschrift entscheidet die Rollenfrage nicht."
+          ]
+        },
+        "selfCheck": {
+          "question": "Wann sollte ein hohes Datenschutzrisiko untersucht werden?",
+          "answer": "Vor Beginn der vorgesehenen Verarbeitung, damit Schutz und gegebenenfalls DSFA rechtzeitig geklärt werden."
+        }
+      }
     },
     {
       "id": "8.3",
@@ -5335,7 +7058,44 @@
           "title": "ISO · Informationssicherheitsmanagement",
           "url": "https://committee.iso.org/standard/27001"
         }
-      ]
+      ],
+      "learning": {
+        "introduction": "Schutzbedarf richtet sich nach möglichen Schäden im betrachteten Prozess. Untersuche unterschiedliche Schutzziele getrennt und leite passende Maßnahmen ab. Informationssicherheit bleibt eine laufende Managementaufgabe, weil sich Systeme, Bedrohungen und Anforderungen verändern.",
+        "terms": [
+          {
+            "term": "Vertraulichkeit",
+            "definition": "Informationen nur für Berechtigte zugänglich machen."
+          },
+          {
+            "term": "Integrität",
+            "definition": "Unberechtigte oder unbeabsichtigte Veränderungen verhindern beziehungsweise erkennen."
+          },
+          {
+            "term": "Verfügbarkeit",
+            "definition": "Informationen und Funktionen bei Bedarf nutzbar bereitstellen."
+          },
+          {
+            "term": "ISMS",
+            "definition": "Informationssicherheitsmanagementsystem: organisiert Verantwortung, Risiken, Maßnahmen und deren Prüfung."
+          },
+          {
+            "term": "ISO/IEC 27001 und IT-Grundschutz",
+            "definition": "Managementsystemanforderungen beziehungsweise strukturierte Methodik zur Informationssicherheit; ein Zertifikat bedeutet keine Fehlerfreiheit."
+          }
+        ],
+        "example": {
+          "title": "Schritt für Schritt in der Praxis",
+          "steps": [
+            "Bewerte beim Terminportal getrennt die Folgen offengelegter Kontaktdaten, veränderter Termine und eines Ausfalls.",
+            "Begründe den Schutzbedarf anhand fachlicher Schäden und priorisiere geeignete Maßnahmen.",
+            "Benenne Verantwortliche und prüfe regelmäßig, ob die Maßnahmen weiterhin wirksam und angemessen sind."
+          ]
+        },
+        "selfCheck": {
+          "question": "Welches Schutzziel betrifft eine unberechtigt veränderte Terminliste besonders?",
+          "answer": "Integrität, weil die Richtigkeit und Unverändertheit der Daten beeinträchtigt wird."
+        }
+      }
     },
     {
       "id": "8.4",
@@ -5425,7 +7185,40 @@
           "origin": "Eigene Praxisaufgabe"
         }
       ],
-      "references": []
+      "references": [],
+      "learning": {
+        "introduction": "Schutzmaßnahmen müssen zum Risiko passen und im tatsächlichen Betrieb funktionieren. Kombiniere technische Regeln mit klaren organisatorischen Abläufen. Eine dokumentierte Maßnahme ist erst dann belastbar, wenn auch ihre Umsetzung und Wirkung geprüft werden.",
+        "terms": [
+          {
+            "term": "Technische Maßnahme",
+            "definition": "Technische Schutzfunktion wie Zugriffskontrolle oder Verschlüsselung."
+          },
+          {
+            "term": "Organisatorische Maßnahme",
+            "definition": "Geregelter Ablauf mit Verantwortung, etwa Entzug von Rechten bei Austritt."
+          },
+          {
+            "term": "Least Privilege",
+            "definition": "Nur die zur Aufgabe benötigten Rechte vergeben."
+          },
+          {
+            "term": "Restore-Test",
+            "definition": "Wiederherstellung einer Sicherung mit Prüfung von Vollständigkeit, Konsistenz und Nutzbarkeit."
+          }
+        ],
+        "example": {
+          "title": "Schritt für Schritt in der Praxis",
+          "steps": [
+            "Eine neue Rolle erhält nur die benötigten Portalrechte; beim Rollenwechsel werden sie angepasst.",
+            "Sicherungen werden regelmäßig erstellt und geschützt abgelegt.",
+            "Spiele eine Sicherung isoliert ein und prüfe wichtige fachliche Abläufe. Eine vorhandene Datei beweist noch keine rechtzeitige funktionierende Wiederherstellung."
+          ]
+        },
+        "selfCheck": {
+          "question": "Warum ist eine Regel zum Entzug von Rechten organisatorischer Schutz?",
+          "answer": "Sie legt eine verantwortete Handlung bei einem Ereignis fest und ergänzt die technische Rechteverwaltung."
+        }
+      }
     },
     {
       "id": "8.5",
@@ -5520,7 +7313,40 @@
           "title": "Microsoft · STRIDE-Bedrohungen",
           "url": "https://learn.microsoft.com/en-us/azure/security/develop/threat-modeling-tool-threats"
         }
-      ]
+      ],
+      "learning": {
+        "introduction": "Ein Bedrohungsmodell untersucht, wo Daten fließen und welche Annahmen über Beteiligte gelten. Es hilft, mögliche Angriffe systematisch zu finden. Anschließend werden Risiken bewertet, behandelt und nach Umsetzung der Maßnahmen erneut geprüft.",
+        "terms": [
+          {
+            "term": "Vertrauensgrenze",
+            "definition": "Übergang, an dem andere Annahmen über Identität, Daten oder Kontrolle gelten."
+          },
+          {
+            "term": "STRIDE",
+            "definition": "Spoofing: Identität vortäuschen; Tampering: verändern; Repudiation: abstreiten; Information Disclosure: offenlegen; Denial of Service: Dienst verhindern; Elevation of Privilege: Rechte ausweiten."
+          },
+          {
+            "term": "Restrisiko",
+            "definition": "Nach einer Behandlung verbleibendes Risiko."
+          },
+          {
+            "term": "Risikobehandlung",
+            "definition": "Bewusstes Vermeiden, Reduzieren, Übertragen beziehungsweise Teilen oder Akzeptieren eines Risikos."
+          }
+        ],
+        "example": {
+          "title": "Schritt für Schritt in der Praxis",
+          "steps": [
+            "Beim Dateiimport markieren wir den Übergang von fremden Eingaben zum Server als Vertrauensgrenze.",
+            "Prüfe etwa manipulierte Daten und unerlaubte Massenimporte und ordne passende Kontrollen zu.",
+            "Nach Umsetzung werden Negativtests ausgeführt und verbleibende Risiken erneut bewertet. Eine ausgefüllte Matrix allein beseitigt keinen Angriffspfad."
+          ]
+        },
+        "selfCheck": {
+          "question": "Welche STRIDE-Kategorie passt zu einer unbefugten Datenänderung?",
+          "answer": "Tampering."
+        }
+      }
     },
     {
       "id": "8.6",
@@ -5610,7 +7436,40 @@
           "origin": "Eigene Praxisaufgabe"
         }
       ],
-      "references": []
+      "references": [],
+      "learning": {
+        "introduction": "Governance klärt, wie Entscheidungen und Verantwortung an Zielen ausgerichtet werden. Compliance betrifft die Einhaltung relevanter Vorgaben. Für eine Prüfung brauchst du eine nachvollziehbare Verbindung von Regel, tatsächlich ausgeführter Kontrolle und ihrem Ergebnis.",
+        "terms": [
+          {
+            "term": "IT-Governance",
+            "definition": "Steuerung und Verantwortungsordnung für IT-Entscheidungen."
+          },
+          {
+            "term": "IT-Compliance",
+            "definition": "Einhaltung einschlägiger Vorgaben mit geeigneten Nachweisen."
+          },
+          {
+            "term": "Audit",
+            "definition": "Systematische Prüfung eines abgegrenzten Umfangs anhand von Kriterien und Belegen."
+          },
+          {
+            "term": "Kontrollnachweis",
+            "definition": "Dokumentiertes Ergebnis einer tatsächlich ausgeführten Prüfung."
+          }
+        ],
+        "example": {
+          "title": "Schritt für Schritt in der Praxis",
+          "steps": [
+            "Eine Richtlinie verlangt regelmäßige Rechteprüfung und benennt die zuständige Rolle.",
+            "Das Team prüft reale Konten, dokumentiert Datum und Ergebnis und korrigiert Abweichungen.",
+            "Im Audit werden Regel und Belege zusammen beurteilt. Die Richtlinie allein beweist nicht, dass die Prüfung stattgefunden hat."
+          ]
+        },
+        "selfCheck": {
+          "question": "Was sollte auf eine Auditabweichung folgen?",
+          "answer": "Ursache und Korrektur klären, Zuständigkeit festlegen und die Wirkung nachprüfen."
+        }
+      }
     },
     {
       "id": "8.7",
@@ -5713,7 +7572,40 @@
           "title": "BGB § 640 · Abnahme",
           "url": "https://www.gesetze-im-internet.de/bgb/__640.html"
         }
-      ]
+      ],
+      "learning": {
+        "introduction": "Für den Vertragsinhalt ist entscheidend, welche Leistung tatsächlich geschuldet wird. Eine Tätigkeit und ein vereinbarter Erfolg sind unterschiedliche Schwerpunkte. Änderungen müssen mit ihren Folgen bewertet und von den zuständigen Beteiligten vereinbart werden.",
+        "terms": [
+          {
+            "term": "Werkvertrag",
+            "definition": "Im Mittelpunkt steht die Herstellung des versprochenen Erfolgs (§ 631 BGB)."
+          },
+          {
+            "term": "Dienstvertrag",
+            "definition": "Im Mittelpunkt stehen die vereinbarten Dienste (§ 611 BGB)."
+          },
+          {
+            "term": "Change Request",
+            "definition": "Anfrage zur Änderung des vereinbarten Umfangs, die Bewertung und Entscheidung benötigt."
+          },
+          {
+            "term": "Leistungsumfang",
+            "definition": "Vereinbarte Leistungen und Grenzen, an denen Ergebnisse beurteilt werden."
+          }
+        ],
+        "example": {
+          "title": "Schritt für Schritt in der Praxis",
+          "steps": [
+            "Vergleiche ein genau beschriebenes Erweiterungsergebnis mit einem vereinbarten Unterstützungskontingent.",
+            "Ein zusätzlicher Export verändert den Umfang. Beschreibe Nutzen sowie Folgen für Aufwand, Termin und Risiken.",
+            "Erst die zuständige Freigabe macht die bewertete Anfrage zum vereinbarten Änderungsauftrag. Die Verwendung einer agilen Methode allein bestimmt keinen Vertragstyp."
+          ]
+        },
+        "selfCheck": {
+          "question": "Ist eine Aufwandsschätzung bereits die Freigabe eines Change Requests?",
+          "answer": "Nein. Bewertung und zuständige Entscheidung sind getrennte Schritte."
+        }
+      }
     },
     {
       "id": "8.8",
@@ -5808,7 +7700,40 @@
           "title": "BSI · NIS-2-Betroffenheitsprüfung",
           "url": "https://www.bsi.bund.de/SharedDocs/Downloads/DE/BSI/NIS-2/nis-2-betroffenheit-entscheidungsbaum.pdf?__blob=publicationFile&v=11"
         }
-      ]
+      ],
+      "learning": {
+        "introduction": "Software hängt von Bibliotheken, Diensten und Lieferanten ab. Ein aktueller Überblick ermöglicht die Zuordnung neuer Schwachstellen und Anforderungen. Prüfe tatsächliche Betroffenheit und aktuelle amtliche Vorgaben, bevor du Maßnahmen ableitest.",
+        "terms": [
+          {
+            "term": "Abhängigkeit",
+            "definition": "Externe Komponente oder Leistung, die die eigene Anwendung benötigt."
+          },
+          {
+            "term": "Komponentenverzeichnis",
+            "definition": "Übersicht mit Version, Herkunft, Zuständigkeit und relevantem Lizenzbezug."
+          },
+          {
+            "term": "Betroffenheitsprüfung",
+            "definition": "Nachvollziehbare Untersuchung, ob eine konkrete Vorgabe oder Schwachstelle den betrachteten Fall erfasst."
+          },
+          {
+            "term": "Regressionstest",
+            "definition": "Prüft nach einer Änderung, ob erforderliches vorhandenes Verhalten weiter funktioniert."
+          }
+        ],
+        "example": {
+          "title": "Schritt für Schritt in der Praxis",
+          "steps": [
+            "Eine Schwachstellenmeldung nennt eine Bibliotheksversion. Ordne sie den tatsächlich eingesetzten Anwendungen zu.",
+            "Bewerte ein geeignetes Update, teste betroffene Funktionen und dokumentiere die Freigabe.",
+            "Bei neuen regulatorischen Anforderungen wie NIS-2 wird der aktuelle Anwendungsbereich mit zuständigen Fachstellen geprüft. Aus dem Namen einer Firma allein folgt keine verlässliche Einordnung."
+          ]
+        },
+        "selfCheck": {
+          "question": "Warum genügt ein Komponentenverzeichnis allein nicht zur Behebung einer Schwachstelle?",
+          "answer": "Es schafft Übersicht; Bewertung, geeignete Änderung, Tests und Freigabe müssen anschließend erfolgen."
+        }
+      }
     },
     {
       "id": "9.1",
@@ -5898,7 +7823,36 @@
           "origin": "Eigene Praxisaufgabe"
         }
       ],
-      "references": []
+      "references": [],
+      "learning": {
+        "introduction": "Ein Teilprojekt soll ein messbares Ergebnis zum Gesamtziel beitragen. Zerlege den Umfang in handhabbare Pakete und ordne Verantwortung zu. Eine Strukturübersicht erklärt den Inhalt; Termine und Abhängigkeiten benötigen zusätzlich eine Ablaufplanung.",
+        "terms": [
+          {
+            "term": "Teilprojektziel",
+            "definition": "Konkreter Ergebnisbeitrag mit Erfolgskriterium und Termin."
+          },
+          {
+            "term": "Projektstrukturplan",
+            "definition": "Gliedert den Projektumfang in Ergebnisse und Arbeitspakete; er ist kein Terminplan."
+          },
+          {
+            "term": "RACI",
+            "definition": "Responsible: bearbeitet; Accountable: abschließende Ergebnisverantwortung; Consulted: berät; Informed: wird informiert."
+          }
+        ],
+        "example": {
+          "title": "Schritt für Schritt in der Praxis",
+          "steps": [
+            "Plane ein geprüftes Schulungspaket als Teilprojektziel mit Zielgruppe und Abgabetermin.",
+            "Zerlege Unterlagen, Übungen und Prüfung in Arbeitspakete.",
+            "Ordne Bearbeitung und Ergebnisverantwortung zu und kläre Übergaben. Eine Liste von Namen ohne Entscheidungsbefugnis lässt die Verantwortung offen."
+          ]
+        },
+        "selfCheck": {
+          "question": "Welche RACI-Rolle trägt die abschließende Ergebnisverantwortung?",
+          "answer": "Accountable; Responsible bezeichnet die Bearbeitung."
+        }
+      }
     },
     {
       "id": "9.2",
@@ -5993,7 +7947,40 @@
           "title": "Scrum Guide · Offizieller Leitfaden",
           "url": "https://scrumguides.org/scrum-guide.html"
         }
-      ]
+      ],
+      "learning": {
+        "introduction": "Das Vorgehen muss zur Unsicherheit und zum Arbeitsfluss passen. Kleine überprüfbare Ergebnisse ermöglichen frühe Rückmeldung. Gemeinsame Qualitätskriterien klären, wann ein Ergebnis als fertig gelten darf, statt sich allein auf verbrauchte Zeit zu verlassen.",
+        "terms": [
+          {
+            "term": "Iterativ",
+            "definition": "In wiederholten Schritten arbeiten und aus Rückmeldung lernen."
+          },
+          {
+            "term": "Kanban",
+            "definition": "Macht Arbeitsfluss sichtbar und unterstützt unter anderem die Begrenzung gleichzeitig begonnener Arbeit."
+          },
+          {
+            "term": "Definition of Done",
+            "definition": "In Scrum die Qualitätsanforderungen, die ein Increment erfüllen muss."
+          },
+          {
+            "term": "Definition of Ready",
+            "definition": "Mögliche zusätzliche Teamvereinbarung zur Vorbereitung; kein vorgeschriebenes Scrum-Artefakt."
+          }
+        ],
+        "example": {
+          "title": "Schritt für Schritt in der Praxis",
+          "steps": [
+            "Die Bedienanforderungen sind unsicher. Liefere früh einen kleinen prüfbaren Ablauf und beobachte seine Nutzung.",
+            "Begrenze parallele Arbeit, damit begonnene Ergebnisse tatsächlich fertig werden.",
+            "Vereinbare erforderliche Tests und Dokumentation als Qualitätskriterien. Vorbereitungshilfen dürfen nicht mit dem Qualitätszustand des fertigen Ergebnisses verwechselt werden."
+          ]
+        },
+        "selfCheck": {
+          "question": "Was unterscheidet Done von einer möglichen Ready-Vereinbarung?",
+          "answer": "Done beschreibt die erforderliche Qualität des fertigen Increments; Ready unterstützt die Vorbereitung der Arbeit."
+        }
+      }
     },
     {
       "id": "9.3",
@@ -6083,7 +8070,36 @@
           "origin": "Eigene Praxisaufgabe"
         }
       ],
-      "references": []
+      "references": [],
+      "learning": {
+        "introduction": "Beteiligte brauchen je nach Aufgabe unterschiedliche Informationen und Mitwirkung. Eine Stakeholderanalyse untersucht Interessen, Einfluss und Betroffenheit. Daraus werden konkrete Kommunikationswege mit Zuständigkeit und Rückmeldung abgeleitet.",
+        "terms": [
+          {
+            "term": "Stakeholder",
+            "definition": "Person oder Gruppe, die das Vorhaben beeinflusst oder davon betroffen ist."
+          },
+          {
+            "term": "Kommunikationsplan",
+            "definition": "Legt fest, wer welche Information wann, wozu und über welchen Weg erhält."
+          },
+          {
+            "term": "Eskalationsweg",
+            "definition": "Vereinbarter Weg zu einer entscheidungsbefugten Stelle bei notwendigen Entscheidungen oder Problemen."
+          }
+        ],
+        "example": {
+          "title": "Schritt für Schritt in der Praxis",
+          "steps": [
+            "Die Leitung erhält eine kurze Entscheidungsübersicht mit Risiken und Optionen.",
+            "Der Betrieb erhält konkrete Umstellungsschritte; der Support benötigt bekannte Fehler und erreichbare Kontakte.",
+            "Plane Rückfragen und berücksichtige Vertraulichkeit. Eine Supportgruppe kann trotz geringer formaler Macht wichtiges Wissen für den Roll-out besitzen."
+          ]
+        },
+        "selfCheck": {
+          "question": "Was macht „Wir informieren alle regelmäßig“ als Plan unzureichend?",
+          "answer": "Zielgruppen, konkrete Inhalte, Verantwortlichkeit, Zeitpunkt und Rückmeldewege bleiben offen."
+        }
+      }
     },
     {
       "id": "9.4",
@@ -6173,7 +8189,40 @@
           "origin": "Eigene Praxisaufgabe"
         }
       ],
-      "references": []
+      "references": [],
+      "learning": {
+        "introduction": "Ein mögliches künftiges Problem braucht Vorsorge, ein eingetretenes Problem unmittelbare Bearbeitung. Beschreibe beides so, dass Entscheidungen möglich werden. Eskalation stellt die benötigte Entscheidung rechtzeitig auf der passenden Ebene bereit.",
+        "terms": [
+          {
+            "term": "Risiko",
+            "definition": "Unsicheres mögliches Ereignis mit Folgen für Ziele."
+          },
+          {
+            "term": "Issue",
+            "definition": "Bereits eingetretenes Problem oder zu bearbeitender Sachverhalt."
+          },
+          {
+            "term": "Risikoregister",
+            "definition": "Sammlung von Szenarien, Bewertung, Verantwortlichen, Maßnahmen und Status."
+          },
+          {
+            "term": "Eskalation",
+            "definition": "Gezielte Weitergabe an eine geeignete entscheidungsbefugte Stelle mit Sachverhalt und Optionen."
+          }
+        ],
+        "example": {
+          "title": "Schritt für Schritt in der Praxis",
+          "steps": [
+            "Eine externe Schnittstelle wird möglicherweise verspätet geliefert: dokumentiere Ursache, mögliches Ereignis und Terminwirkung.",
+            "Prüfe Alternativen wie einen begrenzten Übergang und benenne die verantwortliche Rolle.",
+            "Bei drohender Grenzüberschreitung eskalierst du mit Auswirkungen, Optionen und benötigter Entscheidung bis zu einem konkreten Zeitpunkt."
+          ]
+        },
+        "selfCheck": {
+          "question": "Ist ein bereits ausgefallener Testserver noch nur ein Risiko?",
+          "answer": "Nein. Der Ausfall ist eingetreten und wird als aktuelles Problem bearbeitet."
+        }
+      }
     },
     {
       "id": "9.5",
@@ -6268,7 +8317,40 @@
           "title": "PMI · Abhängigkeiten und kritischer Pfad",
           "url": "https://www.pmi.org/learning/library/planning-scheduling-managing-project-8510"
         }
-      ]
+      ],
+      "learning": {
+        "introduction": "Ein Terminplan muss notwendige Abhängigkeiten berücksichtigen. Parallele Arbeit wird nicht einfach addiert; ein gemeinsamer Nachfolger wartet auf alle erforderlichen Vorgänger. Im einfachen Modell bestimmt die längste notwendige Kette die frühestmögliche Gesamtdauer.",
+        "terms": [
+          {
+            "term": "Netzplan",
+            "definition": "Stellt Vorgänge mit Dauern und Abhängigkeiten dar."
+          },
+          {
+            "term": "Ende-Anfang-Beziehung",
+            "definition": "Ein Nachfolger kann erst nach Abschluss des notwendigen Vorgängers starten."
+          },
+          {
+            "term": "Kritischer Pfad",
+            "definition": "Im einfachen Modell ohne zusätzliche Zwangstermine die längste Abhängigkeitskette, die die früheste Projektdauer bestimmt."
+          },
+          {
+            "term": "Gesamtpuffer",
+            "definition": "Mögliche Verzögerung ohne Verschieben des Projektendes im betrachteten Terminmodell."
+          }
+        ],
+        "example": {
+          "title": "Schritt für Schritt in der Praxis",
+          "steps": [
+            "A dauert 1 Tag. Danach laufen B mit 4 Tagen und C mit 2 Tagen parallel. D benötigt beide und dauert 3 Tage.",
+            "A endet an Tag 1, B an Tag 5 und C an Tag 3. D startet frühestens an Tag 5 und endet an Tag 8.",
+            "A–B–D ist kritisch. C hat hier 2 Tage Gesamtpuffer; eine Verkürzung von C allein senkt die Gesamtdauer zunächst nicht."
+          ]
+        },
+        "selfCheck": {
+          "question": "Zwei erforderliche Vorgänger enden an Tag 4 und Tag 7. Wann startet ihr gemeinsamer Nachfolger frühestens?",
+          "answer": "An Tag 7, sofern keine weiteren Einschränkungen gelten."
+        }
+      }
     },
     {
       "id": "9.6",
@@ -6363,7 +8445,40 @@
           "title": "PMI · Drei-Punkt-Schätzung",
           "url": "https://www.pmi.org/learning/library/2019/04/07/15/24/leveraging-new-practice-standard-project-estimating-6222"
         }
-      ]
+      ],
+      "learning": {
+        "introduction": "Aufwand ist die benötigte Arbeitsmenge, Dauer ihre zeitliche Verteilung. Verfügbarkeit und Abhängigkeiten verbinden beides. Eine Schätzung soll Annahmen und Unsicherheit zeigen, damit sie bei neuen Erkenntnissen angepasst werden kann.",
+        "terms": [
+          {
+            "term": "Aufwand",
+            "definition": "Benötigte Arbeitsmenge, beispielsweise Personenstunden."
+          },
+          {
+            "term": "Kapazität",
+            "definition": "Tatsächlich verfügbare Arbeitsleistung mit passenden Fähigkeiten."
+          },
+          {
+            "term": "PERT-Schätzung",
+            "definition": "Gewichteter Schätzwert aus (optimistisch + 4 × wahrscheinlich + pessimistisch) / 6."
+          },
+          {
+            "term": "Dauer",
+            "definition": "Zeitspanne unter Berücksichtigung von Verfügbarkeit und Abhängigkeiten."
+          }
+        ],
+        "example": {
+          "title": "Schritt für Schritt in der Praxis",
+          "steps": [
+            "Für eine Aufgabe schätzt du 1, 4 und 7 Arbeitstage. PERT ergibt (1 + 16 + 7) / 6 = 4 Tage.",
+            "Die zuständige Person ist nur zur Hälfte verfügbar. Der Kalendertemin folgt deshalb nicht allein aus dem Schätzwert.",
+            "Dokumentiere Umfang und Annahmen und prüfe die Schätzung bei neuen Informationen. Eine zweite Person halbiert die Dauer nicht automatisch."
+          ]
+        },
+        "selfCheck": {
+          "question": "Welche Zusatzinformation brauchst du nach einer Aufwandsschätzung für einen Kalendertermin?",
+          "answer": "Unter anderem tatsächliche Verfügbarkeit, Abhängigkeiten und bereits gebundene Kapazität."
+        }
+      }
     },
     {
       "id": "9.7",
@@ -6458,7 +8573,44 @@
           "title": "PMI · Earned Value und Kennzahlen",
           "url": "https://www.pmi.org/learning/library/practical-calculation-schedule-variance-7028"
         }
-      ]
+      ],
+      "learning": {
+        "introduction": "Projektstatus muss erbrachte Leistung mit Plan und Kosten verbinden. Aus verbrauchtem Budget allein folgt kein Fertigstellungsgrad. Earned Value verwendet dafür budgetierte Leistungswerte zum gleichen Stichtag; Kennzahlen benötigen zusätzlich Ursachen und eine begründete Prognose.",
+        "terms": [
+          {
+            "term": "PV",
+            "definition": "Planned Value: zum Stichtag geplanter Leistungswert."
+          },
+          {
+            "term": "EV",
+            "definition": "Earned Value: budgetierter Wert der tatsächlich erbrachten Arbeit."
+          },
+          {
+            "term": "AC",
+            "definition": "Actual Cost: tatsächlich angefallene Kosten."
+          },
+          {
+            "term": "CPI",
+            "definition": "EV / AC, sofern AC größer als null ist: Verhältnis von Leistungswert zu Kosten."
+          },
+          {
+            "term": "SPI",
+            "definition": "EV / PV, sofern PV größer als null ist: Verhältnis von erreichtem zu geplantem Leistungswert."
+          }
+        ],
+        "example": {
+          "title": "Schritt für Schritt in der Praxis",
+          "steps": [
+            "Zum Stichtag gelten PV 10.000, EV 8.000 und AC 9.000 Euro.",
+            "CPI beträgt 8.000 / 9.000 ≈ 0,89; SPI beträgt 8.000 / 10.000 = 0,8. Beide zeigen hier eine ungünstige Abweichung.",
+            "Untersuche Ursachen und Restaufwand. SPI 0,8 bedeutet weder automatisch 20 Tage Verspätung noch 80 Prozent Gesamtfertigstellung."
+          ]
+        },
+        "selfCheck": {
+          "question": "Was sagt ein SPI unter 1 bei positivem PV aus?",
+          "answer": "Der erreichte Leistungswert liegt unter dem zum Stichtag geplanten Leistungswert."
+        }
+      }
     },
     {
       "id": "9.8",
@@ -6548,7 +8700,40 @@
           "origin": "Eigene Praxisaufgabe"
         }
       ],
-      "references": []
+      "references": [],
+      "learning": {
+        "introduction": "Ein koordinierter Roll-out verbindet Freigabe, Betrieb, Daten, Kommunikation und Unterstützung. Wissenstransfer muss die tatsächliche Arbeit ermöglichen. Prüfe daher neben Schulungsteilnahme auch sichere Ausführung und die Wirkung im Alltag.",
+        "terms": [
+          {
+            "term": "Roll-out-Koordination",
+            "definition": "Abstimmung der erforderlichen Aufgaben und Entscheidungen für die Einführung."
+          },
+          {
+            "term": "Wissenstransfer",
+            "definition": "Weitergabe mit dem Ziel, Wissen in der empfangenden Rolle anwenden zu können."
+          },
+          {
+            "term": "Sicherheitsunterweisung",
+            "definition": "Aufgabenbezogenes Lernen sicherer Handlungen und bekannter Meldewege."
+          },
+          {
+            "term": "Wirksamkeitskontrolle",
+            "definition": "Prüfung, ob Vorbereitung und Maßnahmen die beabsichtigte Wirkung erreichen."
+          }
+        ],
+        "example": {
+          "title": "Schritt für Schritt in der Praxis",
+          "steps": [
+            "Vor dem Start bestätigen Betrieb und Support ihre Bereitschaft und die Zielgruppe kennt die Änderungen.",
+            "Supportkräfte üben einen Berechtigungsfehler und den freigegebenen Meldeweg ohne Kundendaten in öffentlichen Kanälen.",
+            "Beobachte nach dem Start eine echte relevante Aufgabe und bearbeite offene Punkte mit Zuständigkeit. Eine unterschriebene Teilnehmerliste beweist noch keine sichere Anwendung."
+          ]
+        },
+        "selfCheck": {
+          "question": "Welche Beobachtung prüft Wissenstransfer direkter als eine Teilnehmerliste?",
+          "answer": "Eine Person führt die benötigte Aufgabe im Alltag korrekt und sicher aus."
+        }
+      }
     }
   ],
   "cards": [

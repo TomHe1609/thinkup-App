@@ -1,0 +1,11 @@
+{
+  "name": "skillyr-test-learning",
+  "private": true,
+  "scripts": {
+    "test": "node --test tests/content.test.cjs",
+    "test:browser": "node tests/learning-flow.cjs"
+  },
+  "devDependencies": {
+    "playwright": "1.62.1"
+  }
+}
