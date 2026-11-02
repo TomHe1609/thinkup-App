@@ -17,16 +17,24 @@ test('All application scripts parse and embedded content matches the public JSON
   assert.ok(match);
   assert.deepEqual(JSON.parse(match[1]),data);
 });
-test('Existing module, lesson and task IDs, quiz questions, answers and all 732 cards are unchanged',()=>{
-  const select=d=>({modules:d.modules,lessons:d.lessons.map(l=>({id:l.id,module:l.module,title:l.title,questions:l.questions,practice:l.practice})),cards:d.cards,courseCards:d.courseCards});
-  assert.deepEqual(select(data),select(baseline));
-  assert.equal(data.lessons.flatMap(l=>l.questions).length,211);
-  assert.equal(data.cards.length+data.courseCards.length,732);
+test('Revision preserves lesson/task/card identities and original course cards while replacing every quiz and practice task',()=>{
+  const identity=d=>d.lessons.map(l=>({id:l.id,module:l.module,title:l.title,ids:[...l.questions,...l.practice].map(q=>q.id).sort()}));
+  assert.deepEqual(identity(data),identity(baseline));
+  assert.deepEqual(data.modules.map(({questionCount,practiceCount,...m})=>m),baseline.modules.map(({questionCount,practiceCount,...m})=>m));
+  assert.deepEqual(data.courseCards,baseline.courseCards);
+  assert.deepEqual(data.cards.map(c=>c.id),baseline.cards.map(c=>c.id));
+  const questions=data.lessons.flatMap(l=>l.questions);
+  assert.equal(questions.length,278);assert.equal(new Set(questions.map(q=>q.id)).size,278);assert.equal(new Set(questions.map(q=>q.question)).size,278);
+  assert.equal(data.lessons.flatMap(l=>l.practice).length,0);
+  for(const l of data.lessons){const old=baseline.lessons.find(x=>x.id===l.id);assert.deepEqual(l.legacyPracticeIds,old.practice.map(q=>q.id));for(const q of l.questions){
+   assert.equal(q.type,'single_choice');assert.equal(q.module,l.module);assert.equal(q.lesson_id,l.id);assert.equal(q.contentRevision,2);
+   assert.equal(q.options.length,4);assert.equal(new Set(q.options).size,4);assert(q.options.every(o=>typeof o==='string'&&o.length));assert(Number.isInteger(q.correct_index)&&q.correct_index>=0&&q.correct_index<4);
+   assert(q.explanation.length>=80,q.id);assert.notEqual(q.question,[...old.questions,...old.practice].find(x=>x.id===q.id).question,q.id);
+  }}
+  for(const m of data.modules){assert.equal(m.practiceCount,0);assert.equal(m.questionCount,data.lessons.filter(l=>l.module===m.id).reduce((n,l)=>n+l.questions.length,0));}
   for(const file of ['data-m02.json','data-m01-m05.json']){
-    const original=require('node:child_process').execFileSync('git',['show',`33beb11:${file}`],{cwd:root});
-    const current=fs.readFileSync(path.join(root,file));
-    // Git's Windows line-ending conversion is not an application content change.
-    assert.equal(current.toString().replace(/\r\n/g,'\n'),original.toString().replace(/\r\n/g,'\n'));
+   const old=require('node:child_process').execFileSync('git',['show','33beb11:'+file],{cwd:root,encoding:'utf8'});
+   assert.equal(fs.readFileSync(path.join(root,file),'utf8').replace(/\r\n/g,'\n'),old.replace(/\r\n/g,'\n'));
   }
 });
 test('Every one of 67 lessons in M01–M09 has substantive explanations, defined terms, a worked example and self-check',()=>{
@@ -48,7 +56,7 @@ test('M02/2.9 explains optional cardinalities, keys, anomalies and all three nor
   const l=data.lessons.find(l=>l.id==='2.9');
   const text=JSON.stringify(l);
   for(const term of ['0..n','1:1','1:n','m:n','Kandidatenschlüssel','Fremdschlüssel','1NF','2NF','3NF','Änderungsanomalie','Einfügeanomalie','Löschanomalie','Superschlüssel','artikel_id → artikelname']) assert.ok(text.includes(term),term);
-  assert.equal(l.questions.length,13);
+  assert.equal(l.questions.length,14);
 });
 test('All guided lessons explain a scenario in ordered paragraphs and map every existing course question',()=>{
   const assigned=[];
@@ -73,9 +81,8 @@ test('Learning text is cached with the app and the previous progress storage is 
   assert.ok(html.includes("const LEGACY_STORE='skillyr_learn_m02_preview_v1'"));
   const sw=fs.readFileSync(path.join(root,'sw.js'),'utf8');
   assert.ok(sw.includes("const PREFIX='skillyr-m02-test::'"));
-  assert.ok(sw.includes('thinkup-glossary-examples-v20'));
+  assert.ok(sw.includes('thinkup-applied-quizzes-v21'));
   assert.ok(sw.includes("'./data-m01-m09.json'"));
-  assert.equal(crypto.createHash('sha256').update(JSON.stringify(data.lessons.map(l=>l.questions))).digest('hex'),crypto.createHash('sha256').update(JSON.stringify(baseline.lessons.map(l=>l.questions))).digest('hex'));
 });
 test('The basic design keeps every original style block, header structure and bottom navigation',()=>{
   const before=require('node:child_process').execFileSync('git',['show','3f6f266:index.html'],{cwd:root,encoding:'utf8',maxBuffer:5000000}).replace(/\r\n/g,'\n');

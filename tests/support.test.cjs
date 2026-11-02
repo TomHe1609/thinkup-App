@@ -1,7 +1,7 @@
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
 const D=require('../data-m01-m09.json'),content=require('../learning-support-data.js'),Core=require('../learning-support.js');
 const root=path.join(__dirname,'..');
-test('Every existing MC and free-text task has two authored stages without copying its full solution',()=>{
+test('Every revised quiz task has two authored stages without copying its full solution',()=>{
  const questions=D.lessons.flatMap(l=>[...l.questions,...l.practice]);assert.equal(questions.length,278);
  assert.deepEqual(Object.keys(content.hints).sort(),questions.map(q=>q.id).sort());
  for(const q of questions){const pair=content.hints[q.id];assert.equal(pair.length,2,q.id);assert.notEqual(pair[0],pair[1]);
@@ -35,10 +35,10 @@ test('Missing future examples never fall back to a lesson-wide story or a defini
  const l=D.lessons.find(l=>l.id==='2.9'),entries=Core.catalog(l,{...content,examples:{}});
  for(const entry of entries.slice(0,l.learning.terms.length)){assert.equal(typeof entry.definition,'string');assert.deepEqual(entry.examples,[])}
 });
-test('Example correction retains all quiz hints, common definitions and aliases from the published version',()=>{
+test('Revision retains glossary definitions and aliases while updating contextual hints',()=>{
  const previous=require('node:child_process').execFileSync('git',['show','4facbb1:learning-support-data.js'],{cwd:root,encoding:'utf8',maxBuffer:2000000}),scope={module:{exports:{}}};
  vm.runInNewContext(previous,scope);const old=JSON.parse(JSON.stringify(scope.module.exports));
- assert.deepEqual(content.hints,old.hints);assert.deepEqual(content.aliases,old.aliases);
+ assert.notDeepEqual(content.hints,old.hints);assert.deepEqual(content.aliases,old.aliases);
  const definitions=terms=>terms.map(({example,...term})=>term);assert.deepEqual(definitions(content.glossary),definitions(old.glossary));
 });
 test('Earned-value examples separate planned value, completed value and actual costs with correct ratios',()=>{
@@ -63,6 +63,6 @@ test('New scripts parse and all learning aids are available in the offline cache
  for(const name of ['glossary-examples.js','learning-support-data.js','learning-support.js'])new vm.Script(fs.readFileSync(path.join(root,name),'utf8'));
  const sw=fs.readFileSync(path.join(root,'sw.js'),'utf8'),html=fs.readFileSync(path.join(root,'index.html'),'utf8');
  for(const name of ['glossary-examples.js','learning-support-data.js','learning-support.js','learning-support.css'])assert(sw.includes("'./"+name+"'"));
- assert(html.includes('LearningSupport.init(DATA,LearningSupportData)'));assert(sw.includes('thinkup-glossary-examples-v20'));
+ assert(html.includes('LearningSupport.init(DATA,LearningSupportData)'));assert(sw.includes('thinkup-applied-quizzes-v21'));
  assert(!fs.readFileSync(path.join(root,'learning-support.js'),'utf8').includes('localStorage'));
 });

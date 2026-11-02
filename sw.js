@@ -1,5 +1,5 @@
 const PREFIX='skillyr-m02-test::';
-const CACHE=PREFIX+'thinkup-glossary-examples-v20';
+const CACHE=PREFIX+'thinkup-applied-quizzes-v21';
 const FILES=['./','./index.html','./appearance.css','./learning-support.css','./glossary-examples.js','./learning-support-data.js','./learning-support.js','./study-features.js','./data-m02.json','./data-m01-m05.json','./data-m01-m09.json','./manifest.webmanifest','./icon-192.png','./icon-512.png'];
 const OWN_URLS=new Set(FILES.map(path=>new URL(path,self.registration.scope).href));
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(FILES)).then(()=>self.skipWaiting())));

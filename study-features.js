@@ -23,13 +23,13 @@ const StudyCore=(()=>{
   if(record(value.reading))for(const [id,r]of Object.entries(value.reading))if(lessons.has(id)&&record(r)&&Number.isFinite(r.y)&&r.y>=0&&r.y<=1000000&&time(r.at))out.reading[id]={y:Math.round(r.y),at:r.at};
   if(record(value.lastRead)&&lessons.has(value.lastRead.id)&&time(value.lastRead.at))out.lastRead={id:value.lastRead.id,at:value.lastRead.at};
   const d=value.daily;
-  if(record(d)&&/^\d{4}-\d{2}-\d{2}$/.test(d.day)&&Array.isArray(d.plan)&&d.plan.length<=10&&Number.isInteger(d.index)&&d.index>=0&&d.index<=d.plan.length){
+  if(record(d)&&d.contentRevision===data.contentRevision&&/^\d{4}-\d{2}-\d{2}$/.test(d.day)&&Array.isArray(d.plan)&&d.plan.length<=10&&Number.isInteger(d.index)&&d.index>=0&&d.index<=d.plan.length){
    const valid=d.plan.every(p=>record(p)&&((p.kind==='card'&&cards.has(p.id))||(p.kind==='question'&&questions.has(p.id))||(p.kind==='learn'&&lessons.has(p.id))));
    if(valid&&new Set(d.plan.map(p=>p.kind+':'+p.id)).size===d.plan.length){
     const results={};
     if(record(d.results))for(const p of d.plan){const k=p.kind+':'+p.id,r=d.results[k];if(!record(r))continue;if(p.kind==='question'&&Number.isInteger(r.choice)&&r.choice>=0&&r.choice<questions.get(p.id).options.length)results[k]={choice:r.choice};else if(p.kind==='card'&&['again','unsure','known'].includes(r.rating))results[k]={rating:r.rating};else if(p.kind==='learn'&&r.read===true)results[k]={read:true};}
     const prefixComplete=d.plan.slice(0,d.index).every(p=>results[p.kind+':'+p.id]);
-    if(prefixComplete)out.daily={day:d.day,plan:d.plan.map(p=>({kind:p.kind,id:p.id})),index:d.index,results};
+    if(prefixComplete)out.daily={contentRevision:data.contentRevision,day:d.day,plan:d.plan.map(p=>({kind:p.kind,id:p.id})),index:d.index,results};
    }
   }
   if(Array.isArray(value.examHistory))out.examHistory=value.examHistory.filter(r=>record(r)&&time(r.at)&&Array.isArray(r.modules)&&r.modules.every(m=>Number.isInteger(m)&&m>=1&&m<=9)&&Number.isInteger(r.total)&&r.total>0&&r.total<=50&&Number.isInteger(r.correct)&&r.correct>=0&&r.correct<=r.total&&Number.isInteger(r.seconds)&&r.seconds>=0&&r.seconds<=86400).slice(-20).map(r=>({at:r.at,modules:[...new Set(r.modules)],total:r.total,correct:r.correct,seconds:r.seconds}));
@@ -53,17 +53,17 @@ const StudyCore=(()=>{
   return plan;
  }
  function chapter(question,lesson){
+  if(Number.isInteger(question.learningChapter)&&lesson.learning.tutorial.chapters[question.learningChapter])return question.learningChapter;
   const manual={'1.1':[1,3,2],'1.2':[0,1,2],'2.9':[2,5,6,1,1,2,2,4,2,1,3,5,1]};
   const position=lesson.questions.findIndex(q=>q.id===question.id);if(manual[lesson.id]?.[position]!==undefined)return manual[lesson.id][position];
   const tokens=words(question.question+' '+(question.options?.[question.correct_index]||question.model_answer||'')+' '+(question.explanation||'')).filter(w=>!stop.has(w));
   let best=0,score=-1;lesson.learning.tutorial.chapters.forEach((c,i)=>{const title=text(c.title),body=text(c.paragraphs.join(' '));const n=tokens.reduce((sum,w)=>sum+(title.includes(w)?5:0)+(body.includes(w)?1:0),0);if(n>score){score=n;best=i}});return best;
  }
  function mini(question,lesson,data){
-  const tokens=words(question.question+' '+(question.options?.[question.correct_index]||question.model_answer||'')+' '+(question.explanation||'')).filter(w=>!stop.has(w));
-  const cards=data.courseCards.filter(c=>c.lesson_id===lesson.id&&text(c.front)!==text(question.question));
-  const ranked=cards.map(c=>({c,score:tokens.reduce((n,w)=>n+(text(c.front+' '+c.answer).includes(w)?1:0),0)})).sort((a,b)=>b.score-a.score);
-  if(ranked[0]?.score>0)return {prompt:ranked[0].c.displayFront||ranked[0].c.front,answer:ranked[0].c.answer};
-  const p=lesson.practice[0];return p?{prompt:p.question,answer:p.model_answer}:{prompt:lesson.learning.selfCheck.question,answer:lesson.learning.selfCheck.answer};
+  const other=lesson.questions.filter(q=>q.id!==question.id);
+  const tokens=words(question.question+' '+question.explanation).filter(w=>!stop.has(w));
+  const ranked=other.map(q=>({q,score:tokens.reduce((n,w)=>n+(text(q.question+' '+q.explanation).includes(w)?1:0),0)})).sort((a,b)=>b.score-a.score);
+  const q=ranked[0]?.q;return q?{id:q.id,prompt:q.question,options:q.options,correct_index:q.correct_index,answer:q.explanation}:null;
  }
  function search(data,progress,query,{module='all',kind='all',favorites=false}={}){
   const terms=text(query).match(/[a-z0-9]+/g)||[],items=[];
@@ -72,10 +72,10 @@ const StudyCore=(()=>{
   return items.filter(i=>(module==='all'||i.module===Number(module))&&(kind==='all'||i.kind===kind)&&(!favorites||progress.favorites[i.id])&&terms.every(t=>text('M'+String(i.module).padStart(2,'0')+' '+i.title+' '+i.body).includes(t))).sort((a,b)=>Number(!!progress.favorites[b.id])-Number(!!progress.favorites[a.id])||a.module-b.module||(a.kind===b.kind?0:a.kind==='lesson'?-1:1)||a.title.localeCompare(b.title,'de'));
  }
  function validateExam(value,data){
-  if(!record(value)||!Array.isArray(value.ids)||!value.ids.length||value.ids.length>50||new Set(value.ids).size!==value.ids.length||!Array.isArray(value.answers)||value.answers.length!==value.ids.length||!time(value.started)||!(value.deadline===0||time(value.deadline)&&value.deadline>value.started)||!Number.isInteger(value.index)||value.index<0||value.index>=value.ids.length||typeof value.finished!=='boolean')return null;
+  if(!record(value)||value.contentRevision!==data.contentRevision||!Array.isArray(value.ids)||!value.ids.length||value.ids.length>50||new Set(value.ids).size!==value.ids.length||!Array.isArray(value.answers)||value.answers.length!==value.ids.length||!time(value.started)||!(value.deadline===0||time(value.deadline)&&value.deadline>value.started)||!Number.isInteger(value.index)||value.index<0||value.index>=value.ids.length||typeof value.finished!=='boolean')return null;
   const map=new Map(data.lessons.flatMap(l=>l.questions).map(q=>[q.id,q]));
   if(!value.ids.every((id,i)=>map.has(id)&&(value.answers[i]===null||Number.isInteger(value.answers[i])&&value.answers[i]>=0&&value.answers[i]<map.get(id).options.length)))return null;
-  return {ids:[...value.ids],answers:[...value.answers],started:value.started,deadline:value.deadline,index:value.index,finished:value.finished,ended:time(value.ended)?value.ended:0,reason:value.reason==='time'?'time':'submitted'};
+  return {contentRevision:data.contentRevision,ids:[...value.ids],answers:[...value.answers],started:value.started,deadline:value.deadline,index:value.index,finished:value.finished,ended:time(value.ended)?value.ended:0,reason:value.reason==='time'?'time':'submitted'};
  }
  function examResult(exam,data){const map=new Map(data.lessons.flatMap(l=>l.questions).map(q=>[q.id,q]));const rows=exam.ids.map((id,i)=>({question:map.get(id),choice:exam.answers[i],correct:exam.answers[i]===map.get(id).correct_index}));return {rows,total:rows.length,correct:rows.filter(r=>r.correct).length,unanswered:rows.filter(r=>r.choice===null).length};}
  return {DAY,text,rate,normalize,catalog,dailyPlan,chapter,mini,search,mix,validateExam,examResult};
@@ -86,7 +86,7 @@ const Study=(()=>{
  const EXAM_KEY='skillyr_learn_exam_session_v1';
  let exam=null,examTimer=null,readingTimer=null,readingTarget=null,restoring=false;
  let query='',searchModule='all',searchKind='all',onlyFavorites=false,searchLimit=30;
- let dailyRevealed=false,dailyPick=-1,miniExercise=null,miniDraft='',miniRevealed=false;
+ let dailyRevealed=false,dailyPick=-1,miniExercise=null,miniPick=-1,miniRevealed=false;
  const E=v=>escapeHTML(v),now=()=>Date.now();
  const card=id=>CARD_CATALOG.find(c=>c.id===id);
  const question=id=>DATA.lessons.flatMap(l=>l.questions).find(q=>q.id===id);
@@ -146,8 +146,8 @@ const Study=(()=>{
   const completedToday=progress.daily?.day===day()&&progress.daily.index===progress.daily.plan.length;
   if(completedToday&&dueCount()>0){
    const due=CARD_CATALOG.filter(c=>progress.reviewCards[c.id]?.due<=now()).sort((a,b)=>progress.reviewCards[a.id].due-progress.reviewCards[b.id].due).slice(0,10);
-   progress.daily={day:day(),plan:due.map(c=>({kind:'card',id:c.id})),index:0,results:{}};save();
-  }else if(progress.daily?.day!==day()){progress.daily={day:day(),plan:StudyCore.dailyPlan(DATA,progress,current.module,day(),now(),DATA.lessons.filter(l=>isLessonUnlocked(l.id)).map(l=>l.id)),index:0,results:{}};save()}
+   progress.daily={contentRevision:DATA.contentRevision,day:day(),plan:due.map(c=>({kind:'card',id:c.id})),index:0,results:{}};save();
+  }else if(progress.daily?.day!==day()){progress.daily={contentRevision:DATA.contentRevision,day:day(),plan:StudyCore.dailyPlan(DATA,progress,current.module,day(),now(),DATA.lessons.filter(l=>isLessonUnlocked(l.id)).map(l=>l.id)),index:0,results:{}};save()}
   dailyRevealed=false;dailyPick=-1;goto('daily');
  }
  function dailyHTML(){
@@ -170,10 +170,11 @@ const Study=(()=>{
  function openHelp(id){
   const q=activeQuestion();if(!q||q.id!==id)return;const l=L(q.lesson_id),index=StudyCore.chapter(q,l);
   openLearningReference(l.id);const dialog=byId('learningDialog'),target=dialog.querySelectorAll('.tutorial-chapter')[index];
-  miniExercise=StudyCore.mini(q,l,DATA);miniDraft='';miniRevealed=false;
-  target.insertAdjacentHTML('afterend',`<section class="learning-section study-mini"><h2>Eine ähnliche Miniübung</h2><p>${E(miniExercise.prompt)}</p><label class="small" for="studyMiniDraft">Deine Erklärung in eigenen Worten</label><textarea id="studyMiniDraft" rows="3" maxlength="2000"></textarea><button type="button" class="secondary wide" id="studyMiniReveal" disabled>Musterantwort vergleichen</button><div id="studyMiniAnswer"></div><p class="cards-note">Diese Übung verändert deine ursprüngliche Quizantwort und ihre Bewertung nicht.</p><button class="quiet wide" data-learning-close>Zur laufenden Frage</button></section>`);
+  miniExercise=StudyCore.mini(q,l,DATA);miniPick=-1;miniRevealed=false;
+  if(miniExercise)target.insertAdjacentHTML('afterend',`<section class="learning-section study-mini"><h2>Eine ähnliche Quizfrage</h2><p>Genau eine Antwort ist richtig.</p><p>${E(miniExercise.prompt)}</p><div id="studyMiniChoices">${miniChoicesHTML()}</div><button type="button" class="secondary wide" id="studyMiniReveal" disabled>Antwort prüfen</button><div id="studyMiniAnswer" aria-live="polite"></div><p class="cards-note">Diese Übung verändert deine ursprüngliche Quizantwort und ihre Bewertung nicht.</p><button class="quiet wide" data-learning-close>Zur laufenden Frage</button></section>`);
   dialog.scrollTop=Math.max(0,target.offsetTop-dialog.querySelector('.learning-dialog-head').offsetHeight-16);
  }
+ function miniChoicesHTML(){return miniExercise.options.map((option,i)=>`<button type="button" class="option ${miniRevealed?(i===miniExercise.correct_index?'correct':i===miniPick?'wrong':''):i===miniPick?'selected':''}" data-study-mini-choice="${i}" aria-pressed="${i===miniPick}" ${miniRevealed?'disabled':''}><span class="letter">${String.fromCharCode(65+i)}</span>${E(option)}</button>`).join('')}
  function saveExam(){try{if(exam)sessionStorage.setItem(EXAM_KEY,JSON.stringify(exam));else sessionStorage.removeItem(EXAM_KEY)}catch{}}
  function clearSessions(){exam=null;clearInterval(examTimer);saveExam();dailyPick=-1;dailyRevealed=false}
  function examSetupHTML(){
@@ -187,7 +188,7 @@ const Study=(()=>{
   const started=now(),shuffled=StudyCore.mix(pool,String(started)),selected=[];
   for(const m of StudyCore.mix(modules,String(started)+'modules')){const q=shuffled.find(q=>L(q.lesson_id).module===m);if(q&&selected.length<count)selected.push(q)}
   for(const q of shuffled)if(selected.length<count&&!selected.some(v=>v.id===q.id))selected.push(q);
-  const ids=StudyCore.mix(selected,String(started)+'order').map(q=>q.id);exam={ids,answers:ids.map(()=>null),index:0,started,deadline:minutes?started+minutes*60000:0,finished:false,ended:0,reason:'submitted'};saveExam();goto('exam');startExamTimer();
+  const ids=StudyCore.mix(selected,String(started)+'order').map(q=>q.id);exam={contentRevision:DATA.contentRevision,ids,answers:ids.map(()=>null),index:0,started,deadline:minutes?started+minutes*60000:0,finished:false,ended:0,reason:'submitted'};saveExam();goto('exam');startExamTimer();
  }
  function expired(){return exam&&!exam.finished&&exam.deadline>0&&now()>=exam.deadline}
  function checkExamTime(){if(expired())finishExam('time');else{const el=byId('studyExamTimer');if(el)el.textContent=timerText()}}
@@ -212,6 +213,7 @@ const Study=(()=>{
   if(exam&&!exam.finished){current.page='exam';if(expired())finishExam('time');else startExamTimer()}
   document.addEventListener('click',e=>{
    const b=e.target.closest('button');if(!b||b.disabled)return;
+   if(b.dataset.studyMiniChoice!==undefined){if(!miniExercise||miniRevealed)return;const i=Number(b.dataset.studyMiniChoice);if(Number.isInteger(i)&&i>=0&&i<miniExercise.options.length){miniPick=i;byId('studyMiniChoices').innerHTML=miniChoicesHTML();byId('studyMiniReveal').disabled=false;byId('studyMiniChoices').querySelector('[data-study-mini-choice="'+i+'"]').focus()}return;}
    if(b.dataset.studyFavorite){toggleFavorite(b.dataset.studyFavorite);return}
    if(b.dataset.studyLesson){openLesson(b.dataset.studyLesson);return}
    if(b.dataset.studyOpenCard){openCard(b.dataset.studyOpenCard);return}
@@ -228,7 +230,7 @@ const Study=(()=>{
     case 'studyDailyLearned':{const d=progress.daily,p=d?.plan[d.index];if(p?.kind==='learn'){d.results['learn:'+p.id]={read:true};advanceDaily()}break}
     case 'studyDailyConfirm':confirmDaily();break;
     case 'studyDailyNext':{const d=progress.daily,p=d?.plan[d.index];if(p&&d.results[p.kind+':'+p.id])advanceDaily();break}
-    case 'studyMiniReveal':if(miniExercise&&miniDraft.trim().length>=3&&!miniRevealed){miniRevealed=true;byId('studyMiniAnswer').innerHTML=`<h3>Musterantwort</h3><p>${E(miniExercise.answer)}</p>`;b.disabled=true}break;
+    case 'studyMiniReveal':if(miniExercise&&miniPick>=0&&!miniRevealed){miniRevealed=true;byId('studyMiniChoices').innerHTML=miniChoicesHTML();byId('studyMiniAnswer').innerHTML=`<h3>${miniPick===miniExercise.correct_index?'Richtig':'Noch einmal nachlesen'}</h3><p><strong>Richtige Antwort:</strong> ${E(miniExercise.options[miniExercise.correct_index])}</p><p>${E(miniExercise.answer)}</p>`;b.disabled=true}break;
     case 'studyExamSetup':if(exam){goto('exam');checkExamTime();startExamTimer()}else goto('examSetup');break;
     case 'studyExamStart':startExam();break;
     case 'studyExamPrev':if(exam&&!exam.finished){if(expired())finishExam('time');else{exam.index=Math.max(0,exam.index-1);saveExam();render()}}break;
@@ -238,7 +240,7 @@ const Study=(()=>{
     case 'studyExamToReview':if(exam?.finished){for(const row of StudyCore.examResult(exam,DATA).rows)if(!row.correct)progress.wrong[row.question.id]=true;save();b.disabled=true;b.textContent='Ins Fehlertraining übernommen'}break;
    }
   });
-  document.addEventListener('input',e=>{if(e.target.id==='studyQuery'){query=e.target.value.slice(0,120);updateSearch()}if(e.target.id==='studyMiniDraft'){miniDraft=e.target.value;const b=byId('studyMiniReveal');if(b)b.disabled=miniDraft.trim().length<3||miniRevealed}});
+  document.addEventListener('input',e=>{if(e.target.id==='studyQuery'){query=e.target.value.slice(0,120);updateSearch()}});
   document.addEventListener('change',e=>{if(e.target.id==='studySearchModule'){searchModule=e.target.value;updateSearch()}if(e.target.id==='studySearchKind'){searchKind=e.target.value;updateSearch()}if(e.target.id==='studyOnlyFavorites'){onlyFavorites=e.target.checked;updateSearch()}if(e.target.name==='studyExamModule')updateExamAvailable()});
   window.addEventListener('scroll',()=>{if(current.page==='lesson'&&!restoring){clearTimeout(readingTimer);readingTimer=setTimeout(captureReading,400)}},{passive:true});
   window.addEventListener('pagehide',captureReading);

@@ -53,36 +53,22 @@ async function lookupAndReturn(p,expectedLesson){
 }
 async function mixedQuiz(p,id){
   const lesson=D.lessons.find(l=>l.id===id);
-  let mc=0,free=0;
+  let mc=0,transfer=0;
   for(let step=0;step<10;step++){
     if(await p.locator('.quiz-results').count())break;
-    const question=await p.locator('.quiz-question').innerText();
-    const q=lesson.questions.find(q=>q.question===question);
-    if(q){
-      await p.locator(`[data-option="${q.correct_index}"]`).click();
-      await lookupAndReturn(p,id);
-      assert.equal(await p.locator(`[data-option="${q.correct_index}"]`).getAttribute('aria-pressed'),'true');
-      await p.locator('#confirmAnswer').click();
-      await lookupAndReturn(p,id);
-      assert.equal(await p.locator('.quiz-choice.right').count(),1);mc++;
-    }else{
-      const draft=lesson.practice[0].model_answer;
-      await p.locator('#quizFreeText').fill(draft);
-      await lookupAndReturn(p,id);
-      assert.equal(await p.locator('#quizFreeText').inputValue(),draft);
-      await p.locator('#submitFree').click();
-      await lookupAndReturn(p,id);
-      assert.equal(await p.locator('#quizFreeText').inputValue(),draft);
-      await p.locator('#freeKnown').click();
-      await lookupAndReturn(p,id);
-      assert.equal(await p.locator('#nextQuestion').isEnabled(),true);free++;
-    }
+    assert.equal(await p.locator('textarea').count(),0);
+    const prompt=await p.locator('.quiz-question').innerText();const q=lesson.questions.find(q=>q.question===prompt);assert.ok(q);
+    if(lesson.legacyPracticeIds.includes(q.id))transfer++;
+    await p.locator('[data-option="'+q.correct_index+'"]').click();await lookupAndReturn(p,id);
+    assert.equal(await p.locator('[data-option="'+q.correct_index+'"]').getAttribute('aria-pressed'),'true');
+    await p.locator('#confirmAnswer').click();await lookupAndReturn(p,id);
+    assert.equal(await p.locator('.quiz-choice.right').count(),1);mc++;
     await p.locator('#nextQuestion').click();
   }
-  assert.equal(mc,Math.min(5,lesson.questions.length));assert.equal(free,1);
+  assert.equal(mc,Math.min(6,lesson.questions.length));assert.equal(transfer,1);
   assert.equal(await p.locator('.quiz-results').count(),1);
-  const total=Math.min(5,lesson.questions.length)+1;
-  assert.equal(await p.locator('.quiz-result-count').innerText(),`${total} von ${total} Aufgaben bestätigt`);
+  const total=Math.min(6,lesson.questions.length);
+  assert.equal(await p.locator('.quiz-result-count').innerText(),`${total} von ${total} Fragen richtig beantwortet`);
 }
 (async()=>{
   await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
@@ -167,7 +153,7 @@ async function mixedQuiz(p,id){
     await q.screenshot({path:path.join(results,'m02-2-9-reference-320.png')});
     await q.locator('#learningDialog [data-learning-close]').first().click();
     assert.equal(await q.locator('.quiz-question').count(),1);
-    console.log('PASS: M02/2.9 mixed quiz, selected answers, submitted and unsubmitted free text, XP and direct successor unlock.');
+    console.log('PASS: M02/2.9 mixed quiz, selected answers, converted practice quiz with no textarea, XP and direct successor unlock.');
 
     // Export/import uses the existing schema and existing confirmation flow.
     await q.locator('.quiz-close').click();await q.locator('[data-page="stats"]').first().click();
@@ -224,7 +210,7 @@ async function mixedQuiz(p,id){
     assert.equal(await old.locator('#startLessonQuiz').count(),1);
     servePreviousVersion=false;
     await old.evaluate(async()=>{const r=await navigator.serviceWorker.getRegistration();await r.update();});
-    await old.waitForFunction(async()=>{const keys=await caches.keys();return keys.includes('skillyr-m02-test::thinkup-glossary-examples-v20')&&!keys.includes('skillyr-m02-test::m01-m09-study-tools-v16');});
+    await old.waitForFunction(async()=>{const keys=await caches.keys();return keys.includes('skillyr-m02-test::thinkup-applied-quizzes-v21')&&!keys.includes('skillyr-m02-test::m01-m09-study-tools-v16');});
     await old.reload();await old.locator('.node[data-lesson="2.9"]').click();
     assert.equal(await old.locator('#startLessonQuiz').count(),1);
     for(const key of ['xp','done','correct','wrong','attempts'])assert.deepEqual((await stored(old))[key],initial[key]);
@@ -233,7 +219,7 @@ async function mixedQuiz(p,id){
     await old.locator('.node[data-lesson="2.9"]').click();
     assert.match(await old.locator('.learning-text').innerText(),/Dritte Normalform/);
     await upgradeContext.close();
-    console.log('PASS: existing v16 offline installation upgrades to v20, retaining progress and unrelated caches.');
+    console.log('PASS: existing v16 offline installation upgrades to v21, retaining progress and unrelated caches.');
     assert.deepEqual(errors,[],'browser script errors');
     console.log('PASS: error-training lookup uses the current question lesson; no browser script errors.');
   }finally{await browser?.close();await new Promise(resolve=>server.close(resolve));}

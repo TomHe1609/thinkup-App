@@ -32,7 +32,7 @@ test('Daily round is deterministic, bounded, includes due cards and errors, and 
  assert.ok(!C.dailyPlan(D,future,1,'2026-10-25',at,['1.1']).some(p=>p.kind==='card'&&p.id===first.id));
 });
 test('Daily progress restores only valid completed prefixes and recognized tasks',()=>{
- const value={daily:{day:'2026-10-25',plan:[{kind:'card',id:first.id},{kind:'question',id:q.id}],index:1,results:{['card:'+first.id]:{rating:'known'}}}};
+ const value={daily:{contentRevision:D.contentRevision,day:'2026-10-25',plan:[{kind:'card',id:first.id},{kind:'question',id:q.id}],index:1,results:{['card:'+first.id]:{rating:'known'}}}};
  assert.equal(C.normalize(value,blank(),D).daily.index,1);
  value.daily.results={};assert.equal(C.normalize(value,blank(),D).daily,null);
  value.daily.index=0;value.daily.plan[0].id='missing';assert.equal(C.normalize(value,blank(),D).daily,null);
@@ -48,17 +48,25 @@ test('Search finds explanations and cards across modules, accent-insensitively, 
 });
 test('Specific mistakes select the relevant chapter and a related exercise without modifying the quiz',()=>{
  const l=D.lessons.find(l=>l.id==='1.1');
- assert.deepEqual(l.questions.map(q=>C.chapter(q,l)),[1,3,2]);
- const exercise=C.mini(l.questions[2],l,D);assert.match(exercise.prompt,/Cornell/);assert.ok(exercise.answer.length>30);
- const db=D.lessons.find(l=>l.id==='2.9');assert.equal(C.chapter(db.questions[1],db),5);
+ assert(l.questions.every(q=>C.chapter(q,l)===l.learning.tutorial.chapters.length-1));
+ const exercise=C.mini(l.questions[2],l,D);assert.notEqual(exercise.id,l.questions[2].id);assert.equal(exercise.options.length,4);assert.ok(exercise.answer.length>30);
+ const db=D.lessons.find(l=>l.id==='2.9');assert.equal(C.chapter(db.questions[1],db),db.learning.tutorial.chapters.length-1);
  for(const l of D.lessons)for(const q of l.questions){const i=C.chapter(q,l);assert.ok(i>=0&&i<l.learning.tutorial.chapters.length,q.id);const mini=C.mini(q,l,D);assert.ok(mini.prompt&&mini.answer,q.id);}
 });
 test('Exam restoration validates question IDs and answers, and scores skipped questions correctly',()=>{
- const qs=D.lessons[0].questions;
- const e={ids:qs.map(q=>q.id),answers:[qs[0].correct_index,null,(qs[2].correct_index+1)%4],started:at,deadline:at+60000,index:1,finished:false,ended:0};
+ const qs=D.lessons[0].questions.slice(0,3);
+ const e={contentRevision:D.contentRevision,ids:qs.map(q=>q.id),answers:[qs[0].correct_index,null,(qs[2].correct_index+1)%4],started:at,deadline:at+60000,index:1,finished:false,ended:0};
  const restored=C.validateExam(e,D);assert.ok(restored);
  const r=C.examResult(restored,D);assert.equal(r.total,3);assert.equal(r.correct,1);assert.equal(r.unanswered,1);
  assert.equal(C.validateExam({...e,ids:[q.id,q.id,q.id]},D),null);
  assert.equal(C.validateExam({...e,answers:[99,null,null]},D),null);
  assert.equal(C.validateExam({...e,deadline:at-1},D),null);
+});
+
+test('Old answer indexes cannot silently score a revised daily round or exam',()=>{
+ const daily={day:'2026-11-02',plan:[{kind:'question',id:q.id}],index:1,results:{['question:'+q.id]:{choice:q.correct_index}}};
+ assert.equal(C.normalize({daily},blank(),D).daily,null);
+ assert.equal(C.normalize({daily:{...daily,contentRevision:D.contentRevision}},blank(),D).daily.index,1);
+ const exam={ids:[q.id],answers:[q.correct_index],started:at,deadline:0,index:0,finished:false};
+ assert.equal(C.validateExam(exam,D),null);assert(C.validateExam({...exam,contentRevision:D.contentRevision},D));
 });

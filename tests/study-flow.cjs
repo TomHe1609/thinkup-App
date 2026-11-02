@@ -16,7 +16,7 @@ async function chooseExam(p,correct=true){const text=await p.locator('.quiz-ques
 async function help(p){
  const before=await saved(p);await p.locator('[data-study-help]').click();await p.locator('#learningDialog[open]').waitFor();
  assert(await p.locator('#learningDialog').evaluate(d=>d.scrollTop>0));
- await p.locator('#studyMiniDraft').fill('Ich übertrage die Regel auf einen eigenen Fall und begründe die Zuordnung.');
+ assert.equal(await p.locator('#studyMiniDraft').count(),0);assert.equal(await p.locator('[data-study-mini-choice]').count(),4);await p.locator('[data-study-mini-choice="0"]').click();
  await p.locator('#studyMiniReveal').click();assert((await p.locator('#studyMiniAnswer').innerText()).length>30);
  await p.keyboard.press('Escape');assert.deepEqual(await saved(p),before,'mini exercise does not change original score');
 }
@@ -75,8 +75,8 @@ async function help(p){
 
   const helpContext=await context();await helpContext.addInitScript(()=>{Math.random=()=>0.5});const h=await seed(helpContext,blank());
   await h.locator('.node[data-lesson="1.1"]').click();await h.locator('#startLessonQuiz').click();const prompt=await h.locator('.quiz-question').innerText(),q=questions.get(prompt);await h.locator(`[data-option="${(q.correct_index+1)%4}"]`).click();await h.locator('#confirmAnswer').click();await help(h);assert.equal(await h.locator('.quiz-question').innerText(),prompt);assert.equal((await saved(h)).wrong[q.id],true);assert.equal(await h.locator('#nextQuestion').isEnabled(),true);
-  await h.locator('#nextQuestion').click();const next=questions.get(await h.locator('.quiz-question').innerText());await h.locator(`[data-option="${next.correct_index}"]`).click();await h.locator('#confirmAnswer').click();await h.locator('#nextQuestion').click();await h.locator('#quizFreeText').fill(D.lessons[0].practice[0].model_answer);await h.locator('#submitFree').click();await h.locator('#freeRetry').click();await help(h);
-  await helpContext.close();console.log('PASS: contextual chapter and mini exercise after incorrect MC and free-text self-assessment, original answer unchanged.');
+  await h.locator('#nextQuestion').click();const next=questions.get(await h.locator('.quiz-question').innerText());await h.locator('[data-option="'+((next.correct_index+1)%4)+'"]').click();await h.locator('#confirmAnswer').click();await help(h);assert.equal(await h.locator('textarea').count(),0);
+  await helpContext.close();console.log('PASS: contextual chapter and mini exercise after incorrect quizzes, original answer unchanged.');
 
   const examContext=await context(),e=await seed(examContext,initial);await e.locator('#studyExamSetup').click();await e.locator('[name="studyExamModule"][value="2"]').check();await e.locator('#studyExamCount').selectOption('5');await e.locator('#studyExamStart').click();
   assert.equal(await e.locator('#readLesson').count(),0);assert.equal(await e.locator('.quiz-feedback').count(),0);

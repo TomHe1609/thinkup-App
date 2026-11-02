@@ -67,12 +67,12 @@ async function width(p){assert(await p.evaluate(()=>document.documentElement.scr
   await p.screenshot({path:path.join(out,'appearance-light-rose-feedback.png')});
   console.log('PASS: live palette and mode switches plus cross-tab sync preserve selected quiz answers; positive and negative feedback stay readable.');
 
-  await p.locator('#nextQuestion').click();const draft='Ich plane eine eigene Abrufübung und wiederhole das Ergebnis mit zeitlichem Abstand.';await p.locator('#quizFreeText').fill(draft);const freeBefore=await stored(p);
-  for(const t of themes){await appearance(p,'light',t.id);assert.equal(await p.locator('#quizFreeText').inputValue(),draft);await readable(p,'#quizFreeText');await readable(p,'.quiz-editor-header');assert.deepEqual(await stored(p),freeBefore)}
-  await p.locator('#submitFree').click();for(const t of themes){await appearance(p,'light',t.id);await readable(p,'.quiz-model-answer p');await readable(p,'.quiz-selfcheck p');await readable(p,'#freeKnown');}
+  await p.locator('#nextQuestion').click();const pick=0;await p.locator('[data-option="0"]').click();const choiceBefore=await stored(p);
+  for(const t of themes){await appearance(p,'light',t.id);assert.equal(await p.locator('.quiz-choice.selected').getAttribute('data-option'),'0');await readable(p,'.quiz-question');await readable(p,'.quiz-choice.selected .choice-text');assert.deepEqual(await stored(p),choiceBefore)}
+  await p.locator('#confirmAnswer').click();for(const t of themes){await appearance(p,'light',t.id);await readable(p,'.quiz-feedback-explanation');}assert.equal(await p.locator('textarea').count(),0);
   await p.locator('.quiz-close').click();await p.locator('#nav-cards').click();await p.locator('#flip').click();for(const t of themes){await appearance(p,'light',t.id);await readable(p,'.card-front h2');await readable(p,'[data-study-rate="known"]')}
   await p.locator('#nav-path').click();await p.locator('#studySearch').click();await p.locator('#studyQuery').fill('Cornell');for(const t of themes){await appearance(p,'light',t.id);await readable(p,'#studyQuery');await readable(p,'.study-result p');await width(p)}
-  console.log('PASS: free-text drafts and model solutions, cards and recall controls, search and results in all six light palettes.');
+  console.log('PASS: quiz selections and explanations, cards and recall controls, search and results in all six light palettes.');
 
   await p.setViewportSize({width:320,height:568});await p.locator('[data-theme-open]:visible').click();await p.locator('[name="appTheme"][value="forest"]').check();await p.screenshot({path:path.join(out,'appearance-picker-light-320.png')});
   assert(await p.locator('#themeDialog').evaluate(el=>el.scrollWidth<=el.clientWidth+1));const close=await p.locator('[data-theme-close]').boundingBox(),dialog=await p.locator('#themeDialog').boundingBox();assert(close.y>=dialog.y&&close.y+close.height<=dialog.y+dialog.height,'picker close must stay reachable');await p.locator('[data-theme-close]').click();

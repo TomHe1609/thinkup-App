@@ -69,7 +69,7 @@ const LearningSupport=(()=>{
  function hintMarkup(question){
   const pair=content.hints[question.id];if(!pair)return '';
   const stage=stages.get(question.id)||0;
-  return `<section class="support-hints" aria-label="Freiwillige Hinweise" data-support-hints="${E(question.id)}"><div class="support-hint-copy" aria-live="polite" aria-atomic="true">${stage>=1?`<h2>1 · Denkansatz</h2><p>${E(pair[0])}</p>`:''}${stage>=2?`<h2>2 · Beispiel</h2><p>${E(pair[1])}</p>`:''}</div>${stage<2?`<button type="button" class="quiet support-hint-button" data-support-hint="${E(question.id)}">${stage===0?'Hinweis 1: Denkansatz anzeigen':'Hinweis 2: Beispiel anzeigen'}</button>`:'<p class="support-hint-end">Übertrage den Gedanken jetzt auf deine Aufgabe.</p>'}</section>`;
+  return `<section class="support-hints" aria-label="Freiwillige Hinweise" data-support-hints="${E(question.id)}"><div class="support-hint-copy" aria-live="polite" aria-atomic="true">${stage>=1?`<h2>1 · Denkansatz</h2><p>${E(pair[0])}</p>`:''}${stage>=2?`<h2>2 · Prüfschritte</h2><p>${E(pair[1])}</p>`:''}</div>${stage<2?`<button type="button" class="quiet support-hint-button" data-support-hint="${E(question.id)}">${stage===0?'Hinweis 1: Denkansatz anzeigen':'Hinweis 2: Prüfschritte anzeigen'}</button>`:'<p class="support-hint-end">Übertrage den Gedanken jetzt auf deine Aufgabe.</p>'}</section>`;
  }
  function activeQuestion(){
   if(current.page==='quiz')return current.answer===-1?current.session[current.question]:null;
