@@ -1,3 +1,6 @@
+/* Visual refresh is isolated and has no effect on application logic. */
+@import url("./ui-glass.css");
+
 /* Learning aids use the current palette and leave the existing layout rules intact. */
 button.support-term{display:inline;min-height:0;min-width:0;margin:0;padding:0;border:0;border-bottom:1px dotted currentColor;border-radius:0;background:none;color:inherit;font:inherit;line-height:inherit;letter-spacing:inherit;text-align:inherit;vertical-align:baseline;white-space:normal;cursor:help;box-shadow:none;}
 button.support-term:hover{color:var(--lav);border-bottom-style:solid;}

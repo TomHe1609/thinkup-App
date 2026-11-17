@@ -1,0 +1,632 @@
+/* thinkup.learn · UI-Feinschliff 2026-11-16
+ * Reines Styling für den bestehenden App-Aufbau.
+ * Keine neuen Ansichten, keine veränderte Logik, keine geänderten Daten.
+ * Wirkt nur im Dunkelmodus; die sechs Farbwelten bleiben wählbar.
+ */
+
+:root[data-color-mode="dark"] {
+  --ui-glass: linear-gradient(155deg,
+    color-mix(in srgb, var(--theme-panel) 83%, transparent),
+    color-mix(in srgb, var(--theme-panel) 57%, transparent));
+  --ui-glass-strong: linear-gradient(155deg,
+    color-mix(in srgb, var(--theme-panel) 95%, transparent),
+    color-mix(in srgb, var(--theme-panel) 73%, transparent));
+  --ui-glass-border: color-mix(in srgb, var(--theme-accent) 13%, #ffffff25);
+  --ui-glass-border-hover: color-mix(in srgb, var(--theme-accent) 42%, #ffffff28);
+  --ui-soft-accent: color-mix(in srgb, var(--theme-accent) 17%, transparent);
+  --ui-muted-accent: color-mix(in srgb, var(--theme-accent) 74%, #c2cbd6);
+  --ui-elevation: 0 14px 34px #00000029, inset 0 1px 0 #ffffff0d;
+  --ui-radius: 19px;
+}
+
+/* Ruhiger Hintergrund: keine bunten Flächen und keine großen Neon-Glows. */
+:root[data-color-mode="dark"] body {
+  background: radial-gradient(ellipse 90% 30% at 50% 0%,
+    color-mix(in srgb, var(--theme-accent) 7%, transparent), transparent 78%),
+    var(--theme-bg);
+  -webkit-font-smoothing: antialiased;
+}
+:root[data-color-mode="dark"] .app,
+:root[data-color-mode="dark"] .app:has(.path),
+:root[data-color-mode="dark"] body[data-page]:not([data-page="path"]) .app {
+  background: linear-gradient(170deg,
+    color-mix(in srgb, var(--theme-bg) 94%, #253246 6%) 0%,
+    var(--theme-bg) 75%);
+}
+:root[data-color-mode="dark"] .content {
+  padding-left: 17px;
+  padding-right: 17px;
+}
+:root[data-color-mode="dark"] .title {
+  font-weight: 740;
+  letter-spacing: -.8px;
+}
+:root[data-color-mode="dark"] .body,
+:root[data-color-mode="dark"] .page-description {
+  line-height: 1.75;
+}
+
+/* Bestehende Kopfleiste: dezentes, durchscheinendes Glas. */
+:root[data-color-mode="dark"] header {
+  background: color-mix(in srgb, var(--theme-bg) 81%, transparent);
+  border-bottom: 1px solid #ffffff12;
+  -webkit-backdrop-filter: blur(20px) saturate(115%);
+  backdrop-filter: blur(20px) saturate(115%);
+  box-shadow: 0 7px 22px #00000013;
+}
+:root[data-color-mode="dark"] .logo { color: var(--ui-muted-accent); }
+:root[data-color-mode="dark"] .brand { letter-spacing: -.5px; font-weight: 780; }
+:root[data-color-mode="dark"] .rightstats .icon { opacity: .9; }
+:root[data-color-mode="dark"] .theme-trigger {
+  border-color: var(--ui-glass-border);
+  background: var(--ui-glass);
+  border-radius: 13px;
+  box-shadow: inset 0 1px 0 #ffffff10;
+}
+
+/* Alle vier bisherigen Navigationseinträge bleiben an ihrer Position. */
+:root[data-color-mode="dark"] .bottomnav {
+  background: color-mix(in srgb, var(--theme-bg) 84%, transparent);
+  border-top: 1px solid #ffffff19;
+  -webkit-backdrop-filter: blur(24px) saturate(112%);
+  backdrop-filter: blur(24px) saturate(112%);
+  box-shadow: 0 -12px 36px #00000024;
+}
+:root[data-color-mode="dark"] .nav {
+  border-radius: 13px;
+  transition: background-color .18s ease, color .18s ease;
+}
+:root[data-color-mode="dark"] .nav.active {
+  background: var(--ui-soft-accent);
+  color: var(--ui-muted-accent);
+}
+:root[data-color-mode="dark"] .nav:hover:not(.active) { background: #ffffff09; }
+
+/* M01–M09: unveränderte modulbasierte Navigation, modernere Buttons. */
+:root[data-color-mode="dark"] .module-strip {
+  gap: 7px;
+  padding-bottom: 14px;
+  border-bottom-color: #ffffff13;
+}
+:root[data-color-mode="dark"] .module-strip .mod {
+  height: 45px;
+  border: 1px solid var(--ui-glass-border);
+  border-radius: 12px;
+  color: var(--muted);
+  background: color-mix(in srgb, var(--theme-panel) 60%, transparent);
+  box-shadow: inset 0 1px 0 #ffffff08;
+  transition: background-color .18s ease, border-color .18s ease;
+}
+:root[data-color-mode="dark"] .module-strip .mod.active {
+  background: color-mix(in srgb, var(--theme-accent) 14%, var(--theme-panel));
+  border-color: var(--ui-glass-border-hover);
+  color: var(--txt);
+  box-shadow: inset 0 1px 0 #ffffff16;
+}
+:root[data-color-mode="dark"] .module-strip .mod:not(.active):not(:disabled):hover {
+  border-color: var(--ui-glass-border-hover);
+  background: color-mix(in srgb, var(--theme-panel) 88%, transparent);
+}
+
+/* Die reale Kursübersicht wird als Glas-Container hervorgehoben. */
+:root[data-color-mode="dark"] .course-overview {
+  margin: 13px 0 0;
+  padding: 19px 19px 21px;
+  border: 1px solid var(--ui-glass-border);
+  border-radius: var(--ui-radius);
+  background: var(--ui-glass);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  box-shadow: var(--ui-elevation);
+}
+:root[data-color-mode="dark"] .course-overview .eyebrow {
+  color: var(--ui-muted-accent);
+}
+:root[data-color-mode="dark"] .course-overview h2 {
+  font-size: 18px;
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+:root[data-color-mode="dark"] .course-overview .bar {
+  background: #ffffff19;
+  border-radius: 999px;
+  height: 6px;
+}
+:root[data-color-mode="dark"] .course-overview .fill {
+  background: var(--ui-muted-accent);
+  border-radius: inherit;
+}
+:root[data-color-mode="dark"] .learning-note { margin: 14px 2px 0; }
+:root[data-color-mode="dark"] .sectionhead { margin-top: 26px; }
+:root[data-color-mode="dark"] .sectionhead strong { font-size: 13px; color: var(--txt); }
+
+/* Die charakteristische geschwungene Lernpfad-Grafik bleibt bestehen. */
+:root[data-color-mode="dark"] .path-link { stroke: #ffffff25; }
+:root[data-color-mode="dark"] .path-progress { stroke: var(--ui-muted-accent); }
+:root[data-color-mode="dark"] .node .ball {
+  border-color: var(--ui-glass-border);
+  background: var(--ui-glass-strong);
+  box-shadow: 0 5px 15px #00000020, inset 0 1px 0 #ffffff16;
+}
+:root[data-color-mode="dark"] .node.current .ball {
+  background: color-mix(in srgb, var(--theme-accent) 20%, var(--theme-panel));
+  border-color: var(--ui-glass-border-hover);
+  box-shadow: 0 0 0 4px var(--ui-soft-accent), inset 0 1px 0 #ffffff16;
+}
+:root[data-color-mode="dark"] .node.done .ball {
+  border-color: color-mix(in srgb, var(--mint) 42%, transparent);
+  background: color-mix(in srgb, var(--mint) 11%, var(--theme-panel));
+}
+:root[data-color-mode="dark"] .node.locked .ball {
+  border-color: #ffffff13;
+  background: color-mix(in srgb, var(--theme-panel) 56%, transparent);
+  box-shadow: inset 0 1px 0 #ffffff06;
+}
+:root[data-color-mode="dark"] .node .label { line-height: 1.55; }
+
+/* Bestehende Lernrunde und Modul-Tore, ohne neue Kacheln anzulegen. */
+:root[data-color-mode="dark"] .study-home {
+  padding: 19px !important;
+  margin: 21px 0 18px;
+  border: 1px solid var(--ui-glass-border);
+  border-radius: var(--ui-radius);
+  background: var(--ui-glass);
+  box-shadow: var(--ui-elevation);
+}
+:root[data-color-mode="dark"] .study-home .section-title { font-size: 14px; color: var(--txt); }
+:root[data-color-mode="dark"] .study-home .page-description { margin-bottom: 14px; }
+:root[data-color-mode="dark"] .module-gate {
+  border-color: var(--ui-glass-border);
+  background: var(--ui-glass);
+  box-shadow: var(--ui-elevation);
+  border-radius: var(--ui-radius);
+}
+:root[data-color-mode="dark"] .module-gate.is-open {
+  background: color-mix(in srgb, var(--theme-accent) 9%, var(--theme-panel));
+  border-color: var(--ui-glass-border-hover);
+  color: var(--txt);
+}
+:root[data-color-mode="dark"] .home-info {
+  border-top-color: #ffffff1a;
+}
+
+/* Lerntexte, Karteikarten, Suche, Fehlertraining und Statistik behalten ihre Inhalte. */
+:root[data-color-mode="dark"] .surface,
+:root[data-color-mode="dark"] .surface.flat,
+:root[data-color-mode="dark"] body[data-page]:not([data-page="path"]) .surface,
+:root[data-color-mode="dark"] details:not(.home-info) {
+  border: 1px solid var(--ui-glass-border);
+  border-radius: var(--ui-radius);
+  background: var(--ui-glass);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  box-shadow: var(--ui-elevation);
+}
+:root[data-color-mode="dark"] .learning-text .learning-section {
+  margin: 14px 0;
+  padding: 19px 17px;
+  background: var(--ui-glass);
+  border: 1px solid var(--ui-glass-border);
+  border-radius: 17px;
+  box-shadow: 0 8px 24px #00000019;
+}
+:root[data-color-mode="dark"] .learning-text h2 { letter-spacing: -.45px; }
+:root[data-color-mode="dark"] .learning-text p { line-height: 1.8; }
+:root[data-color-mode="dark"] body[data-page="lesson"] .fact {
+  border-left-color: var(--ui-muted-accent);
+  background: color-mix(in srgb, var(--theme-accent) 7%, transparent);
+  border-radius: 0 10px 10px 0;
+}
+:root[data-color-mode="dark"] body[data-page="cards"] .card-front,
+:root[data-color-mode="dark"] body[data-page="cards"] .card-front.card-back {
+  background: var(--ui-glass-strong);
+  border-color: var(--ui-glass-border);
+  border-radius: var(--ui-radius);
+  box-shadow: var(--ui-elevation);
+}
+:root[data-color-mode="dark"] body[data-page="stats"] .stat,
+:root[data-color-mode="dark"] .quiz-result-stat,
+:root[data-color-mode="dark"] .support-hints:has(h2) {
+  border-color: var(--ui-glass-border);
+  background: var(--ui-glass);
+  border-radius: 15px;
+  box-shadow: inset 0 1px 0 #ffffff0d;
+}
+:root[data-color-mode="dark"] .field-group select,
+:root[data-color-mode="dark"] .textbox,
+:root[data-color-mode="dark"] .card-example {
+  background: color-mix(in srgb, var(--theme-bg) 45%, var(--theme-panel));
+  border-color: var(--ui-glass-border);
+  border-radius: 12px;
+}
+
+/* Quiz: dieselben Fragen und Antworten, aber schlichtere Glasflächen. */
+:root[data-color-mode="dark"] body[data-page="quiz"] .quiz-shell {
+  background: var(--theme-bg);
+}
+:root[data-color-mode="dark"] body[data-page="quiz"] .quiz-hero {
+  margin-top: 17px;
+  padding: 19px 17px 20px;
+  border: 1px solid var(--ui-glass-border);
+  border-radius: var(--ui-radius);
+  background: var(--ui-glass);
+  box-shadow: var(--ui-elevation);
+}
+:root[data-color-mode="dark"] body[data-page="quiz"] .quiz-choice {
+  background: var(--ui-glass);
+  border-color: var(--ui-glass-border);
+  border-radius: 14px;
+  box-shadow: inset 0 1px 0 #ffffff09;
+  transition: background-color .16s ease, border-color .16s ease;
+}
+:root[data-color-mode="dark"] body[data-page="quiz"] .quiz-choice:hover:not(:disabled):not(.right):not(.incorrect) {
+  border-color: var(--ui-glass-border-hover);
+  background: var(--ui-glass-strong);
+}
+:root[data-color-mode="dark"] body[data-page="quiz"] .quiz-choice.selected:not(.right):not(.incorrect) {
+  background: color-mix(in srgb, var(--theme-accent) 13%, var(--theme-panel));
+  border-color: var(--ui-glass-border-hover);
+  box-shadow: inset 0 1px 0 #ffffff13;
+}
+/* Richtig/Falsch-Farben bleiben semantisch sichtbar. */
+:root[data-color-mode="dark"] body[data-page="quiz"] .quiz-choice.right {
+  border-color: var(--c-678d7e);
+  background: var(--c-20312e);
+}
+:root[data-color-mode="dark"] body[data-page="quiz"] .quiz-choice.incorrect {
+  border-color: var(--c-a16d86);
+  background: var(--c-342532);
+}
+:root[data-color-mode="dark"] body[data-page="quiz"] .quiz-feedback {
+  border-radius: 15px;
+  box-shadow: var(--ui-elevation);
+}
+:root[data-color-mode="dark"] body[data-page="quiz"] .quiz-close {
+  background: var(--ui-glass);
+  border-color: var(--ui-glass-border);
+  border-radius: 13px;
+}
+:root[data-color-mode="dark"] .coach-banner {
+  background: var(--ui-glass);
+  border-color: var(--ui-glass-border);
+  box-shadow: var(--ui-elevation);
+}
+
+/* Bedienfelder und Dialoge: Touch-Ziele und Fokusführung bleiben erhalten. */
+:root[data-color-mode="dark"] .theme-dialog,
+:root[data-color-mode="dark"] .learning-dialog {
+  border-color: var(--ui-glass-border-hover);
+  background: color-mix(in srgb, var(--theme-bg) 89%, var(--theme-panel));
+  border-radius: 22px;
+  box-shadow: 0 28px 70px #00000077;
+}
+:root[data-color-mode="dark"] .theme-option,
+:root[data-color-mode="dark"] .theme-dialog-close {
+  background: var(--ui-glass);
+  border-color: var(--ui-glass-border);
+  border-radius: 14px;
+}
+:root[data-color-mode="dark"] .theme-option:has(input:checked) {
+  border-color: var(--ui-glass-border-hover);
+  background: color-mix(in srgb, var(--theme-accent) 10%, var(--theme-panel));
+}
+:root[data-color-mode="dark"] :is(button, a, select, input, textarea, summary):focus-visible {
+  outline: 2px solid var(--ui-muted-accent);
+  outline-offset: 3px;
+}
+
+/* Auf schmalen Displays keine aufgeblähten Container. */
+@media (max-width: 360px) {
+  :root[data-color-mode="dark"] .content { padding-left: 12px; padding-right: 12px; }
+  :root[data-color-mode="dark"] .course-overview { padding: 16px; }
+  :root[data-color-mode="dark"] .study-home { padding: 16px !important; }
+  :root[data-color-mode="dark"] .learning-text .learning-section { padding: 17px 14px; }
+  :root[data-color-mode="dark"] body[data-page="quiz"] .quiz-hero { padding: 17px 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  :root[data-color-mode="dark"] :is(.nav, .module-strip .mod, .quiz-choice) {
+    transition: none !important;
+  }
+}
+
+/* ================================================================
+ * 2026-11-17 · Glass UI 2.0: sichtbar modernisiert, sanfte Farbakzente
+ * Diese Overrides sind bewusst unabhängig von Fragen/Daten/Navigation.
+ * ================================================================ */
+:root[data-color-mode="dark"] {
+  --gl2-bg: color-mix(in srgb, var(--theme-bg) 94%, #17232c);
+  --gl2-card: linear-gradient(154deg,
+      color-mix(in srgb, var(--theme-panel) 72%, #dce4ec 7%) 0%,
+      color-mix(in srgb, var(--theme-panel) 84%, transparent) 58%,
+      color-mix(in srgb, var(--theme-bg) 76%, #ffffff 4%) 100%);
+  --gl2-card-hover: linear-gradient(148deg,
+      color-mix(in srgb, var(--theme-panel) 83%, #c2cbd5 9%),
+      color-mix(in srgb, var(--theme-panel) 86%, transparent));
+  --gl2-line: color-mix(in srgb, var(--theme-accent) 11%, #dbe6f130);
+  --gl2-line-focus: color-mix(in srgb, var(--theme-accent) 57%, #b8c8d6 43%);
+  --gl2-accent: color-mix(in srgb, var(--theme-accent) 69%, #c4ced5 31%);
+  --gl2-wash: color-mix(in srgb, var(--theme-accent) 13%, transparent);
+  --gl2-text: var(--txt);
+  --gl2-subtle: color-mix(in srgb, var(--muted) 80%, #e0e5e8);
+  --gl2-shadow: 0 16px 36px #00000030, 0 2px 6px #00000012, inset 0 1px 0 #ffffff15;
+}
+:root[data-color-mode="light"] {
+  --gl2-bg: color-mix(in srgb, var(--theme-bg) 92%, #ffffff);
+  --gl2-card: linear-gradient(155deg, #ffffffdb 0%,
+      color-mix(in srgb, var(--theme-panel) 75%, transparent) 56%,
+      color-mix(in srgb, var(--theme-soft) 60%, #ffffffb2) 100%);
+  --gl2-card-hover: linear-gradient(145deg,#fff,#ffffffdb);
+  --gl2-line: color-mix(in srgb, var(--theme-accent) 13%, #a9b4be48);
+  --gl2-line-focus: color-mix(in srgb, var(--theme-accent) 55%, #a9b4be);
+  --gl2-accent: color-mix(in srgb, var(--theme-accent) 79%, #8894a2 21%);
+  --gl2-wash: color-mix(in srgb, var(--theme-accent) 9%, transparent);
+  --gl2-text: var(--theme-ink);
+  --gl2-subtle: var(--theme-muted);
+  --gl2-shadow: 0 16px 36px #1d273b0f, 0 2px 8px #1d273b0a, inset 0 1px 0 #ffffffbd;
+}
+:root[data-color-mode="light"] { color-scheme: light; }
+:root[data-color-mode] body {
+  background: radial-gradient(ellipse 90% 34% at -18% -6%, var(--gl2-wash), transparent 78%),
+    radial-gradient(ellipse 86% 34% at 120% 75%, var(--gl2-wash), transparent 83%),
+    var(--gl2-bg);
+  color: var(--gl2-text);
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+:root[data-color-mode] .app,
+:root[data-color-mode] .app:has(.path),
+:root[data-color-mode] body[data-page]:not([data-page="path"]) .app {
+  background: radial-gradient(ellipse 85% 24% at 95% 18%, var(--gl2-wash),transparent 82%),
+    radial-gradient(ellipse 66% 27% at 0% 77%,var(--gl2-wash),transparent 85%),
+    var(--gl2-bg);
+}
+:root[data-color-mode] .content {padding:22px 18px 17px;}
+:root[data-color-mode] .home-intro { margin:2px 0 17px; }
+:root[data-color-mode] .home-intro .title,
+:root[data-color-mode] .title {font-weight:750;letter-spacing:-.7px;line-height:1.28;}
+:root[data-color-mode] .eyebrow {letter-spacing:.085em;}
+:root[data-color-mode] .body,
+:root[data-color-mode] .page-description { color:var(--gl2-subtle); }
+:root[data-color-mode] header {
+  background: color-mix(in srgb, var(--gl2-bg) 76%, transparent);
+  border-bottom:1px solid var(--gl2-line);
+  backdrop-filter:blur(22px) saturate(112%);
+  -webkit-backdrop-filter:blur(22px) saturate(112%);
+  box-shadow:0 8px 25px #00000010;
+}
+:root[data-color-mode] .logo {color:var(--gl2-accent);}
+:root[data-color-mode] .brand {font-weight:760;letter-spacing:-.55px;}
+:root[data-color-mode] .theme-trigger {
+  border:1px solid var(--gl2-line);background:var(--gl2-card);
+  border-radius:13px;color:var(--gl2-accent);
+  box-shadow:inset 0 1px 0 #ffffff18;
+}
+:root[data-color-mode] .bottomnav {
+  background: color-mix(in srgb, var(--gl2-bg) 74%, transparent);
+  border:1px solid var(--gl2-line);
+  border-bottom:0;
+  border-radius:21px 21px 0 0;
+  backdrop-filter:blur(27px) saturate(115%);
+  -webkit-backdrop-filter:blur(27px) saturate(115%);
+  box-shadow:0 -14px 44px #0000001d;
+  padding:7px 9px calc(6px + env(safe-area-inset-bottom));
+  height:calc(73px + env(safe-area-inset-bottom));
+}
+:root[data-color-mode] .nav { border:1px solid transparent;border-radius:13px;font-weight:550; }
+:root[data-color-mode] .nav.active {
+  color:var(--gl2-text);background:var(--gl2-wash);
+  border-color:var(--gl2-line);
+  box-shadow:inset 0 1px 0 #ffffff19;
+}
+:root[data-color-mode] .nav.active .icon { color:var(--gl2-accent); }
+:root[data-color-mode] .module-strip {gap:7px; border-bottom:0;margin:1px 0 12px;padding:0 0 4px;}
+:root[data-color-mode] .module-strip .mod {
+  height:45px;border:1px solid var(--gl2-line);border-radius:13px;
+  background:var(--gl2-card);color:var(--gl2-subtle);
+  box-shadow:inset 0 1px 0 #ffffff10;
+}
+:root[data-color-mode] .module-strip .mod.active {
+  background:color-mix(in srgb,var(--theme-accent) 15%,var(--theme-panel));
+  color:var(--gl2-text);border-color:var(--gl2-line-focus);
+  box-shadow:0 0 0 2px var(--gl2-wash),inset 0 1px 0 #ffffff20;
+}
+:root[data-color-mode] .course-overview,
+:root[data-color-mode] .study-home,
+:root[data-color-mode] .module-gate,
+:root[data-color-mode] .surface,
+:root[data-color-mode] .surface.flat,
+:root[data-color-mode] body[data-page]:not([data-page="path"]) .surface,
+:root[data-color-mode] .coach-banner {
+  border:1px solid var(--gl2-line);
+  border-radius:20px;
+  background:var(--gl2-card);
+  box-shadow:var(--gl2-shadow);
+  backdrop-filter:blur(18px) saturate(112%);
+  -webkit-backdrop-filter:blur(18px) saturate(112%);
+}
+:root[data-color-mode] .course-overview { margin:13px 0 16px;padding:21px 20px 23px;border-bottom:1px solid var(--gl2-line); }
+:root[data-color-mode] .course-overview h2 {font-size:18px;line-height:1.45;margin:8px 0 19px;}
+:root[data-color-mode] .course-overview .eyebrow {color:var(--gl2-accent);}
+:root[data-color-mode] .course-overview .bar {height:6px;background:color-mix(in srgb,var(--gl2-text) 12%,transparent);border-radius:999px;}
+:root[data-color-mode] .course-overview .fill,
+:root[data-color-mode] .bar .fill {background:var(--gl2-accent);border-radius:999px;}
+:root[data-color-mode] .learning-note {margin:15px 3px;color:var(--gl2-subtle);}
+:root[data-color-mode] .study-home {margin:20px 0 23px;padding:19px !important;border-top:1px solid var(--gl2-line)!important;}
+:root[data-color-mode] .study-home .section-title {font-size:15px;color:var(--gl2-text);}
+:root[data-color-mode] .sectionhead {margin:27px 0 12px;}
+:root[data-color-mode] .sectionhead strong {font-size:15px;color:var(--gl2-text);font-weight:720;}
+:root[data-color-mode] .sectionhead .hint {color:var(--gl2-subtle);}
+
+/* The original curved SVG path and all its circular interactive stations remain. */
+:root[data-color-mode] .path-link {stroke:color-mix(in srgb,var(--gl2-accent) 17%,#83909a55);stroke-width:4;}
+:root[data-color-mode] .path-progress {stroke:var(--gl2-accent);stroke-width:4;}
+:root[data-color-mode] .node .ball {
+  width:46px;height:46px;flex-basis:46px;
+  border:1.5px solid var(--gl2-line-focus);
+  border-radius:50%;background:var(--gl2-card);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  box-shadow:0 7px 18px #00000024,inset 0 1px 0 #ffffff26;
+}
+:root[data-color-mode] .node.current .ball {
+  background:color-mix(in srgb,var(--theme-accent) 24%,var(--theme-panel));
+  border-color:var(--gl2-accent);
+  box-shadow:0 0 0 5px var(--gl2-wash),0 0 24px var(--gl2-wash),inset 0 1px 0 #ffffff26;
+}
+:root[data-color-mode] .node.done .ball {
+  background:color-mix(in srgb,var(--mint) 11%,var(--theme-panel));
+  border-color:color-mix(in srgb,var(--mint) 48%,var(--gl2-line));
+}
+:root[data-color-mode] .node.locked .ball {
+  background:var(--gl2-card);border-color:var(--gl2-line);box-shadow:inset 0 1px 0 #ffffff0b;
+}
+:root[data-color-mode] .node .label {
+  padding:7px 9px;max-width:100%;border-radius:12px;
+  background:var(--gl2-card);border:1px solid var(--gl2-line);
+  color:var(--gl2-text);font-size:11px;line-height:1.45;
+  box-shadow:0 7px 20px #00000012,inset 0 1px 0 #ffffff10;
+}
+:root[data-color-mode] .node.locked .label {color:var(--gl2-subtle);opacity:.8;}
+:root[data-color-mode] .node.current .label {
+  border-color:var(--gl2-line-focus);
+  background:color-mix(in srgb,var(--theme-accent) 13%,var(--theme-panel));
+}
+:root[data-color-mode] .node-state {
+  padding:3px 9px;border-radius:10px;
+  color:var(--gl2-accent);background:var(--gl2-bg);
+  box-shadow:0 0 0 2px var(--gl2-bg);
+}
+:root[data-color-mode] .module-gate.is-open {
+  border-color:var(--gl2-line-focus);
+  background:color-mix(in srgb,var(--theme-accent) 10%,var(--theme-panel));
+}
+:root[data-color-mode] .home-info {border-top:1px solid var(--gl2-line);}
+
+/* Inside a module: reading cards, lessons, exercise and tool panels. */
+:root[data-color-mode] .learning-text .learning-section {
+  margin:15px 0;padding:21px 19px;border:1px solid var(--gl2-line);
+  border-radius:18px;background:var(--gl2-card);
+  box-shadow:var(--gl2-shadow);
+}
+:root[data-color-mode] .learning-text h2 {letter-spacing:-.4px;line-height:1.4;}
+:root[data-color-mode] .learning-text p {line-height:1.83;}
+:root[data-color-mode] body[data-page="lesson"] .fact,
+:root[data-color-mode] .model-answer {
+  border:1px solid var(--gl2-line);border-left:3px solid var(--gl2-accent);
+  border-radius:13px;background:var(--gl2-wash);padding:16px;
+}
+:root[data-color-mode] details:not(.home-info),
+:root[data-color-mode] .support-hints:has(h2) {
+  border:1px solid var(--gl2-line);border-radius:15px;
+  background:var(--gl2-card);box-shadow:inset 0 1px 0 #ffffff16;
+}
+:root[data-color-mode] body[data-page="stats"] .stat,
+:root[data-color-mode] body[data-page="stats"] .module-summary,
+:root[data-color-mode] .quiz-result-stat,
+:root[data-color-mode] .weak-row {
+  border:1px solid var(--gl2-line);border-radius:15px;
+  background:var(--gl2-card);box-shadow:var(--gl2-shadow);
+}
+:root[data-color-mode] body[data-page="stats"] .module-summary,
+:root[data-color-mode] .weak-row {padding:14px;margin:9px 0;}
+:root[data-color-mode] body[data-page="cards"] .card-front,
+:root[data-color-mode] body[data-page="cards"] .card-front.card-back {
+  border:1px solid var(--gl2-line-focus);border-radius:22px;
+  background:var(--gl2-card);box-shadow:var(--gl2-shadow);
+}
+:root[data-color-mode] .field-group select,
+:root[data-color-mode] .textbox,
+:root[data-color-mode] .card-example {
+  border:1px solid var(--gl2-line);border-radius:13px;background:var(--gl2-card);
+  color:var(--gl2-text);
+}
+
+/* Quiz has its own full-screen shell; keep original question/selection logic. */
+:root[data-color-mode] body[data-page="quiz"] .quiz-shell {
+  background:radial-gradient(ellipse 120% 40% at 52% 0%,var(--gl2-wash),transparent 80%),var(--gl2-bg);
+}
+:root[data-color-mode] body[data-page="quiz"] .quiz-hero {
+  margin-top:16px;padding:20px 18px 21px;
+  border:1px solid var(--gl2-line);border-radius:20px;
+  background:var(--gl2-card);box-shadow:var(--gl2-shadow);
+}
+:root[data-color-mode] body[data-page="quiz"] .quiz-choice {
+  min-height:70px;padding:15px;border:1px solid var(--gl2-line);
+  border-radius:15px;background:var(--gl2-card);
+  box-shadow:inset 0 1px 0 #ffffff11;
+}
+:root[data-color-mode] body[data-page="quiz"] .quiz-choice.selected:not(.right):not(.incorrect) {
+  background:color-mix(in srgb,var(--theme-accent) 13%,var(--theme-panel));
+  border-color:var(--gl2-line-focus);box-shadow:0 0 0 2px var(--gl2-wash);
+}
+:root[data-color-mode] body[data-page="quiz"] .quiz-choice.right {
+  background:color-mix(in srgb,var(--mint) 17%,var(--theme-panel));
+  border-color:color-mix(in srgb,var(--mint) 50%,var(--gl2-line));
+}
+:root[data-color-mode] body[data-page="quiz"] .quiz-choice.incorrect {
+  background:color-mix(in srgb,var(--red) 14%,var(--theme-panel));
+  border-color:color-mix(in srgb,var(--red) 54%,var(--gl2-line));
+}
+:root[data-color-mode] body[data-page="quiz"] .quiz-feedback,
+:root[data-color-mode] body[data-page="quiz"] .quiz-close {
+  background:var(--gl2-card);border:1px solid var(--gl2-line);
+  border-radius:15px;box-shadow:var(--gl2-shadow);
+}
+:root[data-color-mode] body[data-page="quiz"] .quiz-prog>span.seen,
+:root[data-color-mode] body[data-page="quiz"] .quiz-prog>span.now {background:var(--gl2-accent);}
+
+/* Primary/secondary button styles: less saturated, still clearly actionable. */
+:root[data-color-mode="dark"] :is(.primary,.quiz-action,.coach-action):not(:disabled) {
+  background:color-mix(in srgb,var(--theme-accent) 31%,var(--theme-panel));
+  color:var(--gl2-text);border:1px solid var(--gl2-line-focus);
+  border-radius:13px;box-shadow:inset 0 1px 0 #ffffff1c;
+}
+:root[data-color-mode="light"] :is(.primary,.quiz-action,.coach-action):not(:disabled) {
+  background:var(--theme-action);color:var(--theme-action-text);
+  border:1px solid var(--theme-accent);border-radius:13px;
+  box-shadow:0 9px 19px var(--gl2-wash);
+}
+:root[data-color-mode] :is(.secondary,.quiet) {
+  background:var(--gl2-card);border:1px solid var(--gl2-line);
+  border-radius:13px;color:var(--gl2-text);
+}
+:root[data-color-mode] .theme-dialog,
+:root[data-color-mode] .learning-dialog {
+  background:var(--gl2-bg);border:1px solid var(--gl2-line-focus);
+  border-radius:22px;box-shadow:0 32px 70px #00000048;
+}
+:root[data-color-mode] .theme-option,
+:root[data-color-mode] .theme-dialog-close,
+:root[data-color-mode] .theme-mode-choice {
+  background:var(--gl2-card);border:1px solid var(--gl2-line);
+  border-radius:14px;color:var(--gl2-text);
+}
+:root[data-color-mode] .theme-option:has(input:checked),
+:root[data-color-mode] .theme-mode-choice:has(input:checked) {
+  background:var(--gl2-wash);border-color:var(--gl2-line-focus);
+}
+:root[data-color-mode] :is(button,a,select,input,textarea,summary):focus-visible {
+  outline:2px solid var(--gl2-line-focus);outline-offset:3px;
+}
+@media (max-width:360px) {
+  :root[data-color-mode] .content {padding-left:13px;padding-right:13px;}
+  :root[data-color-mode] .course-overview {padding:17px;}
+  :root[data-color-mode] .study-home {padding:16px !important;}
+  :root[data-color-mode] .learning-text .learning-section {padding:17px 14px;}
+  :root[data-color-mode] .node .label {padding:6px;font-size:10px;}
+  :root[data-color-mode] body[data-page="quiz"] .quiz-hero {padding:18px 14px;}
+}
+@media (prefers-reduced-motion:reduce) {
+  :root[data-color-mode] :is(.node .ball,.nav,.module-strip .mod,.quiz-choice) {transition:none !important;animation:none !important;}
+}
+
+/* Modern UI typography, while technical snippets retain their code font. */
+:root[data-color-mode] body,
+:root[data-color-mode] :is(.brand,.title,.quiz-question,.quiz-feedback-title,.quiz-results h1,.quiz-choice-caption,.quiz-kicker,.quiz-tag,.quiz-subline,.quiz-action,.node .num,.section-title,.node .label),
+:root[data-color-mode] .quiz-choice .choice-text {
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+}
+:root[data-color-mode] .title {font-size:clamp(24px,6vw,29px);}
+:root[data-color-mode] .home-intro .title {font-size:clamp(23px,6vw,28px);}
+:root[data-color-mode] .quiz-question {font-weight:720;}
+:root[data-color-mode] .node .label {font-weight:580;}
+:root[data-color-mode] .section-title {font-weight:690;}
