@@ -20,9 +20,9 @@ test('All application scripts parse and embedded content matches the public JSON
 test('Revision preserves lesson/task/card identities and original course cards while replacing every quiz and practice task',()=>{
   const identity=d=>d.lessons.map(l=>({id:l.id,module:l.module,title:l.title,ids:[...l.questions,...l.practice].map(q=>q.id).sort()}));
   assert.deepEqual(identity(data),identity(baseline));
-  assert.deepEqual(data.modules.map(({questionCount,practiceCount,...m})=>m),baseline.modules.map(({questionCount,practiceCount,...m})=>m));
-  assert.deepEqual(data.courseCards,baseline.courseCards);
-  assert.deepEqual(data.cards.map(c=>c.id),baseline.cards.map(c=>c.id));
+  assert.deepEqual(data.modules.map(({questionCount,practiceCount,cardCount,...m})=>m),baseline.modules.map(({questionCount,practiceCount,cardCount,...m})=>m));
+  assert.deepEqual(data.lessonReferenceCards,baseline.courseCards);
+  assert.equal(data.cards.length,0);assert.equal(data.courseCards.length,521);assert.deepEqual(data.courseCards.map(c=>c.id),baseline.courseCards.map(c=>c.id));
   const questions=data.lessons.flatMap(l=>l.questions);
   assert.equal(questions.length,278);assert.equal(new Set(questions.map(q=>q.id)).size,278);assert.equal(new Set(questions.map(q=>q.question)).size,278);
   assert.equal(data.lessons.flatMap(l=>l.practice).length,0);
@@ -67,7 +67,7 @@ test('All guided lessons explain a scenario in ordered paragraphs and map every 
     assert.ok(tutorial.chapters.length>=3,lesson.id);
     assert.ok(tutorial.chapters.every(c=>c.title&&c.paragraphs.length&&c.paragraphs.every(p=>p.length>60)),lesson.id);
     assert.ok(tutorial.recap.length>=3,lesson.id);
-    const expected=data.courseCards.filter(c=>c.lesson_id===lesson.id).map(c=>c.id);
+    const expected=data.lessonReferenceCards.filter(c=>c.lesson_id===lesson.id).map(c=>c.id);
     assert.deepEqual(lesson.learning.courseCardIds,expected,lesson.id);
     assigned.push(...lesson.learning.courseCardIds);
   }
@@ -81,7 +81,7 @@ test('Learning text is cached with the app and the previous progress storage is 
   assert.ok(html.includes("const LEGACY_STORE='skillyr_learn_m02_preview_v1'"));
   const sw=fs.readFileSync(path.join(root,'sw.js'),'utf8');
   assert.ok(sw.includes("const PREFIX='skillyr-m02-test::'"));
-  assert.ok(sw.includes('thinkup-applied-quizzes-v21'));
+  assert.ok(sw.includes('thinkup-original-cards-v24'));
   assert.ok(sw.includes("'./data-m01-m09.json'"));
 });
 test('The basic design keeps every original style block, header structure and bottom navigation',()=>{

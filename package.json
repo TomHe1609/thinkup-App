@@ -3,7 +3,7 @@
   "version": "1.2.0",
   "private": true,
   "scripts": {
-    "test": "node --test tests/content.test.cjs tests/study-core.test.cjs tests/appearance.test.cjs tests/support.test.cjs",
+    "test": "node --test tests/content.test.cjs tests/study-core.test.cjs tests/appearance.test.cjs tests/support.test.cjs tests/original-cards.test.cjs",
     "test:browser": "node tests/run-browser.cjs"
   },
   "devDependencies": {

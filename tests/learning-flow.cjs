@@ -11,10 +11,10 @@ const THEME='skillyr_learn_theme_v1';
 const results=path.resolve(process.env.TEST_OUTPUT_DIR || path.join(root,'test-results'));
 fs.mkdirSync(results,{recursive:true});
 const blank=()=>({activeModule:2,xp:0,done:{},correct:{},wrong:{},attempts:0,practices:{},days:[],reviewCards:{},coachReviews:{},favorites:{},reading:{},lastRead:null,daily:null,examHistory:[]});
-const allowed=new Set(['index.html','appearance.css','glossary-examples.js','learning-support.css','learning-support-data.js','learning-support.js','study-features.js','sw.js','manifest.webmanifest','data-m02.json','data-m01-m05.json','data-m01-m09.json','icon-192.png','icon-512.png']);
+const allowed=new Set(['index.html','ui-glass.css','flashcard-content.js','flashcard-content.css','appearance.css','glossary-examples.js','learning-support.css','learning-support-data.js','learning-support.js','study-features.js','sw.js','manifest.webmanifest','data-m02.json','data-m01-m05.json','data-m01-m09.json','icon-192.png','icon-512.png']);
 const mime={'.css':'text/css; charset=utf-8','.html':'text/html; charset=utf-8','.js':'application/javascript','.json':'application/json','.webmanifest':'application/manifest+json','.png':'image/png'};
 let servePreviousVersion=false;
-const previousAssets=Object.fromEntries([...allowed].filter(name=>!['appearance.css','glossary-examples.js','learning-support.css','learning-support-data.js','learning-support.js'].includes(name)).map(name=>[name,require('node:child_process').execFileSync('git',['show',`f2e56bf:${name}`],{cwd:root,maxBuffer:5000000})]));
+const previousAssets=Object.fromEntries([...allowed].filter(name=>name!=='ui-glass.css'&&!name.startsWith('flashcard-content.')&&!['appearance.css','glossary-examples.js','learning-support.css','learning-support-data.js','learning-support.js'].includes(name)).map(name=>[name,require('node:child_process').execFileSync('git',['show',`f2e56bf:${name}`],{cwd:root,maxBuffer:5000000})]));
 const server=http.createServer((req,res)=>{
   const name=new URL(req.url,'http://localhost').pathname.slice(1)||'index.html';
   if(!allowed.has(name)){res.writeHead(404);res.end();return;}
@@ -210,7 +210,7 @@ async function mixedQuiz(p,id){
     assert.equal(await old.locator('#startLessonQuiz').count(),1);
     servePreviousVersion=false;
     await old.evaluate(async()=>{const r=await navigator.serviceWorker.getRegistration();await r.update();});
-    await old.waitForFunction(async()=>{const keys=await caches.keys();return keys.includes('skillyr-m02-test::thinkup-applied-quizzes-v21')&&!keys.includes('skillyr-m02-test::m01-m09-study-tools-v16');});
+    await old.waitForFunction(async()=>{const keys=await caches.keys();return keys.includes('skillyr-m02-test::thinkup-original-cards-v24')&&!keys.includes('skillyr-m02-test::m01-m09-study-tools-v16');});
     await old.reload();await old.locator('.node[data-lesson="2.9"]').click();
     assert.equal(await old.locator('#startLessonQuiz').count(),1);
     for(const key of ['xp','done','correct','wrong','attempts'])assert.deepEqual((await stored(old))[key],initial[key]);

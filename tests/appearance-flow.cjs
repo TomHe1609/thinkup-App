@@ -3,7 +3,7 @@ const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
 const root=path.join(__dirname,'..'),D=require('../data-m01-m09.json'),themes=require('../appearance-palettes.json').themes;
 const KEY='skillyr_learn_m01_m05_preview_v1',THEME='skillyr_learn_theme_v1',MODE='skillyr_learn_mode_v1';
 const out=path.join(root,'test-results');fs.mkdirSync(out,{recursive:true});
-const allowed=new Set(['index.html','appearance.css','glossary-examples.js','learning-support.css','learning-support-data.js','learning-support.js','study-features.js','sw.js','manifest.webmanifest','data-m02.json','data-m01-m05.json','data-m01-m09.json','icon-192.png','icon-512.png']);
+const allowed=new Set(['index.html','ui-glass.css','flashcard-content.js','flashcard-content.css','appearance.css','glossary-examples.js','learning-support.css','learning-support-data.js','learning-support.js','study-features.js','sw.js','manifest.webmanifest','data-m02.json','data-m01-m05.json','data-m01-m09.json','icon-192.png','icon-512.png']);
 const server=http.createServer((req,res)=>{const file=new URL(req.url,'http://localhost').pathname.slice(1)||'index.html';if(!allowed.has(file)){res.writeHead(404);res.end();return}const mime=file.endsWith('.css')?'text/css':file.endsWith('.js')?'application/javascript':file.endsWith('.html')?'text/html; charset=utf-8':file.endsWith('.png')?'image/png':'application/json';res.writeHead(200,{'Content-Type':mime,'Cache-Control':'no-cache'});res.end(fs.readFileSync(path.join(root,file)))});
 const initial={activeModule:1,xp:40,done:{'2.8':true},correct:{},wrong:{},attempts:4,practices:{},days:[],reviewCards:{},coachReviews:{},favorites:{'2.9':true},reading:{},lastRead:null,daily:null,examHistory:[]};
 const errors=[];let browser,url;
@@ -19,7 +19,7 @@ async function appearance(p,mode,id){
 }
 async function readable(p,selector,label){
  const sample=await p.locator(selector).first().evaluate(el=>{
-  const parse=s=>{if(s.startsWith('#'))return [parseInt(s.slice(1,3),16),parseInt(s.slice(3,5),16),parseInt(s.slice(5,7),16),1];const n=s.match(/[\d.]+/g)?.map(Number)||[0,0,0,0];return[n[0],n[1],n[2],n[3]??1]};
+  const parse=s=>{const canvas=document.createElement('canvas');canvas.width=canvas.height=1;const ctx=canvas.getContext('2d');ctx.fillStyle=s;ctx.fillRect(0,0,1,1);const [r,g,b,a]=ctx.getImageData(0,0,1,1).data;return[r,g,b,a/255]};
   const base=parse(getComputedStyle(document.documentElement).getPropertyValue('--theme-bg').trim());
   const over=(a,b)=>[0,1,2].map(i=>a[i]*a[3]+b[i]*(1-a[3])).concat(1);
   const background=node=>{if(!node)return base;return over(parse(getComputedStyle(node).backgroundColor),background(node.parentElement))};
@@ -70,7 +70,7 @@ async function width(p){assert(await p.evaluate(()=>document.documentElement.scr
   await p.locator('#nextQuestion').click();const pick=0;await p.locator('[data-option="0"]').click();const choiceBefore=await stored(p);
   for(const t of themes){await appearance(p,'light',t.id);assert.equal(await p.locator('.quiz-choice.selected').getAttribute('data-option'),'0');await readable(p,'.quiz-question');await readable(p,'.quiz-choice.selected .choice-text');assert.deepEqual(await stored(p),choiceBefore)}
   await p.locator('#confirmAnswer').click();for(const t of themes){await appearance(p,'light',t.id);await readable(p,'.quiz-feedback-explanation');}assert.equal(await p.locator('textarea').count(),0);
-  await p.locator('.quiz-close').click();await p.locator('#nav-cards').click();await p.locator('#flip').click();for(const t of themes){await appearance(p,'light',t.id);await readable(p,'.card-front h2');await readable(p,'[data-study-rate="known"]')}
+  await p.locator('.quiz-close').click();await p.locator('#nav-cards').click();await p.locator('#flip').click();for(const t of themes){await appearance(p,'light',t.id);await readable(p,'.card-front .flashcard-content');await readable(p,'[data-study-rate="known"]')}
   await p.locator('#nav-path').click();await p.locator('#studySearch').click();await p.locator('#studyQuery').fill('Cornell');for(const t of themes){await appearance(p,'light',t.id);await readable(p,'#studyQuery');await readable(p,'.study-result p');await width(p)}
   console.log('PASS: quiz selections and explanations, cards and recall controls, search and results in all six light palettes.');
 

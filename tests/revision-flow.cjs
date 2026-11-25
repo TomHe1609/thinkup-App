@@ -1,7 +1,7 @@
 const fs=require('node:fs'),path=require('node:path'),http=require('node:http'),assert=require('node:assert/strict');
 const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
 const root=path.join(__dirname,'..'),D=require('../data-m01-m09.json'),KEY='skillyr_learn_m01_m05_preview_v1',EXAM='skillyr_learn_exam_session_v1';
-const allowed=new Set(['index.html','appearance.css','learning-support.css','glossary-examples.js','learning-support-data.js','learning-support.js','study-features.js','sw.js','manifest.webmanifest','data-m01-m09.json','data-m01-m05.json','data-m02.json','icon-192.png','icon-512.png']);
+const allowed=new Set(['index.html','ui-glass.css','flashcard-content.js','flashcard-content.css','appearance.css','learning-support.css','glossary-examples.js','learning-support-data.js','learning-support.js','study-features.js','sw.js','manifest.webmanifest','data-m01-m09.json','data-m01-m05.json','data-m02.json','icon-192.png','icon-512.png']);
 const server=http.createServer((req,res)=>{const file=new URL(req.url,'http://localhost').pathname.slice(1)||'index.html';if(!allowed.has(file)){res.writeHead(404);res.end();return;}res.writeHead(200,{'Content-Type':file.endsWith('.html')?'text/html; charset=utf-8':file.endsWith('.js')?'application/javascript':file.endsWith('.css')?'text/css':'application/json','Cache-Control':'no-store'});res.end(fs.readFileSync(path.join(root,file)));});
 let browser;
 (async()=>{

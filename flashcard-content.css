@@ -1,0 +1,10 @@
+/* Content layout only; the existing card, controls and theme remain in charge. */
+.card-front .flashcard-content{width:100%;min-width:0;text-align:left;font-size:18px;line-height:1.65;font-weight:550;letter-spacing:-.4px;overflow-wrap:anywhere}
+.card-front.card-back .flashcard-content{font-size:15px;line-height:1.8}
+.flashcard-content> :first-child{margin-top:0}.flashcard-content> :last-child{margin-bottom:0}
+.flashcard-content p{margin:.65em 0}.flashcard-content ul,.flashcard-content ol{margin:.65em 0;padding-left:1.5em}
+.flashcard-content li+li{margin-top:.35em}.flashcard-content pre{white-space:pre;overflow:auto;max-width:100%;font-size:.9em;line-height:1.5;letter-spacing:normal;text-align:left}
+.flashcard-content code{font-family:ui-monospace,Consolas,monospace;letter-spacing:normal}
+.flashcard-content table{display:block;max-width:100%;overflow:auto;border-collapse:collapse;text-align:left;font-size:.9em}
+.flashcard-content td,.flashcard-content th{border:1px solid currentColor;padding:.4em .6em;vertical-align:top;min-width:8em;overflow-wrap:normal;word-break:normal}
+.study-card-text.flashcard-content{white-space:normal}
