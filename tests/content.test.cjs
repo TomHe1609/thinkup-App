@@ -7,13 +7,17 @@ const crypto = require('node:crypto');
 const root = path.join(__dirname, '..');
 const data = JSON.parse(fs.readFileSync(path.join(root,'data-m01-m09.json'),'utf8'));
 const html = fs.readFileSync(path.join(root,'index.html'),'utf8');
-const scripts = [...html.matchAll(/<script>([\s\S]*?)<\/script>/g)].map(m=>m[1]);
+const scripts = [...html.matchAll(/<script([^>]*)>([\s\S]*?)<\/script>/g)].map(m=>m[1].includes('src=')?fs.readFileSync(path.join(root,m[1].match(/src="([^"]+)"/)[1]),'utf8'):m[2]);
+const appScript=fs.readFileSync(path.join(root,'script.js'),'utf8');
 const baseline = JSON.parse(require('node:child_process').execFileSync('git',['show','33beb11:data-m01-m09.json'], {cwd:root,encoding:'utf8',maxBuffer:5000000}));
 
-test('All application scripts parse and embedded content matches the public JSON',()=>{
+test('All application scripts parse and application data matches the public JSON',()=>{
   for(const script of scripts) new vm.Script(script);
   new vm.Script(fs.readFileSync(path.join(root,'study-features.js'),'utf8'));
-  const match=html.match(/const DATA = (.*);\r?\nconst ICON_PATHS/);
+  assert.equal((html.match(/<script>/g)||[]).length,0);
+  assert(html.includes('<script src="theme-init.js"></script>'));
+  assert(html.includes('<script src="script.js"></script>'));
+  const match=appScript.match(/const DATA = (.*);\r?\nconst ICON_PATHS/);
   assert.ok(match);
   assert.deepEqual(JSON.parse(match[1]),data);
 });
@@ -77,12 +81,14 @@ test('All guided lessons explain a scenario in ordered paragraphs and map every 
   for(const term of ['Survey','Question','Read','Recite','Review','Cornell','Mind-Map','Concept Map','Loci','Spaced Repetition','Lernzugänge'])assert.ok(first.includes(term),term);
 });
 test('Learning text is cached with the app and the previous progress storage is retained',()=>{
-  assert.ok(html.includes("const STORE='skillyr_learn_m01_m05_preview_v1'"));
-  assert.ok(html.includes("const LEGACY_STORE='skillyr_learn_m02_preview_v1'"));
+  assert.ok(appScript.includes("const STORE='skillyr_learn_m01_m05_preview_v1'"));
+  assert.ok(appScript.includes("const LEGACY_STORE='skillyr_learn_m02_preview_v1'"));
   const sw=fs.readFileSync(path.join(root,'sw.js'),'utf8');
   assert.ok(sw.includes("const PREFIX='skillyr-m02-test::'"));
-  assert.ok(sw.includes('thinkup-styles-v25'));
+  assert.ok(sw.includes('thinkup-scripts-v26'));
   assert.ok(sw.includes("'./style.css'"));
+  assert.ok(sw.includes("'./script.js'"));
+  assert.ok(sw.includes("'./theme-init.js'"));
   assert.ok(sw.includes("'./data-m01-m09.json'"));
 });
 test('The basic design keeps every original style block, header structure and bottom navigation',()=>{

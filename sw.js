@@ -1,6 +1,6 @@
 const PREFIX='skillyr-m02-test::';
-const CACHE=PREFIX+'thinkup-styles-v25';
-const FILES=['./','./index.html','./style.css','./appearance.css','./learning-support.css','./ui-glass.css','./glossary-examples.js','./learning-support-data.js','./learning-support.js','./study-features.js','./flashcard-content.js','./flashcard-content.css','./data-m02.json','./data-m01-m05.json','./data-m01-m09.json','./manifest.webmanifest','./icon-192.png','./icon-512.png'];
+const CACHE=PREFIX+'thinkup-scripts-v26';
+const FILES=['./','./index.html','./theme-init.js','./script.js','./style.css','./appearance.css','./learning-support.css','./ui-glass.css','./glossary-examples.js','./learning-support-data.js','./learning-support.js','./study-features.js','./flashcard-content.js','./flashcard-content.css','./data-m02.json','./data-m01-m05.json','./data-m01-m09.json','./manifest.webmanifest','./icon-192.png','./icon-512.png'];
 const OWN_URLS=new Set(FILES.map(path=>new URL(path,self.registration.scope).href));
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(FILES)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',event=>event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key.startsWith(PREFIX)&&key!==CACHE).map(key=>caches.delete(key)))).then(()=>self.clients.claim())));

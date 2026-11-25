@@ -24,8 +24,10 @@ test('New light text, secondary text and primary actions provide at least 4.5:1 
  for(const [fg,bg]of [['#1b5737','#e5f5ec'],['#8b263e','#fce9ed']])assert.ok(contrast(fg,bg)>=4.5);
 });
 test('Appearance preferences remain separate from learning progress and offline assets include the new stylesheet',()=>{
- assert.ok(html.includes("const MODE_KEY='skillyr_learn_mode_v1'"));assert.ok(html.includes("const THEME_KEY='skillyr_learn_theme_v1'"));
- assert.ok(html.includes('Object.hasOwn(backgrounds,saved)'));
+ const appScript=fs.readFileSync(path.join(root,'script.js'),'utf8'),themeScript=fs.readFileSync(path.join(root,'theme-init.js'),'utf8');
+ assert.ok(appScript.includes("const MODE_KEY='skillyr_learn_mode_v1'"));assert.ok(appScript.includes("const THEME_KEY='skillyr_learn_theme_v1'"));
+ assert.ok(themeScript.includes('Object.hasOwn(backgrounds,saved)'));
+ assert(html.indexOf('src="theme-init.js"')<html.indexOf('href="style.css"'));
  assert.ok(html.includes('name="appMode" value="light"'));
  assert.equal((html.match(/name="appTheme" value=/g)||[]).length,6);
  assert.ok(html.includes('<link rel="stylesheet" href="appearance.css">'));
