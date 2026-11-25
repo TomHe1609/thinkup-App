@@ -4,8 +4,8 @@ const root=path.join(__dirname,'..'),D=require('../data-m01-m09.json');
 const KEY='skillyr_learn_m01_m05_preview_v1',BACKUP=KEY+'::before-official-cards-2026-11-25';
 const out=path.resolve(process.env.TEST_OUTPUT_DIR||path.join(root,'test-results'));fs.mkdirSync(out,{recursive:true});
 const base='780956e992f9aa908ae11460b5bae5143f178bbe',oldData=JSON.parse(execFileSync('git',['show',base+':data-m01-m09.json'],{cwd:root,maxBuffer:10000000}));
-const files=['index.html','appearance.css','ui-glass.css','learning-support.css','glossary-examples.js','learning-support-data.js','learning-support.js','study-features.js','flashcard-content.js','flashcard-content.css','sw.js','manifest.webmanifest','data-m01-m09.json','data-m01-m05.json','data-m02.json','icon-192.png','icon-512.png'];
-const previous=Object.fromEntries(files.filter(f=>!f.startsWith('flashcard-content.')).map(f=>[f,execFileSync('git',['show',base+':'+f],{cwd:root,maxBuffer:10000000})]));
+const files=['index.html','style.css','appearance.css','ui-glass.css','learning-support.css','glossary-examples.js','learning-support-data.js','learning-support.js','study-features.js','flashcard-content.js','flashcard-content.css','sw.js','manifest.webmanifest','data-m01-m09.json','data-m01-m05.json','data-m02.json','icon-192.png','icon-512.png'];
+const previous=Object.fromEntries(files.filter(f=>f!=='style.css'&&!f.startsWith('flashcard-content.')).map(f=>[f,execFileSync('git',['show',base+':'+f],{cwd:root,maxBuffer:10000000})]));
 let oldVersion=false,browser;
 const server=http.createServer((req,res)=>{
  const name=new URL(req.url,'http://localhost').pathname.slice(1)||'index.html';
@@ -59,9 +59,9 @@ const state={activeModule:1,xp:870,done:{'1.1':true},correct:{},wrong:{},attempt
   await u.goto(url);await u.evaluate(({KEY,state})=>localStorage.setItem(KEY,JSON.stringify(state)),{KEY,state});await u.reload();await u.evaluate(()=>navigator.serviceWorker.ready);await u.waitForFunction(()=>!!navigator.serviceWorker.controller);
   const before=await u.evaluate(k=>localStorage.getItem(k),KEY);await u.evaluate(()=>caches.open('unrelated-card-test-cache'));
   oldVersion=false;await u.evaluate(async()=>{const r=await navigator.serviceWorker.getRegistration();await r.update();});
-  await u.waitForFunction(async()=>{const keys=await caches.keys();return keys.includes('skillyr-m02-test::thinkup-original-cards-v24')&&!keys.includes('skillyr-m02-test::thinkup-applied-quizzes-v23-glass-v2');});
+  await u.waitForFunction(async()=>{const keys=await caches.keys();return keys.includes('skillyr-m02-test::thinkup-styles-v25')&&!keys.includes('skillyr-m02-test::thinkup-applied-quizzes-v23-glass-v2');});
   await u.reload();assert.equal(await u.evaluate(()=>CARD_CATALOG.length),521);assert.equal((await u.evaluate(k=>JSON.parse(localStorage.getItem(k)),BACKUP)).raw,before);assert.equal(await u.evaluate(()=>progress.xp),state.xp);
   await upgrade.setOffline(true);await u.reload();await u.locator('#nav-cards').click();await u.locator('#flip').click();assert.equal(await u.locator('#flip ol li').count(),4);assert(await u.evaluate(async()=>(await caches.keys()).includes('unrelated-card-test-cache')));await upgrade.close();
-  console.log('PASS: v23 installation upgrades to v24, snapshots old progress and works completely offline; unrelated caches survive.');
+  console.log('PASS: v23 installation upgrades to v25, snapshots old progress and works completely offline; unrelated caches survive.');
  }finally{await browser.close();await new Promise(resolve=>server.close(resolve));}
 })().catch(e=>{console.error(e);process.exitCode=1;server.close();});

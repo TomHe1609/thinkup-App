@@ -63,6 +63,6 @@ test('New scripts parse and all learning aids are available in the offline cache
  for(const name of ['glossary-examples.js','learning-support-data.js','learning-support.js'])new vm.Script(fs.readFileSync(path.join(root,name),'utf8'));
  const sw=fs.readFileSync(path.join(root,'sw.js'),'utf8'),html=fs.readFileSync(path.join(root,'index.html'),'utf8');
  for(const name of ['glossary-examples.js','learning-support-data.js','learning-support.js','learning-support.css'])assert(sw.includes("'./"+name+"'"));
- assert(html.includes('LearningSupport.init(DATA,LearningSupportData)'));assert(sw.includes('thinkup-original-cards-v24'));
+ assert(html.includes('LearningSupport.init(DATA,LearningSupportData)'));assert(sw.includes('thinkup-styles-v25'));
  assert(!fs.readFileSync(path.join(root,'learning-support.js'),'utf8').includes('localStorage'));
 });

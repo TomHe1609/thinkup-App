@@ -33,8 +33,10 @@ test('Learning paths, all quizzes, supporting lesson explanations and existing v
  assert.deepEqual(D.courseCards.map(c=>({id:c.id,lesson:c.lesson_id,module:c.module,number:c.number})),old.courseCards.map(c=>({id:c.id,lesson:c.lesson_id,module:c.module,number:c.number})));
  for(const file of ['appearance.css','learning-support.css','learning-support.js','learning-support-data.js','glossary-examples.js','ui-glass.css','data-m02.json','data-m01-m05.json'])assert.equal(fs.readFileSync(path.join(root,file),'utf8').replace(/\r\n/g,'\n'),base(file),file);
  const html=fs.readFileSync(path.join(root,'index.html'),'utf8');
- const style=s=>[...s.matchAll(/<style[^>]*>[\s\S]*?<\/style>/g)].map(m=>m[0]);
- assert.deepEqual(style(html),style(base('index.html')));
+ const style=s=>[...s.matchAll(/<style[^>]*>([\s\S]*?)<\/style>/g)].map(m=>m[1].trim());
+ const moved=fs.readFileSync(path.join(root,'style.css'),'utf8').split(/^\/\* style: .* \*\/$/m).slice(1).map(s=>s.trim());
+ assert.deepEqual(moved,style(base('index.html')));
+ assert.deepEqual(style(html),[]);
  for(const pattern of [/<header>[\s\S]*?<\/header>/,/<nav class="bottomnav"[\s\S]*?<\/nav>/])assert.equal(html.match(pattern)[0],base('index.html').match(pattern)[0]);
 });
 test('All original edge cases remain literal and differently answered cross-module questions stay separate',()=>{

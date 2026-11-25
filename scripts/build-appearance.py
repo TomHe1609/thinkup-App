@@ -5,8 +5,8 @@ import json
 import re
 
 ROOT = Path(__file__).resolve().parent.parent
-html = (ROOT / 'index.html').read_text(encoding='utf-8')
-base = re.search(r':root\{(--c-[^}]+)\}', html).group(1)
+css = (ROOT / 'style.css').read_text(encoding='utf-8')
+base = re.search(r':root\{(--c-[^}]+)\}', css).group(1)
 colours = dict(re.findall(r'--c-([0-9a-f]{6,8}):(#[0-9a-f]{6,8})', base))
 themes = json.loads((ROOT / 'appearance-palettes.json').read_text(encoding='utf-8'))['themes']
 

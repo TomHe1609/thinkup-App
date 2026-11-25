@@ -10,7 +10,7 @@ test('Six colour families each provide a dark and light presentation, retaining 
  for(const t of themes){assert.ok(t.dark.name&&t.light.name);assert.ok(css.includes(`:root[data-color-mode="light"][data-theme="${t.id}"]`));}
 });
 test('Every generated palette supplies all existing colour tokens so no dark surface leaks into light mode',()=>{
- const base=html.match(/:root\{(--c-[^}]+)\}/)[1];const names=[...base.matchAll(/--c-([0-9a-f]{6,8}):/g)].map(m=>m[1]);assert.ok(names.length>500);
+ const base=fs.readFileSync(path.join(root,'style.css'),'utf8').match(/:root\{(--c-[^}]+)\}/)[1];const names=[...base.matchAll(/--c-([0-9a-f]{6,8}):/g)].map(m=>m[1]);assert.ok(names.length>500);
  for(const t of themes)for(const mode of ['dark','light']){
   if(mode==='dark'&&!['forest','rose'].includes(t.id))continue;
   const selector=mode==='light'?`:root[data-color-mode="light"][data-theme="${t.id}"]`:`:root[data-theme="${t.id}"]`;

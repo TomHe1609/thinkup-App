@@ -81,14 +81,18 @@ test('Learning text is cached with the app and the previous progress storage is 
   assert.ok(html.includes("const LEGACY_STORE='skillyr_learn_m02_preview_v1'"));
   const sw=fs.readFileSync(path.join(root,'sw.js'),'utf8');
   assert.ok(sw.includes("const PREFIX='skillyr-m02-test::'"));
-  assert.ok(sw.includes('thinkup-original-cards-v24'));
+  assert.ok(sw.includes('thinkup-styles-v25'));
+  assert.ok(sw.includes("'./style.css'"));
   assert.ok(sw.includes("'./data-m01-m09.json'"));
 });
 test('The basic design keeps every original style block, header structure and bottom navigation',()=>{
   const before=require('node:child_process').execFileSync('git',['show','3f6f266:index.html'],{cwd:root,encoding:'utf8',maxBuffer:5000000}).replace(/\r\n/g,'\n');
   const current=html.replace(/\r\n/g,'\n');
   const styles=text=>[...text.matchAll(/<style[^>]*>([\s\S]*?)<\/style>/g)].map(m=>m[1].trim());
-  const oldStyles=styles(before),newStyles=styles(current);
+  const oldStyles=styles(before),newStyles=fs.readFileSync(path.join(root,'style.css'),'utf8').split(/^\/\* style: .* \*\/$/m).slice(1).map(s=>s.trim());
+  assert.equal(styles(current).length,0);
+  assert(current.includes('<link rel="stylesheet" href="style.css">'));
+  assert(current.indexOf('href="style.css"')<current.indexOf('href="appearance.css"'));
   assert.equal(newStyles.length,oldStyles.length);
   for(let i=0;i<oldStyles.length;i++)assert.ok(newStyles[i].includes(oldStyles[i]),'Original design block '+i+' changed');
   assert.equal(current.match(/<header>[\s\S]*?<\/header>/)[0],before.match(/<header>[\s\S]*?<\/header>/)[0].replace('skillyr<span','thinkup<span').replace('Testversion · M01–M09','Lernpfade · M01–M09'));

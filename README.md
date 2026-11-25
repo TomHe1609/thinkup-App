@@ -44,11 +44,13 @@ Laufende Tages- und Prüfungsrunden tragen nun `contentRevision: 2`. Runden ohne
 
 Sicherungsexporte bleiben bei Schema 4 und der Kennung `thinkup-learn-m01-m09`. Frühere `skillyr-learn-m01-m09`-, M01–M05- und M02-Sicherungen werden weiterhin unterstützt. Ein Import oder Zurücksetzen verlangt wie bisher eine ausdrückliche Bestätigung im Produkt.
 
-Der Service Worker verwendet `skillyr-m02-test::thinkup-original-cards-v24`. Er aktualisiert die App samt Lerntexten und Hilfen für Offline-Nutzung und entfernt ausschließlich alte eigene Caches. Fremde App-Caches und das Repository `TomHe1609/It-lernquiz` bleiben unberührt.
+Der Service Worker verwendet `skillyr-m02-test::thinkup-styles-v25`. Er aktualisiert die App samt Lerntexten und Hilfen für Offline-Nutzung und entfernt ausschließlich alte eigene Caches. Fremde App-Caches und das Repository `TomHe1609/It-lernquiz` bleiben unberührt.
 
 ## Aufbau und Veröffentlichung
 
 GitHub Pages veröffentlicht den Hauptbranch `main` aus dem Repository-Stamm. `index.html` enthält dieselben eingebetteten Daten wie `data-m01-m09.json`. Die historischen Kompatibilitätsdateien `data-m01-m05.json` und `data-m02.json` bleiben unverändert; die aktuelle App verwendet sie nicht als Quizquelle.
+
+`style.css` enthält die 13 bisherigen eingebetteten CSS-Blöcke in ihrer ursprünglichen Reihenfolge, mit Kommentaren je Abschnitt. `index.html` bindet die Datei vor den bestehenden ergänzenden Stylesheets ein. Regeln, Darstellung und Lernfunktionen bleiben dabei unverändert; die Datei ist auch im Offline-Cache enthalten. `scripts/build-appearance.py` liest die Farbdefinitionen aus `style.css`.
 
 `study-features.js` enthält Tagesrunde, Prüfung, Such- und Wiederholungswerkzeuge. `learning-support-data.js` enthält Glossar und Hinweise; `learning-support.js` deren Anzeige und Begriffserkennung. `glossary-examples.js` bewahrt die individuellen Beispiele. Alle benötigten Dateien stehen im Offline-Cache.
 
